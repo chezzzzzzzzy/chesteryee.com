@@ -1,0 +1,23 @@
+[
+  {
+    "position": "Co-Founder / CTO",
+    "entity": "RENIU",
+    "description": "Upcycling products to develop postive and sustainable fuel",
+    "location": "Singapore",
+    "timeframe": "March 2018 — Present"
+  },
+  {
+    "position": "Intern",
+    "entity": "Singtel",
+    "description": "Developed a Customer Relationship Management (CRM) platform for employees to request for resources in exchanges and datacenter facilities. Requests will then be fulfilled by the respective owner. Service Level Agreement (SLA) built in. Email notifications. Photo verification. Assisted with BAU work and operations. Attained basic Robotic Process Automation (RPA) skills using UIPath. Gained insights on networking concepts.",
+    "location": "Singapore",
+    "timeframe": "September 2019 — February 2020"
+  },
+  {
+    "position": "Teachning Assistant / Instructor",
+    "entity": "Code in the Community",
+    "description": "Google-sponsored initiative to bring free coding classes to 3,000 young Singaporeans from less well-to-do backgrounds",
+    "location": "Singapore",
+    "timeframe": "August 2019 — October 2019"
+  }
+]
