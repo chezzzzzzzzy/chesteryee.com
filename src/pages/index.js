@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { Component } from 'react'
 import { graphql, Link } from "gatsby"
 import Layout from '../components/layout'
 import GeneralCard from '../components/GeneralCard'
@@ -19,13 +19,14 @@ import icon_speaker from '../assets/speakerRight.svg'
 
 
 const Title = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_title};
+  font-size: 1.6em;
+  /* font-size: ${props => props.theme.fontSizes.mobile_title}; */
   font-weight: bold;
 
 `
 
 const Subtitle = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_subtitle};
+  font-size: 1.1em;
   padding: 0.6rem 0;
   color: ${props => props.active ? 'white' : '#585858'};
   font-weight: 600;
@@ -33,14 +34,14 @@ const Subtitle = styled.div`
 `
 
 const Pointer = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  font-size: 0.67em;
   font-weight: bold;
   color: #585858;
 
 `
 
 const Description = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_description};
+  font-size: 0.9em;
   padding: 1rem 0;
   
 `
@@ -113,89 +114,92 @@ const Info = styled.div`
 `
 
 
-export default function Home({ data }) {
+export class Index extends Component {
+
+  render() {
+
+    return (
+      <Layout>
+        <Container>
 
 
-  return (
-    <Layout>
-      <Container>
+          <Section>
+            <Title>Hello,</Title>
+            <Title>I'm Chester</Title>
 
+            <Subtitle>Aspiring Software Engineer</Subtitle>
 
-        <Section>
-          <Title>Hello,</Title>
-          <Title>I'm Chester</Title>
-
-          <Subtitle>Aspiring Software Engineer</Subtitle>
-
-          <Description>
-            Incoming Computer Science and Business undergraduate
-            student at Nanyang Technological University based in
-            Singapore.
+            <Description>
+              Incoming Computer Science and Business undergraduate
+              student at Nanyang Technological University based in
+              Singapore.
           </Description>
 
-          <Cover data={cover_intro} />
+            <Cover data={cover_intro} />
+          </Section>
+
+          <Section>
+            <Pointer>What I Do</Pointer>
+            <Subtitle active >I enjoy creating delightful, human-centered digital experiences.</Subtitle>
+            <SkillCards>
+              <GeneralCard color='#0263FF' skillCover={icon_mobile} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' />
+              <GeneralCard color='#FFCBF3' skillCover={icon_pencil} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' />
+              <GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' />
+            </SkillCards>
+          </Section>
+
+        </Container>
+
+
+
+
+
+        <Section>
+          <Details>
+            <Pointer>Projects</Pointer>
+            <Subtitle active>Apps which I have built</Subtitle>
+          </Details>
+          <ProjectCards>
+            <ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' />
+            <ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' />
+
+          </ProjectCards>
         </Section>
 
         <Section>
-          <Pointer>What I Do</Pointer>
-          <Subtitle active >I enjoy creating delightful, human-centered digital experiences.</Subtitle>
-          <SkillCards>
-            <GeneralCard color='#0263FF' skillCover={icon_mobile} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' />
-            <GeneralCard color='#FFCBF3' skillCover={icon_pencil} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' />
-            <GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' />
-          </SkillCards>
+          <Details>
+            <Pointer>Articles</Pointer>
+            <Subtitle active>Latest reads</Subtitle>
+          </Details>
+
         </Section>
 
-      </Container>
 
 
+        <Section>
+          <Details>
+            <Pointer>Say hello 👋🏻</Pointer>
+            <Subtitle active>Let's collaborate!</Subtitle>
 
 
+            <InfoRow>
+              <Icon data={icon_mail} />
+              <Info>hello@chesteryee.com</Info>
+            </InfoRow>
+            <InfoRow>
+              <Icon data={icon_phone} />
+              <Info>+65 9318 1831</Info>
+            </InfoRow>
 
-      <Section>
-        <Details>
-          <Pointer>Projects</Pointer>
-          <Subtitle active>Apps which I have built</Subtitle>
-        </Details>
-        <ProjectCards>
-          <ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' />
-          <ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' />
+          </Details>
 
-        </ProjectCards>
-      </Section>
+        </Section>
 
-      <Section>
-        <Details>
-          <Pointer>Articles</Pointer>
-          <Subtitle active>Latest reads</Subtitle>
-        </Details>
+      </Layout>
 
-      </Section>
-
-
-
-      <Section>
-        <Details>
-          <Pointer>Say hello 👋🏻</Pointer>
-          <Subtitle active>Let's collaborate!</Subtitle>
-
-
-          <InfoRow>
-            <Icon data={icon_mail} />
-            <Info>hello@chesteryee.com</Info>
-          </InfoRow>
-          <InfoRow>
-            <Icon data={icon_phone} />
-            <Info>+65 9318 1831</Info>
-          </InfoRow>
-
-        </Details>
-
-      </Section>
-
-    </Layout>
-
-  )
+    )
+  }
 }
 
+export default Index
 
