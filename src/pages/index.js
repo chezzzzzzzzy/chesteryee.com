@@ -114,92 +114,89 @@ const Info = styled.div`
 `
 
 
-export class Index extends Component {
+const Index = () => (
 
-  render() {
-
-    return (
-      <Layout>
-        <Container>
+  <Layout>
+    <Container>
 
 
-          <Section>
-            <Title>Hello,</Title>
-            <Title>I'm Chester</Title>
+      <Section>
+        <Title>Hello,</Title>
+        <Title>I'm Chester</Title>
 
-            <Subtitle>Aspiring Software Engineer</Subtitle>
+        <Subtitle>Aspiring Software Engineer</Subtitle>
 
-            <Description>
-              Incoming Computer Science and Business undergraduate
-              student at Nanyang Technological University based in
-              Singapore.
+        <Description>
+          Incoming Computer Science and Business undergraduate
+          student at Nanyang Technological University based in
+          Singapore.
           </Description>
 
-            <Cover data={cover_intro} />
-          </Section>
+        <Cover data={cover_intro} />
+      </Section>
 
-          <Section>
-            <Pointer>What I Do</Pointer>
-            <Subtitle active >I enjoy creating delightful, human-centered digital experiences.</Subtitle>
-            <SkillCards>
-              <GeneralCard color='#0263FF' skillCover={icon_mobile} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' />
-              <GeneralCard color='#FFCBF3' skillCover={icon_pencil} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' />
-              <GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' />
-            </SkillCards>
-          </Section>
+      <Section>
+        <Pointer>What I Do</Pointer>
+        <Subtitle active >I enjoy creating delightful, human-centered digital experiences.</Subtitle>
+        <SkillCards>
+          <GeneralCard color='#0263FF' skillCover={icon_mobile} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' />
+          <GeneralCard color='#FFCBF3' skillCover={icon_pencil} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' />
+          <GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' />
+        </SkillCards>
+      </Section>
 
-        </Container>
-
-
+    </Container>
 
 
 
-        <Section>
-          <Details>
-            <Pointer>Projects</Pointer>
-            <Subtitle active>Apps which I have built</Subtitle>
-          </Details>
-          <ProjectCards>
-            <ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' />
-            <ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' />
-
-          </ProjectCards>
-        </Section>
-
-        <Section>
-          <Details>
-            <Pointer>Articles</Pointer>
-            <Subtitle active>Latest reads</Subtitle>
-          </Details>
-
-        </Section>
 
 
+    <Section>
+      <Details>
+        <Pointer>Projects</Pointer>
+        <Subtitle active>Apps which I have built</Subtitle>
+      </Details>
+      <ProjectCards>
+        <ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' />
+        <ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' />
 
-        <Section>
-          <Details>
-            <Pointer>Say hello 👋🏻</Pointer>
-            <Subtitle active>Let's collaborate!</Subtitle>
+      </ProjectCards>
+    </Section>
+
+    <Section>
+      <Details>
+        <Pointer>Articles</Pointer>
+        <Subtitle active>Latest reads</Subtitle>
+      </Details>
+
+    </Section>
 
 
-            <InfoRow>
-              <Icon data={icon_mail} />
-              <Info>hello@chesteryee.com</Info>
-            </InfoRow>
-            <InfoRow>
-              <Icon data={icon_phone} />
-              <Info>+65 9318 1831</Info>
-            </InfoRow>
 
-          </Details>
+    <Section>
+      <Details>
+        <Pointer>Say hello 👋🏻</Pointer>
+        <Subtitle active>Let's collaborate!</Subtitle>
 
-        </Section>
 
-      </Layout>
+        <InfoRow>
+          <Icon data={icon_mail} />
+          <Info>hello@chesteryee.com</Info>
+        </InfoRow>
+        <InfoRow>
+          <Icon data={icon_phone} />
+          <Info>+65 9318 1831</Info>
+        </InfoRow>
 
-    )
-  }
-}
+      </Details>
+
+    </Section>
+
+  </Layout>
+
+)
+
+
 
 export default Index
 

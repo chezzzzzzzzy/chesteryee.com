@@ -81,23 +81,19 @@ const theme = {
 
 export default function Layout({ children }) {
     return (
-        <div>
-            <ThemeProvider theme={theme}>
-                <Global />
+        <ThemeProvider theme={theme}>
+            <Global />
 
 
-                <Wrapper>
+            <Wrapper>
 
-                    <Header />
+                <Header />
 
-                    <div>
-                        {children}
-                    </div>
+                {children}
 
-                    <Footer />
-                </Wrapper>
-            </ThemeProvider>
-        </div>
+                <Footer />
+            </Wrapper>
+        </ThemeProvider>
 
     )
 }
