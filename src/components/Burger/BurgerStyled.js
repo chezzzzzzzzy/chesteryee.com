@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledBurger = styled.div`
   display: flex;
@@ -17,21 +17,21 @@ export const StyledBurger = styled.div`
     transform-origin: 1px;
     color: white;
     z-index: 1000;
-    background: ${({ theme, open }) => open ? 'white' : 'white'};
+    background: ${({theme, open}) => open ? "white" : "white"};
 
 
     :first-child {
-        transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+        transform: ${({open}) => open ? "rotate(45deg)" : "rotate(0)"};
         
     }
 
     :nth-child(2) {
-        opacity: ${({ open }) => open ? '0' : '1'};
-        transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+        opacity: ${({open}) => open ? "0" : "1"};
+        transform: ${({open}) => open ? "translateX(20px)" : "translateX(0)"};
     }
 
     :nth-child(3) {
-        transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+        transform: ${({open}) => open ? "rotate(-45deg)" : "rotate(0)"};
     }
 
   }

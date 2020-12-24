@@ -1,69 +1,108 @@
-import React from 'react'
-import { graphql, Link } from "gatsby"
-import styled from "styled-components"
-import { ThemeProvider } from "styled-components"
+import React from "react";
+import {graphql, Link} from "gatsby";
+import styled from "styled-components";
+import {ThemeProvider} from "styled-components";
 
 
+import Layout from "../components/layout";
+import GeneralCard from "../components/GeneralCard";
+import cover_userInterface from "../assets/cursor.png";
+import cover_userDesign from "../assets/color-picker.png";
+import ProjectCard from "../components/ProjectCard";
 
-import Layout from '../components/layout'
-import GeneralCard from '../components/GeneralCard'
-import cover_userInterface from '../assets/cursor.png'
-import cover_userDesign from '../assets/color-picker.png'
-import ProjectCard from "../components/ProjectCard"
+import cover_intro from "../assets/intro.png";
+import icon_mail from "../assets/mail-outline.svg";
+import icon_phone from "../assets/phone-portrait-outline.svg";
+import cover_mpp from "../assets/cover_mpp.png";
+import cover_nlp from "../assets/cover_nlp.png";
 
-import cover_intro from '../assets/intro.png'
-import icon_mail from '../assets/mail-outline.svg'
-import icon_phone from '../assets/phone-portrait-outline.svg'
-import cover_mpp from '../assets/cover_mpp.png'
-import cover_nlp from '../assets/cover_nlp.png'
-
-import icon_mobile from '../assets/mobileLeft.svg'
-import icon_pencil from '../assets/pencilRight.svg'
-import icon_speaker from '../assets/speakerRight.svg'
+import icon_mobile from "../assets/mobileLeft.svg";
+import icon_pencil from "../assets/pencilRight.svg";
+import icon_speaker from "../assets/speakerRight.svg";
 
 
-import theme from "../styles/theme"
+import theme from "../styles/theme";
 
 
 const Title = styled.div`
-  font-size: 1.6em;
-  /* font-size: ${props => props.theme.fontSizes.mobile_title}; */
+  font-size: ${(props) => props.theme.fontSizes.mobile_title};
   font-weight: bold;
 
-`
+  @media screen and (min-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.desktop_title};
+  }
+
+`;
 
 const Subtitle = styled.div`
   font-size: 1.1em;
   padding: 0.6rem 0;
-  color: ${props => props.active ? 'white' : '#585858'};
+  color: ${(props) => props.active ? "white" : "#585858"};
   font-weight: 600;
 
-`
+  @media screen and (min-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.desktop_subtitle};
+  }
+
+`;
+
+
+const Description = styled.div`
+  font-size: 0.9em;
+  padding: 1rem 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.desktop_description};
+  }
+  
+`;
 
 const Pointer = styled.div`
   font-size: 0.67em;
   font-weight: bold;
   color: #585858;
 
-`
 
-const Description = styled.div`
-  font-size: 0.9em;
-  padding: 1rem 0;
-  
-`
+  @media screen and (min-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.desktop_pointer};
+  }
+
+`;
+
 
 const Container = styled.div`
   display: flex;
-  padding: 0 1.4rem;
+  padding: ${(props) => props.theme.padding.mobile};
   height: 100%;
   flex-direction: column;
 
-`
+  @media screen and (min-width: 768px) {
+    /* padding: ${(props) => props.theme.padding.desktop}; */
+   
+  }
 
+`;
+
+const SectionSplit = styled.div`
+  margin: 50px 0px;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    align-items: center;
+    padding: ${(props) => props.theme.padding.desktop};
+    height: 90vh;
+
+  }
+`;
 const Section = styled.div`
   margin: 50px 0px;
-`
+
+  @media screen and (min-width: 768px) {
+    padding: ${(props) => props.theme.padding.desktop};
+
+  }
+`;
 
 const SkillCards = styled.div`
   display: flex;
@@ -75,7 +114,14 @@ const SkillCards = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    width: 100%;
+    grid-gap: 16px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`;
 
 const ProjectCards = styled.div`
   display: flex;
@@ -88,23 +134,31 @@ const ProjectCards = styled.div`
     display: none;
   }
 
-`
+  @media screen and (min-width: 768px) {
+    display: grid;
+    width: 100%;
+    grid-gap: 16px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+`;
 
 const Cover = styled.object`
   width: 100%;
-`
+  
+`;
 
 
 const Details = styled.div`
     padding: 0 1.4rem;
 
-`
+`;
 
 const Icon = styled.object`
   color: white;
   filter: invert(100%);
   width: 20px;
-`
+`;
 
 const InfoRow = styled.div`
   /* display: flex;
@@ -114,12 +168,19 @@ const InfoRow = styled.div`
   grid-template-columns: 0.1fr 1fr;
   margin: 8px 0px;
   
-`
+`;
 const Info = styled.div`
   color: #B9B9B9;
   font-size: 0.8rem;
-`
+`;
 
+const Left = styled.div`
+
+  @media screen and (min-width: 768px) {
+    max-width: 60%;
+  }
+
+`;
 
 const Index = () => (
 
@@ -129,20 +190,24 @@ const Index = () => (
       <Container>
 
 
-        <Section>
-          <Title>Hello,</Title>
-          <Title>I'm Chester</Title>
+        <SectionSplit>
+          <Left>
 
-          <Subtitle>Aspiring Software Engineer</Subtitle>
+            <Title>Hello,</Title>
+            <Title>I'm Chester</Title>
 
-          <Description>
-            Incoming Computer Science and Business undergraduate
-            student at Nanyang Technological University based in
-            Singapore.
-          </Description>
+            <Subtitle>Aspiring Software Engineer</Subtitle>
+
+            <Description>
+              Incoming Computer Science and Business undergraduate
+              student at Nanyang Technological University based in
+              Singapore.
+            </Description>
+          </Left>
+
 
           <Cover data={cover_intro} />
-        </Section>
+        </SectionSplit>
 
         <Section>
           <Pointer>What I Do</Pointer>
@@ -157,9 +222,6 @@ const Index = () => (
       </Container>
 
 
-
-
-
       <Section>
         <Details>
           <Pointer>Projects</Pointer>
@@ -172,18 +234,16 @@ const Index = () => (
         </ProjectCards>
       </Section>
 
-      <Section>
-        <Details>
+
+      <Container>
+
+        <Section>
           <Pointer>Articles</Pointer>
           <Subtitle active>Latest reads</Subtitle>
-        </Details>
 
-      </Section>
+        </Section>
 
-
-
-      <Section>
-        <Details>
+        <Section>
           <Pointer>Say hello 👋🏻</Pointer>
           <Subtitle active>Let's collaborate!</Subtitle>
 
@@ -197,16 +257,16 @@ const Index = () => (
             <Info>+65 9318 1831</Info>
           </InfoRow>
 
-        </Details>
+        </Section>
+      </Container>
 
-      </Section>
+
     </ThemeProvider>
 
   </Layout>
 
-)
+);
 
 
-
-export default Index
+export default Index;
 

@@ -6,47 +6,45 @@
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Chester Yee',
+    title: "Chester Yee",
 
 
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
+    "gatsby-plugin-styled-components",
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: "gatsby-source-prismic",
       options: {
-        repositoryName: `chesteryeecom`,
-        accessToken: 'MC5YN2paZ2hJQUFDSUF2Wksx.CHFKBO-_ve-_vSHvv71x77-977-9Eu-_vSPvv73vv71f77-9fO-_ve-_ve-_ve-_ve-_vXsW77-977-977-9eFnvv70',
+        repositoryName: "chesteryeecom",
+        accessToken: "MC5YN2paZ2hJQUFDSUF2Wksx.CHFKBO-_ve-_vSHvv71x77-977-9Eu-_vSPvv73vv71f77-9fO-_ve-_ve-_ve-_ve-_vXsW77-977-977-9eFnvv70",
         // accessToken: `${process.env.API_KEY}`,
-        linkResolver: ({ node, key, value }) => article => `/${article.url}`,
+        linkResolver: ({node, key, value}) => (article) => `/${article.url}`,
         schemas: {
           article: require("./src/schemas/article.json"),
-          travel: require("./src/schemas/travel.json")
-        }
+          travel: require("./src/schemas/travel.json"),
+        },
       },
     },
 
 
-
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `src`,
+        name: "src",
         path: `${__dirname}/src/`,
       },
 
     },
 
 
-
     {
-      resolve: `gatsby-plugin-scroll-reveal`,
+      resolve: "gatsby-plugin-scroll-reveal",
       options: {
         threshold: 1, // Percentage of an element's area that needs to be visible to launch animation
         once: false, // Defines if animation needs to be launched once
@@ -54,9 +52,9 @@ module.exports = {
         // Advanced Options
         // selector: 'data-sal-repeat', // Selector of the elements to be animated
 
-      }
+      },
     },
-    `gatsby-transformer-remark`,
+    "gatsby-transformer-remark",
 
 
     // {
@@ -75,4 +73,4 @@ module.exports = {
     // },
 
   ],
-}
+};

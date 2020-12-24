@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import {createGlobalStyle} from "styled-components";
 
 const Global = createGlobalStyle`
 
@@ -40,6 +40,6 @@ p {
     font-size: 0.9rem;
 }
 
-`
+`;
 
-export default Global
+export default Global;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledMenu = styled.nav`
   z-index: 900;
@@ -9,7 +9,7 @@ export const StyledMenu = styled.nav`
   background: #1D1D1D ;
   height: 100%;
   width: 100%;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  transform: ${({open}) => open ? "translateX(0)" : "translateX(-100%)"};
 
   position: absolute;
   top: 0;

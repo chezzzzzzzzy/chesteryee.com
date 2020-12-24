@@ -1,13 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import styled, { ThemeProvider } from "styled-components"
+import React from "react";
+import {Link, graphql} from "gatsby";
+import styled, {ThemeProvider} from "styled-components";
 
 
-import Header from './Header'
-import Footer from "./Footer"
-import Theme from "./theme"
+import Header from "./Header";
+import Footer from "./Footer";
+import Theme from "./theme";
 
-import Global from '../styles/global'
+import Global from "../styles/global";
 
 
 const Content = styled.div`
@@ -16,24 +16,24 @@ const Content = styled.div`
 
     }
 
-`
+`;
 
-const Layout = ({ children }) => {
-    return (
-        <>
-            <Global />
+const Layout = ({children}) => {
+  return (
+    <>
+      <Global />
 
 
-            <Header />
+      <Header />
 
-            <Content>
-                {children}
-            </Content>
+      <Content>
+        {children}
+      </Content>
 
-            <Footer />
-        </>
+      <Footer />
+    </>
 
-    )
-}
+  );
+};
 
-export default Layout
+export default Layout;
