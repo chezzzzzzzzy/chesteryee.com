@@ -13,12 +13,11 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: 'Chester Yee',
-    description: `A simple description about pandas eating lots...`,
-    author: `gatsbyjs`,
+
 
   },
   plugins: [
-
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-source-prismic',
       options: {
@@ -49,12 +48,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
-          threshold: 1, // Percentage of an element's area that needs to be visible to launch animation
-          once: false, // Defines if animation needs to be launched once
-          disable: false, // Flag for disabling animations
-          // Advanced Options
-          // selector: 'data-sal-repeat', // Selector of the elements to be animated
-          
+        threshold: 1, // Percentage of an element's area that needs to be visible to launch animation
+        once: false, // Defines if animation needs to be launched once
+        disable: false, // Flag for disabling animations
+        // Advanced Options
+        // selector: 'data-sal-repeat', // Selector of the elements to be animated
+
       }
     },
     `gatsby-transformer-remark`,

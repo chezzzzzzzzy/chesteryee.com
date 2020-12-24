@@ -61,7 +61,6 @@ const Category = styled.div`
 const Content = styled.div`
   color: #b9b9b9;
   max-width: 100%;
-  
 `
 
 const Post = ({ data: { prismicArticle } }) => {
@@ -76,7 +75,7 @@ const Post = ({ data: { prismicArticle } }) => {
         <Profile>
           <Portrait
             src={
-              "https://media-exp1.licdn.com/dms/image/C5103AQEsUFYxspmCvg/profile-displayphoto-shrink_400_400/0/1566280397476?e=1611792000&v=beta&t=VvVxhFZ0w0AdVkIlRdUNwLPo9xLL7zeOIfp67_4q6NA"
+              "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
             }
           ></Portrait>
           <div>

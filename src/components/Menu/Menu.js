@@ -21,7 +21,7 @@ const Menu = ({ open, ...props }) => {
     return (
         <StyledMenu open={open}  {...props}>
             <Item to='/articles'>Articles</Item>
-            <Item to='/travel'>Travel</Item>
+            <Item to='/travel/'>Travel</Item>
             <Item to='/about'>About</Item>
         </StyledMenu>
     )

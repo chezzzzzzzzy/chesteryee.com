@@ -9,6 +9,18 @@ import { gsap } from 'gsap';
 
 const Articles = styled.div`
     padding: 2rem 1rem;
+
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+`
+
+const ArticlesContainer = styled.div`
+    /* width: 100%;
+    display: flex;
+    justify-content: center; */
 `
 
 const Article = styled(Link)`
@@ -32,25 +44,29 @@ export class articles extends Component {
         <Category>Code</Category>
 
         {/* <h4>{this.props.data.allMarkdownRemark.totalCount} Posts</h4> */}
-        <Articles>
-          {this.props.data.allPrismicArticle.edges.map(({ node }) => (
-            <Article to={node.uid}>
+        <ArticlesContainer>
 
-              <ArticleCard
-                cover={node.data.cover.fluid.src}
-                title={node.data.title.text}
-                description={node.data.description.text}
-                portrait={
-                  "https://media-exp1.licdn.com/dms/image/C5103AQEsUFYxspmCvg/profile-displayphoto-shrink_400_400/0/1566280397476?e=1611792000&v=beta&t=VvVxhFZ0w0AdVkIlRdUNwLPo9xLL7zeOIfp67_4q6NA"
-                }
-                name='Chester Yee'
-                date={node.data.date}
+          <Articles>
+            {this.props.data.allPrismicArticle.edges.map(({ node }) => (
+              <Article to={node.uid}>
 
-              />
+                <ArticleCard
+                  cover={node.data.cover.fluid.src}
+                  title={node.data.title.text}
+                  description={node.data.description.text}
+                  portrait={
+                    "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
+                  }
+                  name='Chester Yee'
+                  date={node.data.date}
 
-            </Article>
-          ))}
-        </Articles>
+                />
+
+              </Article>
+            ))}
+          </Articles>
+        </ArticlesContainer>
+
       </Layout>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Container = styled.div`
     display: flex;
@@ -8,7 +8,7 @@ const Container = styled.div`
     color: white;
     position: relative;
     width: 100%;
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
 
 
 `
