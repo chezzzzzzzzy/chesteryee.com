@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-styled-components",
+    "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-prismic",
       options: {

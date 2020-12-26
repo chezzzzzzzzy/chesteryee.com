@@ -28,6 +28,11 @@ const Item = styled(Link)`
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: bold;
+  z-index: 1000;
+
+  @media screen and (min-width: 768px) {
+      font-size: 0.9rem;
+    }
 `;
 
 const Items = styled.div`

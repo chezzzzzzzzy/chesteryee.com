@@ -24,6 +24,14 @@ const Timeframe = styled.div`
     font-weight: 500;
 
 `;
+const Award = styled.div`
+    font-size: 0.8rem;
+    color: #1E90FF;
+    font-weight: 500;
+    margin: 4px 0px;
+
+
+`;
 
 
 export class ExperienceCard extends Component {
@@ -32,6 +40,7 @@ export class ExperienceCard extends Component {
       <Container>
         <Title>{this.props.entity}</Title>
         <Description>{this.props.description}</Description>
+        <Award>{this.props.award}</Award>
         <Timeframe>{this.props.timeframe}</Timeframe>
       </Container>
     );

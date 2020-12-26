@@ -5,9 +5,9 @@ import ArticleCard from "../components/ArticleCard";
 
 import styled from "styled-components";
 import {ThemeProvider} from "styled-components";
+import theme from "../styles/theme";
 
 import {gsap} from "gsap";
-import theme from "../styles/theme";
 
 
 const Articles = styled.div`

@@ -38,6 +38,10 @@ img {
 
 p {
     font-size: 0.9rem;
+
+    @media screen and (min-width: 768px) {
+        font-size: 1.1rem;
+    }
 }
 
 `;

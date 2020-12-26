@@ -30,11 +30,11 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 1.4rem;
+    padding: 10px 1.4rem;
     background-color: #242424;
 
     @media screen and (min-width: 768px) {
-        padding: 16px 14%;
+        padding: 10px 14%;
    
     }
 `;
@@ -48,6 +48,11 @@ const LogoType = styled.div`
     font-size: 0.6rem;
     font-weight: bold;
     margin-left: 6px;
+    color: white;
+
+    @media screen and (min-width: 768px) {
+      font-size: 0.8rem;
+    }
 `;
 const Logo = styled.div`
     display: flex;

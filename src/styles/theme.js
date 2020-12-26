@@ -25,10 +25,10 @@ export default {
     h5: "2.50em",
     h6: "2.00em",
 
-    desktop_title: "2em",
-    desktop_subtitle: "1.3em",
-    desktop_description: "1.0em",
-    desktop_pointer: "0.8em",
+    desktop_title: "2.4em",
+    desktop_subtitle: "1.4em",
+    desktop_description: "1.1em",
+    desktop_pointer: "0.9em",
 
     mobile_title: "1.6em",
     mobile_subtitle: "1.1em",
