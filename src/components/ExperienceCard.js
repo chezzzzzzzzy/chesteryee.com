@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 
 
@@ -26,7 +26,7 @@ const Timeframe = styled.div`
 `;
 const Award = styled.div`
     font-size: 0.8rem;
-    color: #1E90FF;
+    color: #60A9FF;
     font-weight: 500;
     margin: 4px 0px;
 

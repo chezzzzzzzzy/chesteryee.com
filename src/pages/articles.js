@@ -14,9 +14,9 @@ const Articles = styled.div`
     padding: 2rem 1rem;
 
     @media screen and (min-width: 768px) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding: ${(props) => props.theme.padding.desktop};
 
         
@@ -43,6 +43,8 @@ const Category = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 0.6rem 14%;
+    font-size: 1.6rem;
+
     }   
 `;
 
@@ -63,6 +65,7 @@ export class articles extends Component {
                 <Article to={node.uid}>
 
                   <ArticleCard
+                    category={node.data.category}
                     cover={node.data.cover.fluid.src}
                     title={node.data.title.text}
                     description={node.data.description.text}

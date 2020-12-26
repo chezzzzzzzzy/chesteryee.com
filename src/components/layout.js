@@ -1,6 +1,6 @@
 import React from "react";
-import {Link, graphql} from "gatsby";
-import styled, {ThemeProvider} from "styled-components";
+import { Link, graphql } from "gatsby";
+import styled, { ThemeProvider } from "styled-components";
 
 
 import Header from "./Header";
@@ -8,7 +8,11 @@ import Footer from "./Footer";
 import Theme from "./theme";
 
 import Global from "../styles/global";
+import theme from "../styles/theme";
 
+
+const Wrapper = styled.div`
+`
 
 const Content = styled.div`
     @media screen and (min-width: 768px) {
@@ -18,20 +22,21 @@ const Content = styled.div`
 
 `;
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
-    <>
+    <Wrapper>
       <Global />
+      <ThemeProvider theme={theme}>
 
+        <Header />
 
-      <Header />
+        <Content>
+          {children}
+        </Content>
 
-      <Content>
-        {children}
-      </Content>
-
-      <Footer />
-    </>
+        <Footer />
+      </ThemeProvider>
+    </Wrapper>
 
   );
 };

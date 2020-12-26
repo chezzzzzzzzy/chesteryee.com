@@ -23,21 +23,29 @@ const Cover = styled.img`
 `;
 
 
-const Title = styled(motion.div)`
+const Header = styled(motion.div)`
     font-size: 1.4rem;
     font-weight: 600;
+
+    @media (min-width: 768px) {
+      font-size: ${(props) => props.theme.fontSizes.desktop_header};
+
+    }
     
 `;
 
 const Description = styled.div`
     font-size: 0.8rem;
     color: #B9B9B9;
-    margin: 6px 0px;
+    margin: 10px 0px;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
 
 `;
 
 const Details = styled.div`
-    height: 160px;
     position: relative;
     bottom: 0px;
     text-align: center;
@@ -65,7 +73,7 @@ export class GeneralCard extends Component {
         <Cover src={this.props.skillCover} />
         <Details>
           <div>
-            <Title animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2 }}>{this.props.skillTitle}</Title>
+            <Header animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.4 }}>{this.props.skillTitle}</Header>
             <Description>{this.props.skillDescription}</Description>
           </div>
           <Button>Learn More</Button>

@@ -33,6 +33,8 @@ const Category = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 0.6rem 14%;
+    font-size: 1.6rem;
+
     }   
 `;
 

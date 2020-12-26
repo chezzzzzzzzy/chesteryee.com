@@ -36,6 +36,7 @@ const Description = styled.div`
 const Cover = styled.img`
     object-fit: cover;
     height: 100%;
+    
 `;
 
 

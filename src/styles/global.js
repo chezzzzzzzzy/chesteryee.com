@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const Global = createGlobalStyle`
 
@@ -30,6 +30,8 @@ pre {
     background-color: #222222;
     border-radius: 6px;
     padding: 14px;
+    overflow-wrap: normal;
+    width: 100%;
 }
 
 img {
@@ -38,6 +40,7 @@ img {
 
 p {
     font-size: 0.9rem;
+
 
     @media screen and (min-width: 768px) {
         font-size: 1.1rem;

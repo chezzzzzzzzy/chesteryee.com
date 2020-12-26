@@ -84,7 +84,7 @@ const Title = styled.div`
 const Subtitle = styled.div`
   font-size: 1.1em;
   padding: 0.6rem 0;
-  color: ${(props) => props.active ? "white" : "#1E90FF"};
+  color: ${(props) => props.active ? "white" : "#60A9FF"};
   font-weight: 600;
 
   @media screen and (min-width: 768px) {
@@ -138,7 +138,7 @@ const SectionSplit = styled.div`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 2fr 1.6fr;
+    grid-template-columns: 2fr 1.2fr;
     align-items: center;
     padding: ${(props) => props.theme.padding.desktop};
     height: 90vh;
@@ -166,10 +166,7 @@ const SkillCards = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    display: grid;
-    width: 100%;
-    grid-gap: 16px;
-    grid-template-columns: 1fr 1fr 1fr;
+   width: 100%;
   }
 `;
 
@@ -185,10 +182,8 @@ const ProjectCards = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    display: grid;
     width: 100%;
-    grid-gap: 16px;
-    grid-template-columns: 1fr 1fr 1fr;
+    
   }
 
 `;
@@ -200,6 +195,10 @@ const Cover = styled.object`
 
 const CoverIcon = styled.object`
   width: 100%;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `
 
 const Details = styled.div`
@@ -265,6 +264,10 @@ const Left = styled.div`
 
 `;
 
+const SwiperNew = styled(Swiper)`
+
+`
+
 const Index = (props) => (
 
   <Layout>
@@ -297,35 +300,34 @@ const Index = (props) => (
           <Subtitle active >I enjoy creating delightful, human-centered digital experiences.</Subtitle>
           <SkillCards>
 
-            {window.innerWidth > 768 ?
-              <>
-                <GeneralCard color='#0263FF' skillCover={icon_message} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' />
-                <GeneralCard color='#FFCBF3' skillCover={icon_toggle} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' />
-                <GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' />
-              </>
-              :
 
 
-              <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-              >
-                <SwiperSlide><GeneralCard color='#0263FF' skillCover={icon_message} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' /></SwiperSlide>
-                <SwiperSlide><GeneralCard color='#FFCBF3' skillCover={icon_toggle} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' /></SwiperSlide>
-                <SwiperSlide><GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' /></SwiperSlide>
-              </Swiper>
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={1}
+              breakpoints={
+                {
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                  }
+                }
+              }
+            >
+              <SwiperSlide><GeneralCard color='#0263FF' skillCover={icon_message} skillTitle='User Interface' skillDescription='Building a harmony between users and UI' /></SwiperSlide>
+              <SwiperSlide><GeneralCard color='#FFCBF3' skillCover={icon_toggle} skillTitle='User Experience' skillDescription='User experience is the singular and accumulated experiences that occur for users as a consequence of them interacting with an object in a given context' /></SwiperSlide>
+              <SwiperSlide><GeneralCard color='#F17A8F' skillCover={icon_speaker} skillTitle='User Interface' skillDescription='We have got quite a few already made templates for better project management that you can use now.' /></SwiperSlide>
+            </Swiper>
 
 
-            }
+
 
 
 
           </SkillCards>
 
 
-          <Subtitle active >I can bring your project to live</Subtitle>
+          <Subtitle active >I turn your ideas into reality</Subtitle>
 
           <FeatureSet>
             {/* <Left>
@@ -381,25 +383,24 @@ const Index = (props) => (
         </Details>
         <ProjectCards>
 
-          {window.innerWidth > 768 ?
-            <>
-              <ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' />
-              <ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' />
-            </>
-
-            :
-
+          
             <Swiper
               spaceBetween={0}
               slidesPerView={1}
-              onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              breakpoints={
+                {
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                  }
+                }
+              }
             >
               <SwiperSlide><ProjectCard skillCover={cover_mpp} skillTitle='Master Planner Portal' skillDescription='Singtel' /></SwiperSlide>
               <SwiperSlide><ProjectCard skillCover={cover_nlp} skillTitle='Language Translation' skillDescription='ET0732 — Machine Learning & Artificial Intelligence' /></SwiperSlide>
             </Swiper>
 
-          }
+          
         </ProjectCards>
       </Section>
 

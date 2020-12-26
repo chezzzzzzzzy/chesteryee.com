@@ -8,6 +8,7 @@ import theme from "../styles/theme"
 
 const Container = styled.div`
   padding: 30px 1.4rem;
+  overflow-wrap: normal;
 
   @media screen and (min-width: 768px) {
     padding: 30px 14%;
@@ -70,7 +71,8 @@ const Category = styled.div`
 
 const Content = styled.div`
   color: #b9b9b9;
-  max-width: 100%;
+  width: 100%;
+  overflow-wrap: normal;
 `
 
 const Post = ({ data: { prismicArticle } }) => {
