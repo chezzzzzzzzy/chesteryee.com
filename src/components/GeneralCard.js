@@ -7,10 +7,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
     background-color: #212121;
     width: 100%;
-
+    height: 100%;
 
 `;
 
@@ -46,8 +47,6 @@ const Description = styled.div`
 `;
 
 const Details = styled.div`
-    position: relative;
-    bottom: 0px;
     text-align: center;
     margin: 20px 40px;
     display: flex;
