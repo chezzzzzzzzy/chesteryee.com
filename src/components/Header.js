@@ -1,12 +1,10 @@
-import React, {useState, useRef} from "react";
-import {useStaticQuery, Link, graphql} from "gatsby";
-import styled from "styled-components";
-import Face from "../assets/faceLogo.png";
+import React, { useState, useRef } from 'react'
+import { useStaticQuery, Link, graphql } from 'gatsby'
+import styled from 'styled-components'
+import Face from '../assets/faceLogo.png'
 
-
-import {Burger, Menu} from "./";
-import {useOnClickOutside} from "./";
-
+import { Burger, Menu } from './'
+import { useOnClickOutside } from './'
 
 const Container = styled.div`
   display: flex;
@@ -20,8 +18,7 @@ const Container = styled.div`
   @media screen and (min-width: 768px) {
     padding: 10px 14%;
   }
-`;
-
+`
 
 const Item = styled(Link)`
   color: white;
@@ -31,95 +28,82 @@ const Item = styled(Link)`
   z-index: 1000;
 
   @media screen and (min-width: 768px) {
-      font-size: 0.9rem;
-    }
-`;
+    font-size: 0.9rem;
+  }
+`
 
 const Items = styled.div`
   /* display: grid; */
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-columns: 1fr ; */
   /* grid-gap: 20px; */
-
-`;
+`
 
 const Memoji = styled.img`
   width: 30px;
   margin-right: 10px;
-`;
+`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-
-`;
+`
 
 const MenuBarDesktop = styled.div`
-  
   display: none;
 
   @media screen and (min-width: 768px) {
-      display: grid; 
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
   }
-`;
+`
 
 const MenuBarMobile = styled.div`
-  
   display: block;
 
   @media screen and (min-width: 768px) {
     display: none;
-
   }
-`;
-
+`
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const data = useStaticQuery(
-      graphql`
-          query {
-            site {
-              siteMetadata {
-                title
-              }
-            }
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
           }
-        `,
-  );
+        }
+      }
+    `
+  )
 
   return (
     <Container>
-
-
-      <Item to='/'>
+      <Item to="/">
         <Logo>
           <Memoji src={Face} />
-          <div>
-            {data.site.siteMetadata.title}
-          </div>
+          <div>{data.site.siteMetadata.title}</div>
         </Logo>
       </Item>
-
 
       <Items>
         {/* <div ref={node}> */}
         <MenuBarDesktop>
-          <Item to='/articles'>Articles</Item>
-          <Item to='/travel/'>Travel</Item>
-          <Item to='/about'>About</Item>
+          <Item to="/articles">Articles</Item>
+          <Item to="/travel/">Travel</Item>
+          <Item to="/about">About</Item>
         </MenuBarDesktop>
 
         <MenuBarMobile>
-
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </MenuBarMobile>
         {/* </div> */}
-
       </Items>
     </Container>
-  );
+  )
 }

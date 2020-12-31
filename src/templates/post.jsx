@@ -6,6 +6,8 @@ import styled from "styled-components"
 import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme"
 
+import { Portrait } from "../components/Collection"
+
 const Container = styled.div`
   padding: 30px 1.4rem;
   overflow-wrap: normal;
@@ -36,13 +38,6 @@ const Profile = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0.8rem 0;
-`
-
-const Portrait = styled.img`
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
 `
 
 const Name = styled.div`

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
 
@@ -16,7 +16,7 @@ html {
     color: white;
     margin: 0px auto;
     font-family: ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+    height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,6 +47,6 @@ p {
     }
 }
 
-`;
+`
 
-export default Global;
+export default Global

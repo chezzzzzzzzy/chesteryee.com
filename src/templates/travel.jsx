@@ -4,8 +4,14 @@ import Layout from "../components/layout"
 
 import styled from "styled-components"
 
+import { Subject, Portrait } from "../components/Collection"
+
 const Container = styled.div`
   padding: 30px 1.4rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 30px 14%;
+  }
 `
 
 const Title = styled.div`
@@ -31,13 +37,6 @@ const Profile = styled.div`
   padding: 0.8rem 0;
 `
 
-const Portrait = styled.img`
-  border-radius: 100px;
-  width: 10%;
-  height: 10%;
-  margin-right: 10px;
-`
-
 const Name = styled.div`
   font-size: 0.6rem;
   color: #b9b9b9;
@@ -50,14 +49,6 @@ const Date = styled.div`
   font-weight: bold;
 `
 
-const Category = styled.div`
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.6rem 1.4rem;
-  background-color: #151515;
-`
-
 const Content = styled.div`
   color: #b9b9b9;
   max-width: 100%;
@@ -67,7 +58,7 @@ const Travel = ({ data: { prismicTravel } }) => {
   const { data } = prismicTravel
   return (
     <Layout>
-      <Category>{data.season.text}</Category>
+      <Subject>{data.season.text}</Subject>
       <Container>
         <Date>{data.date}</Date>
         {/* <Cover src={data.cover.fluid.src} /> */}

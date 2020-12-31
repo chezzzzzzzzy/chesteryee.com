@@ -1,38 +1,29 @@
-import React, {Component, useRef, useEffect} from "react";
-import Layout from "../components/layout";
-import {graphql, Link} from "gatsby";
-import ArticleCard from "../components/ArticleCard";
+import React, { Component, useRef, useEffect } from 'react'
+import Layout from '../components/layout'
+import { graphql, Link } from 'gatsby'
+import ArticleCard from '../components/ArticleCard'
 
-import styled from "styled-components";
-import {ThemeProvider} from "styled-components";
-import theme from "../styles/theme";
+import styled from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import theme from '../styles/theme'
 
-import {gsap} from "gsap";
-
+import { gsap } from 'gsap'
 
 const Articles = styled.div`
-    padding: 2rem 1rem;
+  padding: 2rem 1rem;
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: ${(props) => props.theme.padding.desktop};
-
-        
-    }
-`;
-
-const ArticlesContainer = styled.div`
-    /* width: 100%;
+  @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: center; */
-`;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: ${props => props.theme.padding.desktop};
+  }
+`
 
 const Article = styled(Link)`
-    text-decoration: none;
-    color: black;
-`;
+  text-decoration: none;
+  color: black;
+`
 
 const Category = styled.div`
   color: white;
@@ -44,51 +35,38 @@ const Category = styled.div`
   @media screen and (min-width: 768px) {
     padding: 0.6rem 14%;
     font-size: 1.6rem;
-
-    }   
-`;
-
+  }
+`
 
 export class articles extends Component {
   render() {
     return (
       <Layout>
-        <ThemeProvider theme={theme}>
+        <Category>Code</Category>
 
-          <Category>Code</Category>
-
-          {/* <h4>{this.props.data.allMarkdownRemark.totalCount} Posts</h4> */}
-          <ArticlesContainer>
-
-            <Articles>
-              {this.props.data.allPrismicArticle.edges.map(({node}) => (
-                <Article to={node.uid}>
-
-                  <ArticleCard
-                    category={node.data.category}
-                    cover={node.data.cover.fluid.src}
-                    title={node.data.title.text}
-                    description={node.data.description.text}
-                    portrait={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
-                    }
-                    name='Chester Yee'
-                    date={node.data.date}
-
-                  />
-
-                </Article>
-              ))}
-            </Articles>
-          </ArticlesContainer>
-        </ThemeProvider>
-
+        <Articles>
+          {this.props.data.allPrismicArticle.edges.map(({ node }) => (
+            <Article to={node.uid}>
+              <ArticleCard
+                category={node.data.category}
+                cover={node.data.cover.fluid.src}
+                title={node.data.title.text}
+                description={node.data.description.text}
+                portrait={
+                  'https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q'
+                }
+                name="Chester Yee"
+                date={node.data.date}
+              />
+            </Article>
+          ))}
+        </Articles>
       </Layout>
-    );
+    )
   }
 }
 
-export default articles;
+export default articles
 
 export const query = graphql`
   query {
@@ -101,7 +79,7 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
           }
-          fields{
+          fields {
             slug
           }
           excerpt
@@ -110,31 +88,31 @@ export const query = graphql`
     }
 
     allPrismicArticle {
-    edges {
-      node {
-        id
-        uid
-        url
-       
-        first_publication_date
-        last_publication_date
-        data {
+      edges {
+        node {
+          id
+          uid
+          url
+
+          first_publication_date
+          last_publication_date
+          data {
             cover {
-                fluid {
-                    src
-                }
+              fluid {
+                src
+              }
             }
             date(formatString: "Do MMMM YYYY")
             title {
               text
             }
             category
-            description{
+            description {
               text
             }
+          }
         }
       }
     }
-    }
   }
-`;
+`

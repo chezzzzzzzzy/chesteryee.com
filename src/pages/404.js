@@ -1,45 +1,28 @@
-import React, {Component} from "react";
-import Layout from "../components/layout";
-import styled from "styled-components";
-import error from "../assets/error.svg";
+import React, { Component } from 'react'
+import Layout from '../components/layout'
+import styled from 'styled-components'
+import error from '../assets/error.png'
 
+import { Section, Mega, Cover, Description } from '../components/Collection'
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-
-const Cover = styled.object`
-    width: 80%;
-`;
-
-const Title = styled.div`
-  font-size: 1.6em;
-  font-weight: bold;
-
-`;
-
-const Subtitle = styled.div`
-  font-size: 1.1em;
-  padding: 0.6rem 0;
-  color: ${(props) => props.active ? "white" : "#585858"};
-  font-weight: 600;
-
-`;
+const Details = styled.div`
+  text-align: center;
+`
 
 export class Error extends Component {
   render() {
     return (
       <Layout>
-        <Container>
-          <Title>404</Title>
-          {/* <Cover data={error} /> */}
-        </Container>
+        <Section>
+          <Details>
+            <Cover data={error} />
+            <Mega>404</Mega>
+            <Description>Page Not Found</Description>
+          </Details>
+        </Section>
       </Layout>
-    );
+    )
   }
 }
 
-export default Error;
+export default Error
