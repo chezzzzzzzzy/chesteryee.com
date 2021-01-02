@@ -3,12 +3,23 @@ import { createGlobalStyle } from 'styled-components'
 const Global = createGlobalStyle`
 
 * {
-    
+
+}
+
+ul {
+    padding: 0;
+
+}
+
+li {
+    list-style: none;
+
 }
 
 body {
     margin: 0px;
     padding: 0;    
+    
 }
 
 html {
@@ -17,6 +28,8 @@ html {
     margin: 0px auto;
     font-family: ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100%;
+    
+    
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,8 +43,8 @@ pre {
     background-color: #222222;
     border-radius: 6px;
     padding: 14px;
-    overflow-wrap: normal;
-    width: 100%;
+    word-break: break-all;
+    max-width: 100%;
 }
 
 img {

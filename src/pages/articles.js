@@ -4,10 +4,7 @@ import { graphql, Link } from 'gatsby'
 import ArticleCard from '../components/ArticleCard'
 
 import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
-import theme from '../styles/theme'
 
-import { gsap } from 'gsap'
 
 const Articles = styled.div`
   padding: 2rem 1rem;

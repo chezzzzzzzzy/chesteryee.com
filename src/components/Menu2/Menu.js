@@ -3,6 +3,46 @@ import { bool } from 'prop-types'
 import { StyledMenu } from './MenuStyled'
 import styled from 'styled-components'
 import { useStaticQuery, Link, graphql } from 'gatsby'
+import { motion } from "framer-motion";
+
+
+const Items = styled(motion.ul)`
+    display: grid;
+    grid-gap: 1rem;
+
+
+`
+
+const ItemsFM = styled(motion.li)`
+`
+
+const variants = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+}
+
+const list = {
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.3,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+    },
+  },
+}
+
+const item = {
+  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -10 },
+}
+
+
 
 const Item = styled(Link)`
   color: white;
@@ -19,9 +59,18 @@ const Menu = ({ open, ...props }) => {
 
   return (
     <StyledMenu open={open} {...props}>
-      <Item to="/articles">Articles</Item>
-      <Item to="/travel/">Travel</Item>
-      <Item to="/about">About</Item>
+
+
+      <Items
+        initial="hidden"
+        animate="visible"
+        variants={list}
+      >
+        <ItemsFM variants={item}><Item to="/services">Services</Item></ItemsFM>
+        <ItemsFM variants={item}><Item to="/articles">Articles</Item></ItemsFM>
+        <ItemsFM variants={item}><Item to="/travel/">Travel</Item></ItemsFM>
+        <ItemsFM variants={item}><Item to="/about">About</Item></ItemsFM>
+      </Items>
     </StyledMenu>
   )
 }

@@ -18,5 +18,6 @@ export const StyledMenu = styled.nav`
 
   @media (max-width: 768px) {
     width: 100%;
+    height: 100vh;
   }
 `

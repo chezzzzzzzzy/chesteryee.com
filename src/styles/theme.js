@@ -20,7 +20,7 @@ export default {
     h6: '2.00em',
 
     desktop_mega: '3em',
-    desktop_title: '1.6em',
+    desktop_title: '2.2em',
     desktop_subtitle: '1.7em',
     desktop_header: '1.5em',
     desktop_description: '1.1em',

@@ -53,7 +53,7 @@ const MenuBarDesktop = styled.div`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
   }
 `
@@ -93,6 +93,7 @@ export default function Header() {
       <Items>
         {/* <div ref={node}> */}
         <MenuBarDesktop>
+          <Item to="/services">Services</Item>
           <Item to="/articles">Articles</Item>
           <Item to="/travel/">Travel</Item>
           <Item to="/about">About</Item>

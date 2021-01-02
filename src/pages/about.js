@@ -28,21 +28,23 @@ const About = ({ data }) => (
   <Layout>
     <Subject>About</Subject>
     <Container>
-      <Section>
-        {/* <Icon data={icon_document} /> */}
-        <Wrapper>
-          <Description>
-            Technology has always been an interest of mine ever since I was
-            young. Apart from coding, there are many other things which I enjoy
-            doing as well. I enjoy travelling to different places around the
-            world to discover and seek new experience. I mainly focus in web and
-            mobile applications development. More recently, I also had the
-            chance to pick up the basics of Machine Learning and Deep Learning.
-            With the adoption of Artifiical Intelligence increasing steadily, I
-            would like to bring the 2 domains closer together by integrating
-            Artifical Intelligence in the projects I am doing.
+      {/* <Icon data={icon_document} /> */}
+      <Wrapper>
+        <Description>
+          Technology has always been an interest of mine ever since I was
+          young. Apart from coding, there are many other things which I enjoy
+          doing as well. I enjoy travelling to different places around the
+          world to discover and seek new experience. I mainly focus in web and
+          mobile applications development. More recently, I also had the
+          chance to pick up the basics of Machine Learning and Deep Learning.
+          With the adoption of Artifiical Intelligence increasing steadily, I
+          would like to bring the 2 domains closer together by integrating
+          Artifical Intelligence in the projects I am doing.
           </Description>
-        </Wrapper>
+      </Wrapper>
+
+
+      <Section>
         <Title>Experience</Title>
         {experience.map(e => {
           return (
@@ -54,6 +56,8 @@ const About = ({ data }) => (
           )
         })}
       </Section>
+
+
       <Section>
         <Title>Education</Title>
         {education.map(e => {
@@ -79,6 +83,7 @@ const About = ({ data }) => (
           )
         })}
       </Section>
+
     </Container>
   </Layout>
 )

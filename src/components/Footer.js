@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { useStaticQuery, Link, graphql } from 'gatsby';
-import styled from 'styled-components';
-import icon_github from '../assets/logo-github.svg';
-import icon_instagram from '../assets/logo-instagram.svg';
-import Face from '../assets/faceLogo.png';
+import React, { Component } from 'react'
+import { useStaticQuery, Link, graphql } from 'gatsby'
+import styled from 'styled-components'
+import icon_github from '../assets/logo-github.svg'
+import icon_instagram from '../assets/logo-instagram.svg'
+import Face from '../assets/faceLogo.png'
 
 const Socials = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 4px;
-`;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 6px;
+`
 
 const Icon = styled.object`
   height: 16px;
-`;
+`
 
 const Footnote = styled.div`
   font-size: 0.6rem;
   color: #b9b9b9;
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -31,12 +31,12 @@ const Container = styled.div`
   @media screen and (min-width: 768px) {
     padding: 10px 14%;
   }
-`;
+`
 
 const Memoji = styled.img`
   height: 5%;
   width: 5%;
-`;
+`
 
 const LogoType = styled.div`
   font-size: 0.6rem;
@@ -47,13 +47,13 @@ const LogoType = styled.div`
   @media screen and (min-width: 768px) {
     font-size: 0.8rem;
   }
-`;
+`
 const Logo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 6px;
-`;
+`
 
 export class Footer extends Component {
   render() {
@@ -64,15 +64,16 @@ export class Footer extends Component {
             <Memoji src={Face} />
             <LogoType>Chester Yee</LogoType>
           </Logo>
-          Copyright © 2020 Chester Yee. All rights reserved.
+          Copyright © {new Date().getFullYear()} Chester Yee. All rights reserved.
         </Footnote>
 
         <Socials>
-          <Icon data={icon_github} />
+          <Icon data={icon_github}><a href='github.com/chezzzzzzzzy'></a></Icon>
+          <Icon data={icon_instagram}><a href='instagram.com/chezy'></a></Icon>
         </Socials>
       </Container>
-    );
+    )
   }
 }
 
-export default Footer;
+export default Footer

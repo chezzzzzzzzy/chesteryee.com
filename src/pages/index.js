@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
@@ -6,14 +6,12 @@ import { motion } from 'framer-motion'
 
 import Layout from '../components/layout'
 import GeneralCard from '../components/GeneralCard'
-import cover_userInterface from '../assets/cursor.png'
-import cover_userDesign from '../assets/color-picker.png'
 import ProjectCard from '../components/ProjectCard'
 
 import cover_intro from '../assets/behind mbp3.png'
 import icon_mail from '../assets/mail-outline.svg'
 import icon_phone from '../assets/phone-portrait-outline.svg'
-import cover_mpp from '../assets/cover_mpp.png'
+import cover_mpp2 from '../assets/cover_mpp2.png'
 import cover_nlp from '../assets/cover_nlp.png'
 
 import icon_speaker from '../assets/interface.png'
@@ -42,7 +40,17 @@ import {
   Section,
   Header,
   Wrapper,
+  Button
 } from '../components/Collection'
+
+
+
+// assets
+import icon_laptop from '../assets/laptop-outline.svg'
+import icon_hammer from '../assets/hammer-outline.svg'
+import icon_expand from '../assets/expand-outline.svg'
+import icon_shapes from '../assets/shapes-outline.svg'
+import ServiceCard from '../components/ServiceCard'
 
 const ArticleDate = styled(Date)`
   margin: 6px 0px;
@@ -70,7 +78,7 @@ const SectionSplit = styled.div`
     display: grid;
     grid-template-columns: 2fr 1.2fr;
     align-items: center;
-    padding: ${props => props.theme.padding.desktop};
+    /* padding: ${props => props.theme.padding.desktop}; */
     height: 90vh;
   }
 `
@@ -92,18 +100,12 @@ const SkillCards = styled.div`
 `
 
 const Projects = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 20px 0px;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  display: grid;
+  grid-gap: 1rem;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
+    max-width: 1260px;
+    grid-template-columns: 1fr 1fr;
   }
 `
 
@@ -146,6 +148,58 @@ const Left = styled.div`
   }
 `
 
+
+
+
+
+
+
+
+const Cards = styled(motion.ul)`
+    display: grid;
+    grid-gap: 1rem;
+
+
+    @media (${props => props.theme.mediaQueries.laptop}) {
+      max-width: 1260px;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+`
+
+const Card = styled(motion.li)`
+`
+
+const variants = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+}
+
+
+
+const list = {
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.3,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+    },
+  },
+}
+
+const item = {
+  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -10 },
+}
+
 const Index = props => (
   <Layout>
     <ThemeProvider theme={theme}>
@@ -168,132 +222,54 @@ const Index = props => (
           </motion.div>
         </SectionSplit>
 
-        <Section>
-          <Pointer>What I Do</Pointer>
-          <Title>
-            I enjoy creating delightful, human-centered digital experiences.
-          </Title>
-          <SkillCards>
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={1}
-              breakpoints={{
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-              }}
-            >
-              <SwiperSlide>
-                <GeneralCard
-                  color="#0263FF"
-                  skillCover={icon_message}
-                  skillTitle="Design"
-                  skillDescription="Building a harmony between users and UI"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <GeneralCard
-                  color="#FFCBF3"
-                  skillCover={icon_toggle}
-                  skillTitle="User Experience"
-                  skillDescription="Creating products that provide meaningful and relevant experiences to users"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <GeneralCard
-                  color="#F17A8F"
-                  skillCover={icon_speaker}
-                  skillTitle="User Interface"
-                  skillDescription="The point of human-computer interaction and communication in a device"
-                />
-              </SwiperSlide>
-            </Swiper>
-          </SkillCards>
+       
 
-          <Wrapper>
-            <Title>I transform your ideas into reality.</Title>
-            <FeatureSet>
-              {/* <Left>
-              <Cover data={cover_human} />
-            </Left> */}
-              <Features>
-                <Feature>
-                  <CoverIcon data={icon_flower} />
-                  <div>
-                    <Header active>Wireframing</Header>
-                    <Description active>
-                      I can transpose your project ideas into wireframes and
-                      mockups to provide you a visual aid as to how you can
-                      build your products.
-                    </Description>
-                  </div>
-                </Feature>
-                <Feature>
-                  <CoverIcon data={icon_mockup} />
-                  <div>
-                    <Header active>Prototyping</Header>
-                    <Description active>
-                      With your concept in place, I am able to develop a Minimum
-                      Viable Product (MVP) to your needs and requirements.
-                    </Description>
-                  </div>
-                </Feature>
-                <Feature>
-                  <CoverIcon data={icon_desktop} />
-                  <div>
-                    <Header active>Stunning Apps</Header>
-                    <Description active>
-                      Whether its a Telegram bot that constantly reminds you to
-                      wear a mask before you step out of your apartment or
-                      hooking up a backend service to manage your workflow, I
-                      enjoy building quality products that allows you to spend
-                      time doing what you love most.
-                    </Description>
-                  </div>
-                </Feature>
-              </Features>
-            </FeatureSet>
+
+        <Section center>
+          <Wrapper center margin='30px 0px'>
+            <Pointer>What I Do</Pointer>
+            <Title>Services</Title>
+            <Cards
+              initial="hidden"
+              animate="visible"
+              variants={list}
+            >
+              <Card variants={item}><ServiceCard featureIcon={icon_laptop} featureTitle='WEB DESIGN ( UI / UX )' featureDescription='My core business is designing pixel perfect websites and interfaces.' /></Card>
+              <Card variants={item}><ServiceCard featureIcon={icon_hammer} featureTitle='WEB DEVELOPMENT' featureDescription='Whether its a Telegram bot that constantly reminds you to wear a mask before you step out of your apartment or hooking up a backend service to manage your workflow, I enjoy building quality products that allows you to spend time doing what you love most.' /></Card>
+              <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='PROTOTYPING' featureDescription='I use high fidelity prototypes to learn how your website interacts.' /></Card>
+              <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='ILLUSTRATION' featureDescription='In addition to UI/UX, I also make illustrations and animations.' /></Card>
+            </Cards>
           </Wrapper>
+
+        </Section>
+
+
+        <Section center>
+          <Wrapper center margin='30px 0px'>
+            <Pointer>Projects</Pointer>
+            <Title>Recent Work</Title>
+          </Wrapper>
+          <Projects>
+
+            <ProjectCard
+              skillCover={cover_mpp2}
+              skillTitle="Master Planner Portal"
+              skillDescription="Singtel"
+            />
+
+            <ProjectCard
+              skillCover={cover_nlp}
+              skillTitle="Language Translation"
+              skillDescription="ET0732 — MLAI"
+            />
+
+          </Projects>
         </Section>
       </Container>
 
-      <Section>
-        <Details>
-          <Pointer>Projects</Pointer>
-          <Title>Apps Built</Title>
-        </Details>
-        <Projects>
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={1}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <ProjectCard
-                skillCover={cover_mpp}
-                skillTitle="Master Planner Portal"
-                skillDescription="Singtel"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProjectCard
-                skillCover={cover_nlp}
-                skillTitle="Language Translation"
-                skillDescription="ET0732 — Machine Learning & Artificial Intelligence"
-              />
-            </SwiperSlide>
-          </Swiper>
-        </Projects>
-      </Section>
 
       <Container>
-        <Section>
+        {/* <Section>
           <Pointer>Articles</Pointer>
           <Title>Latest reads</Title>
           <Articles>
@@ -304,19 +280,22 @@ const Index = props => (
               </Article>
             ))}
           </Articles>
-        </Section>
+        </Section> */}
 
-        <Section>
-          <Pointer>Say hello 👋🏻</Pointer>
-          <Title>Let's collaborate!</Title>
-          <IconLabel>
+        <Section center>
+          <Wrapper center margin='30px 0px'>
+            <Pointer>Say hello 👋🏻</Pointer>
+            <Title>Let's collaborate!</Title>
+          </Wrapper>
+          {/* <IconLabel>
             <Icon data={icon_mail} />
             <Label>hello@chesteryee.com</Label>
           </IconLabel>
           <IconLabel>
             <Icon data={icon_phone} />
             <Label>9424 1312</Label>
-          </IconLabel>
+          </IconLabel> */}
+          <Button>Get in touch</Button>
         </Section>
       </Container>
     </ThemeProvider>
@@ -325,34 +304,32 @@ const Index = props => (
 
 export default Index
 
-export const query = graphql`
-  query {
-    allPrismicArticle {
-      edges {
-        node {
-          id
-          uid
-          url
+// export const query = graphql`
+//   query {
+//     allPrismicArticle(limit: 4) {
+//       edges {
+//         node {
+//           id
+//           uid
+//           url
 
-          first_publication_date
-          last_publication_date
-          data {
-            cover {
-              fluid {
-                src
-              }
-            }
-            date(formatString: "Do MMMM YYYY")
-            title {
-              text
-            }
-            category
-            description {
-              text
-            }
-          }
-        }
-      }
-    }
-  }
-`
+//           data {
+//             cover {
+//               fluid {
+//                 src
+//               }
+//             }
+//             date(formatString: "Do MMMM YYYY")
+//             title {
+//               text
+//             }
+//             category
+//             description {
+//               text
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

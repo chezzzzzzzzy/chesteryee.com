@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import TravelCard from '../components/TravelCard'
-import japanFlag from '../assets/japanFlag.svg'
 
 const Subject = styled.div`
   color: white;

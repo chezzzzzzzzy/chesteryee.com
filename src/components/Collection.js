@@ -7,15 +7,20 @@ export const Container = styled.div`
   height: 100%;
 
   @media screen and (min-width: 768px) {
-    /* padding: ${props => props.theme.padding.desktop}; */
+    padding: ${props => props.theme.padding.desktop};
   }
 `
 
 export const Section = styled.div`
   margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.center ? 'center' : null};
+  background-color: ${props => props.black ? 'black' : 'null'};
 
+  
   @media screen and (min-width: 768px) {
-    padding: ${props => props.theme.padding.desktop};
+    /* padding: ${props => props.theme.padding.desktop}; */
   }
 `
 
@@ -37,7 +42,6 @@ export const Title = styled.div`
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_title};
     padding: ${props => props.padding};
-
   }
 `
 
@@ -121,11 +125,21 @@ export const IconLabel = styled.div`
 `
 
 export const Icon = styled.object`
-  color: white;
-  filter: invert(100%);
+  /* filter: invert(100%); */
   width: 20px;
   height: 20px;
 `
+
+export const FeatureIcon = styled.object`
+    width: 46px;
+    height: 46px;
+`
+
+export const FeatureControl = styled.object`
+    width: 30px;
+    height: 30px;
+`
+
 
 export const Label = styled.div`
   color: ${props => props.theme.colors.textGrey};
@@ -169,5 +183,56 @@ export const Category = styled.div`
 `
 
 export const Wrapper = styled.div`
-  margin: 30px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.center ? 'center' : null};
+  margin: ${props => props.margin ? `${props.margin}` : '30px 0px'};
+`
+
+
+export const FeatureTitle = styled.div`
+    font-size: ${props => props.theme.fontSizes.mobile_pointer};
+    font-weight: 500;
+    padding: 10px 0px;
+    letter-spacing: 1px;
+    color: #585858;
+
+    @media screen and (min-width: 768px) {
+        font-size: ${props => props.theme.fontSizes.desktop_pointer};
+    }
+`
+
+export const FeatureDescription = styled.div`
+    font-size: ${props => props.theme.fontSizes.mobile_description};
+    line-height: 1.4;
+    font-weight: 500;
+    color: ${props => (props.active ? props.theme.colors.textGrey : 'white')};
+
+    @media screen and (min-width: 768px) {
+        font-size: ${props => props.theme.fontSizes.desktop_description};
+    }
+`
+
+
+export const FeaturePointer = styled.div`
+    font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  font-weight: bold;
+  color: #585858;
+
+  :hover {
+
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_pointer};
+  }
+`
+
+export const Button = styled.div`
+    border-radius: 100px;
+    background-color: #242424;
+    padding: 16px 30px;
+    font-weight: 500;
+
+    
 `
