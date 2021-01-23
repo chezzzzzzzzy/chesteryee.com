@@ -16,6 +16,8 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
+  width: 100%;
+  
   @media screen and (min-width: 768px) {
   }
 `

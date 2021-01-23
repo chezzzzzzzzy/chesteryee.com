@@ -1,40 +1,44 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import {
+  Title,
+  Subtitle,
+  Header
 
-const Container = styled.div`
-  margin: 16px 0px;
-`
+} from '../components/Collection'
 
-const Title = styled.div`
-  color: white;
-  font-weight: 600;
-  font-size: 0.8rem;
-`
 
-const Description = styled.div`
-  font-size: 0.8rem;
+const Container = styled.div``
+
+
+const Card = styled.div`
   margin: 4px 0px;
+  text-align: center;
+  padding: 1.2rem 4rem;
+  background-color: #242424;
+
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    padding: rem 4rem;
+
+  }
 `
+
+
 const Timeframe = styled.div`
   font-size: 0.8rem;
   color: #585858;
   font-weight: 500;
 `
-const Award = styled.div`
-  font-size: 0.8rem;
-  color: #60a9ff;
-  font-weight: 500;
-  margin: 4px 0px;
-`
+
 
 export class ExperienceCard extends Component {
   render() {
     return (
       <Container>
-        <Title>{this.props.entity}</Title>
-        <Description>{this.props.description}</Description>
-        <Award>{this.props.award}</Award>
-        <Timeframe>{this.props.timeframe}</Timeframe>
+        <Card>
+          <Header>{this.props.description}</Header>
+          <Timeframe>{this.props.timeframe}</Timeframe>
+        </Card>
       </Container>
     )
   }

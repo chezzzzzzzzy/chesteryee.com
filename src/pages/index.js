@@ -21,6 +21,8 @@ import icon_message from '../assets/message.png'
 import icon_flower from '../assets/flower.png'
 import icon_desktop from '../assets/desktop.png'
 
+import CollaborateBanner from '../components/CollaborateBanner'
+
 import theme from '../styles/theme'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.scss'
@@ -40,7 +42,10 @@ import {
   Section,
   Header,
   Wrapper,
-  Button
+  Button,
+  MarginWrapper,
+  FeaturePointer,
+  CenterWrapper
 } from '../components/Collection'
 
 
@@ -159,7 +164,6 @@ const Cards = styled(motion.ul)`
     display: grid;
     grid-gap: 1rem;
 
-
     @media (${props => props.theme.mediaQueries.laptop}) {
       max-width: 1260px;
 
@@ -204,7 +208,7 @@ const Index = props => (
   <Layout>
     <ThemeProvider theme={theme}>
       <Container>
-        <SectionSplit>
+        {/* <SectionSplit>
           <Left>
             <Mega>Hello,</Mega>
             <Mega>I'm Chester</Mega>
@@ -220,116 +224,98 @@ const Index = props => (
           <motion.div animate={{ scale: 0.8 }}>
             <Cover data={cover_intro} />
           </motion.div>
-        </SectionSplit>
-
-       
+        </SectionSplit> */}
 
 
-        <Section center>
-          <Wrapper center margin='30px 0px'>
-            <Pointer>What I Do</Pointer>
+
+        <MarginWrapper>
+          <Section center height>
+            <motion.div animate={{ scale: [0.9, 1, 0.9] }} transition={{ duration: 1 }}>
+              <Cover data={cover_intro} />
+            </motion.div>
+
+            <MarginWrapper margin='6px 0px'>
+              <FeaturePointer>ASPIRING SOFTWARE ENGINEER</FeaturePointer>
+            </MarginWrapper>
+
+            <MarginWrapper margin='2px 0px'>
+              <Mega>Hello, I'm Chester.</Mega>
+            </MarginWrapper>
+
+            <MarginWrapper margin='16px 0px'>
+              <Description>
+                <CenterWrapper>
+                  Incoming Computer Science and Business undergraduate at
+                  Nanyang Technological University.
+                </CenterWrapper>
+              </Description>
+            </MarginWrapper>
+
+            <Button>Resume</Button>
+
+
+          </Section>
+        </MarginWrapper>
+
+
+
+
+
+
+
+        <MarginWrapper margin='30px 0px'>
+          <Section center>
+            <FeaturePointer>WHAT I DO</FeaturePointer>
             <Title>Services</Title>
-            <Cards
-              initial="hidden"
-              animate="visible"
-              variants={list}
-            >
-              <Card variants={item}><ServiceCard featureIcon={icon_laptop} featureTitle='WEB DESIGN ( UI / UX )' featureDescription='My core business is designing pixel perfect websites and interfaces.' /></Card>
-              <Card variants={item}><ServiceCard featureIcon={icon_hammer} featureTitle='WEB DEVELOPMENT' featureDescription='Whether its a Telegram bot that constantly reminds you to wear a mask before you step out of your apartment or hooking up a backend service to manage your workflow, I enjoy building quality products that allows you to spend time doing what you love most.' /></Card>
-              <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='PROTOTYPING' featureDescription='I use high fidelity prototypes to learn how your website interacts.' /></Card>
-              <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='ILLUSTRATION' featureDescription='In addition to UI/UX, I also make illustrations and animations.' /></Card>
-            </Cards>
-          </Wrapper>
+            <MarginWrapper margin='50px 0px'>
 
-        </Section>
+              <Cards
+                initial="hidden"
+                animate="visible"
+                variants={list}
+              >
+                <Card variants={item}><ServiceCard featureIcon={icon_laptop} featureTitle='WEB DESIGN ( UI / UX )' featureDescription='My core business is designing pixel perfect websites and interfaces.' /></Card>
+                <Card variants={item}><ServiceCard featureIcon={icon_hammer} featureTitle='WEB DEVELOPMENT' featureDescription='I build quality products that you would use.' /></Card>
+                <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='PROTOTYPING' featureDescription='I use high fidelity prototypes to learn how your website interacts.' /></Card>
+                <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='ILLUSTRATION' featureDescription='In addition to UI/UX, I also make illustrations and animations.' /></Card>
+              </Cards>
+            </MarginWrapper>
+          </Section>
+        </MarginWrapper>
 
 
-        <Section center>
-          <Wrapper center margin='30px 0px'>
-            <Pointer>Projects</Pointer>
+        <MarginWrapper margin='30px 0px'>
+          <Section center>
+            <FeaturePointer>PROJECTS</FeaturePointer>
             <Title>Recent Work</Title>
-          </Wrapper>
-          <Projects>
 
-            <ProjectCard
-              skillCover={cover_mpp2}
-              skillTitle="Master Planner Portal"
-              skillDescription="Singtel"
-            />
+            <MarginWrapper margin='50px 0px'>
 
-            <ProjectCard
-              skillCover={cover_nlp}
-              skillTitle="Language Translation"
-              skillDescription="ET0732 — MLAI"
-            />
+              <Projects>
+                <ProjectCard
+                  skillCover={cover_mpp2}
+                  skillTitle="Master Planner Portal"
+                  skillDescription="Singtel"
+                />
 
-          </Projects>
-        </Section>
+                <ProjectCard
+                  skillCover={cover_mpp2}
+                  skillTitle="Language Translation"
+                  skillDescription="ET0732 — MLAI"
+                />
+
+              </Projects>
+            </MarginWrapper>
+          </Section>
+        </MarginWrapper>
       </Container>
 
 
-      <Container>
-        {/* <Section>
-          <Pointer>Articles</Pointer>
-          <Title>Latest reads</Title>
-          <Articles>
-            {props.data.allPrismicArticle.edges.map(({ node }) => (
-              <Article to={node.uid}>
-                <ArticleTitle>{node.data.title.text}</ArticleTitle>
-                <ArticleDate>{node.data.date}</ArticleDate>
-              </Article>
-            ))}
-          </Articles>
-        </Section> */}
-
-        <Section center>
-          <Wrapper center margin='30px 0px'>
-            <Pointer>Say hello 👋🏻</Pointer>
-            <Title>Let's collaborate!</Title>
-          </Wrapper>
-          {/* <IconLabel>
-            <Icon data={icon_mail} />
-            <Label>hello@chesteryee.com</Label>
-          </IconLabel>
-          <IconLabel>
-            <Icon data={icon_phone} />
-            <Label>9424 1312</Label>
-          </IconLabel> */}
-          <Button>Get in touch</Button>
-        </Section>
+      <Container width='100%' padding>
+        <CollaborateBanner />
       </Container>
     </ThemeProvider>
   </Layout>
 )
 
 export default Index
-
-// export const query = graphql`
-//   query {
-//     allPrismicArticle(limit: 4) {
-//       edges {
-//         node {
-//           id
-//           uid
-//           url
-
-//           data {
-//             cover {
-//               fluid {
-//                 src
-//               }
-//             }
-//             date(formatString: "Do MMMM YYYY")
-//             title {
-//               text
-//             }
-//             category
-//             description {
-//               text
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

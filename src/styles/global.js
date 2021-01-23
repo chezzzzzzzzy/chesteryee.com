@@ -8,6 +8,7 @@ const Global = createGlobalStyle`
 
 ul {
     padding: 0;
+    margin: 0;
 
 }
 
@@ -19,7 +20,8 @@ li {
 body {
     margin: 0px;
     padding: 0;    
-    
+    -webkit-text-size-adjust: 100%;
+
 }
 
 html {

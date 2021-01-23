@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Subtitle, FeatureControl, FeatureDescription, Title, FeaturePointer } from './Collection'
+import { FeatureSubtitle, FeatureControl, FeatureDescription, FeaturePointer } from './Collection'
 
 import icon_arrowForward from '../assets/arrow-forward-outline.svg'
 
@@ -9,23 +9,22 @@ const Container = styled.div`
 `
 
 const Card = styled.div`
-  display: grid;
-  background-color: #242424;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
+  background-color: #242424;
   border-radius: 6px;
-
 
   @media screen and (max-width: 768px) {
   }
 `
 
 const Cover = styled.img`
+  margin: 40px 0px;
   object-fit: cover;
-  width: 100%;
-  position: relative;
-  right: -60px;
-  height: 160px;
+  @media (min-width: 768px) {
+
+  }
 `
 
 
@@ -45,8 +44,7 @@ const Company = styled.div`
 
 `
 const Split = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1.6fr;
+  display: flex;
   padding: 1rem 0px;
   align-items: center;
 `
@@ -61,19 +59,11 @@ export class ProjectCard extends Component {
     return (
       <Container>
         <Card>
-
-
-
           <Company>{this.props.skillDescription}</Company>
-          <Split>
-            <div>
-              <Title>{this.props.skillTitle}</Title>
-              {/* <FeatureDescription>Website</FeatureDescription> */}
-            </div>
-            {/* <Cover src={this.props.skillCover} /> */}
-          </Split>
-          <Controls>
+          <FeatureSubtitle>{this.props.skillTitle}</FeatureSubtitle>
 
+          <Cover src={this.props.skillCover} />
+          <Controls>
             <FeatureControl data={icon_arrowForward}></FeatureControl>
             <FeaturePointer>View Work</FeaturePointer>
           </Controls>

@@ -1,29 +1,55 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${props => props.theme.padding.mobile};
-  height: 100%;
+  padding: ${props => props.padding ? '0px' : `${props.theme.padding.mobile}`};
+  margin: 0px auto;
 
-  @media screen and (min-width: 768px) {
-    padding: ${props => props.theme.padding.desktop};
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    max-width: ${props => props.width ? `${props.width}` : '1260px'};
+    padding: 0px;
   }
 `
 
 export const Section = styled.div`
-  margin: 20px 0px;
   display: flex;
   flex-direction: column;
   align-items: ${props => props.center ? 'center' : null};
-  background-color: ${props => props.black ? 'black' : 'null'};
+  background-color: ${props => props.black ? '#151515' : 'null'};
+  width: ${props => props.width ? `${props.width}` : '100%'};
+  height: ${props => props.height ? '100vh' : null};
 
-  
-  @media screen and (min-width: 768px) {
-    /* padding: ${props => props.theme.padding.desktop}; */
+  @media (${props => props.theme.mediaQueries.laptop}) {
   }
 `
 
+export const SectionGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: ${props => props.black ? '#151515' : 'null'};
+  align-items: ${props => props.center ? 'center' : null};
+  
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1260px;
+    margin: auto;
+
+  }
+
+`
+
+
+export const Statistics = styled.div`
+  font-size: ${props => props.theme.fontSizes.mobile_statistics};
+  font-weight: bold;
+
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    font-size: ${props => props.theme.fontSizes.desktop_statistics};
+  }
+`
 export const Mega = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_mega};
   font-weight: bold;
@@ -47,7 +73,7 @@ export const Title = styled.div`
 
 export const Header = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_header};
-  font-weight: bold;
+  font-weight: 500;
   padding-bottom: 10px;
 
   @media (min-width: 768px) {
@@ -67,7 +93,7 @@ export const Subtitle = styled.div`
 
 export const Pointer = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  font-weight: bold;
+  font-weight: 600;
   color: #585858;
 
   @media screen and (min-width: 768px) {
@@ -77,8 +103,7 @@ export const Pointer = styled.div`
 
 export const Description = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
-  /* padding: 0.6rem 0; */
-  line-height: 1.4;
+  line-height: 1.6;
   color: ${props => (props.active ? props.theme.colors.textGrey : 'white')};
 
   @media screen and (min-width: 768px) {
@@ -90,17 +115,32 @@ export const Subject = styled.div`
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  padding: 0.6rem 1.4rem;
+  padding: 0.8rem 1.4rem;
   background-color: #151515;
 
   @media screen and (min-width: 768px) {
-    padding: 0.6rem 14%;
-    font-size: 1.6rem;
+    padding: 0.8rem 0;
+    font-size: 1rem;
   }
 `
 
 export const Cover = styled.object`
   width: 100%;
+  max-width: 600px;
+`
+
+export const CoverBrands = styled.object`
+  width: 100px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  filter: opacity(0.5);
+  transition: filter 0.5s;
+
+  :hover {
+    filter: opacity(1)
+  }
+;
 `
 
 export const ArticleTitle = styled.div`
@@ -109,14 +149,7 @@ export const ArticleTitle = styled.div`
   color: white;
 `
 
-export const Date = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};
 
-  @media screen and (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes.desktop_pointer};
-  }
-`
 
 export const IconLabel = styled.div`
   display: flex;
@@ -148,52 +181,84 @@ export const Label = styled.div`
 `
 
 export const Name = styled.div`
-  font-size: 0.6rem;
+  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  color: ${props => props.theme.colors.textGrey};  
   font-weight: bold;
-  color: #b9b9b9;
 
-  @media (min-width: 768px) {
-    display: none;
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_pointer};
   }
 `
+
+
+export const Date = styled.div`
+  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  color: ${props => props.theme.colors.textGrey};
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_pointer};
+  }
+`
+
+export const Dot = styled.div`
+  margin: 0px 4px;
+`
+
 
 export const Portrait = styled.img`
   border-radius: 100px;
-  width: 12%;
-  height: 12%;
+  width: 8%;
+  height: 100%;
   margin-right: 10px;
 
   @media (min-width: 768px) {
-    display: ${props => (props.hide ? 'none' : 'inline')};
-    width: 3%;
-    height: 3%;
+    width: 10%;
   }
+
+
 `
 
 export const Category = styled.div`
-  display: none;
   color: ${props => props.theme.colors.accent};
   font-weight: 500;
+  border-radius: 1000px;
+  background-color: #60A9FF10;
+  padding: 6px 16px;
+  font-size: 0.6rem;
+  display: inline-block;
+  margin-bottom: 8px;
+ 
+`
 
-  @media (min-width: 768px) {
-    display: inline;
-    font-size: 0.8rem;
-    padding: ${props => props.padding};
+// used for adjusting y margin
+export const MarginWrapper = styled(motion.div)`
+  margin: ${props => props.margin ? `${props.margin}` : 'null'};
+  padding: ${props => props.padding ? `${props.padding}` : 'null'};
+
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    margin: ${props => props.margin ? `${props.margin}` : 'null'};
   }
+
+`
+
+export const PaddingWrapper = styled.div`
+padding: ${props => props.padding ? `${props.padding}` : 'null'};
+
+@media (${props => props.theme.mediaQueries.laptop}) {
+  padding: ${props => props.padding ? `${props.padding}` : 'null'};
+}
+
 `
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.center ? 'center' : null};
-  margin: ${props => props.margin ? `${props.margin}` : '30px 0px'};
+  margin: ${props => props.margin ? `${props.margin}` : null};
+  padding: ${props => props.padding ? `${props.padding}` : null};
 `
 
 
-export const FeatureTitle = styled.div`
+export const FeaturePointer = styled.div`
     font-size: ${props => props.theme.fontSizes.mobile_pointer};
     font-weight: 500;
-    padding: 10px 0px;
     letter-spacing: 1px;
     color: #585858;
 
@@ -204,7 +269,6 @@ export const FeatureTitle = styled.div`
 
 export const FeatureDescription = styled.div`
     font-size: ${props => props.theme.fontSizes.mobile_description};
-    line-height: 1.4;
     font-weight: 500;
     color: ${props => (props.active ? props.theme.colors.textGrey : 'white')};
 
@@ -214,25 +278,52 @@ export const FeatureDescription = styled.div`
 `
 
 
-export const FeaturePointer = styled.div`
-    font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  font-weight: bold;
-  color: #585858;
-
-  :hover {
-
-  }
+export const FeatureSubtitle = styled.div`
+  font-size: ${props => props.theme.fontSizes.mobile_subtitle};
+  color: ${props => (props.active ? props.theme.colors.accent : 'white')};
+  font-weight: 600;
 
   @media screen and (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes.desktop_pointer};
+    font-size: ${props => props.theme.fontSizes.desktop_subtitle};
   }
+`
+
+
+export const FooterTitle = styled.div`
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom:10px; 
+`
+
+export const FooterDescription = styled.div`
+  font-size: 0.7rem;
+  color: #b9b9b9;
+  margin-bottom:4px; 
+
 `
 
 export const Button = styled.div`
     border-radius: 100px;
     background-color: #242424;
-    padding: 16px 30px;
-    font-weight: 500;
+    padding: 10px 28px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: border 0.2s ease-in-out;
+    font-size: 14px;
+
+    :hover {
+      border: 1px solid ${props => props.theme.colors.accent};
+
+    }
 
     
+`
+
+export const CenterWrapper = styled.div`
+  text-align: center;
+`
+
+export const HR = styled.hr`
+  margin: 10px 0px;
+  border: 0.6px solid ${props => props.theme.colors.textDarkGrey};
 `

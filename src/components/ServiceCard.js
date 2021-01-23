@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FeatureDescription, Header, FeatureTitle, Title, FeatureIcon } from '../components/Collection'
+import { FeatureDescription, Header, FeaturePointer, Title, FeatureIcon, MarginWrapper } from '../components/Collection'
 import { motion } from 'framer-motion';
 
 const Container = styled.div`
@@ -20,7 +20,9 @@ export class ServiceCard extends Component {
             <Container>
                 <Card>
                     <FeatureIcon data={this.props.featureIcon} />
-                    <FeatureTitle>{this.props.featureTitle}</FeatureTitle>
+                    <MarginWrapper margin='16px 0px'>
+                        <FeaturePointer>{this.props.featureTitle}</FeaturePointer>
+                    </MarginWrapper>
                     <FeatureDescription>{this.props.featureDescription}</FeatureDescription>
                 </Card>
             </Container>

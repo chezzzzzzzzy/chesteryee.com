@@ -4,11 +4,12 @@ import styled from 'styled-components'
 import icon_github from '../assets/logo-github.svg'
 import icon_instagram from '../assets/logo-instagram.svg'
 import Face from '../assets/faceLogo.png'
+import { FooterTitle, FooterDescription, FeatureDescription, FeaturePointer } from './Collection'
 
 const Socials = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 6px;
+  grid-gap: 10px;
 `
 
 const Icon = styled.object`
@@ -25,13 +26,34 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 1.4rem;
+  padding: 16px 1.4rem;
   background-color: #242424;
-
+  
   @media screen and (min-width: 768px) {
-    padding: 10px 14%;
+  
   }
+
 `
+
+
+const Foot = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+
+  grid-gap: 50px;
+  width: 100%;
+
+`
+
+
+const Inner = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1260px;
+  margin: auto;
+`
+
 
 const Memoji = styled.img`
   height: 5%;
@@ -55,25 +77,84 @@ const Logo = styled.div`
   margin-bottom: 6px;
 `
 
+const Sitemap = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  font-size: 0.8rem;
+  grid-gap: 20px;
+
+   @media screen and (min-width: 768px) {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    justify-items: flex-end;
+  }
+
+`
+
+const Final = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+
 export class Footer extends Component {
   render() {
     return (
       <Container>
-        <Footnote>
-          <Logo>
-            <Memoji src={Face} />
-            <LogoType>Chester Yee</LogoType>
-          </Logo>
-          Copyright © {new Date().getFullYear()} Chester Yee. All rights reserved.
-        </Footnote>
+        <Inner>
 
-        <Socials>
-          <Icon data={icon_github}><a href='github.com/chezzzzzzzzy'></a></Icon>
-          <Icon data={icon_instagram}><a href='instagram.com/chezy'></a></Icon>
-        </Socials>
+          <Foot>
+
+            <Sitemap>
+              <div>
+                <Logo>
+                  <Memoji src={Face} />
+                  <LogoType>Chester Yee</LogoType>
+                </Logo>
+                <FooterDescription>
+                  Aspiring Software Engineer.
+                </FooterDescription>
+              </div>
+              <div>
+                <FooterTitle>Services</FooterTitle>
+                <FooterDescription>Web Design ( UI / UX )</FooterDescription>
+                <FooterDescription>Web Development</FooterDescription>
+                <FooterDescription>Prototyping</FooterDescription>
+                <FooterDescription>Illustration</FooterDescription>
+              </div>
+              <div>
+                <FooterTitle>Resources</FooterTitle>
+                <FooterDescription>Design System</FooterDescription>
+                <FooterDescription>Components</FooterDescription>
+                <FooterDescription>Fonts</FooterDescription>
+                <FooterDescription>Illustrations</FooterDescription>
+              </div>
+              <div>
+                <FooterTitle>About</FooterTitle>
+                <FooterDescription>Press Kit</FooterDescription>
+              </div>
+
+            </Sitemap>
+
+            <Final>
+
+              <FooterDescription>
+                © {new Date().getFullYear()} Chester Yee | Built in Singapore 🇸🇬
+              </FooterDescription>
+
+              <Socials>
+                <Icon data={icon_github}><a href='github.com/chezzzzzzzzy'></a></Icon>
+                <Icon data={icon_instagram}><a href='instagram.com/chezy'></a></Icon>
+              </Socials>
+            </Final>
+
+
+          </Foot>
+        </Inner>
       </Container>
     )
   }
 }
 
 export default Footer
+
+

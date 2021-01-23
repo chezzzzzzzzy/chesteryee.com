@@ -13,11 +13,18 @@ const Container = styled.div`
   align-items: center;
   padding: 10px 1.4rem;
   background-color: #242424;
-  max-width: 100%;
-
   @media screen and (min-width: 768px) {
-    padding: 10px 14%;
+    
   }
+`
+
+const Inner = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 1260px;
+  margin: auto;
 `
 
 const Item = styled(Link)`
@@ -37,6 +44,7 @@ const Items = styled.div`
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-columns: 1fr ; */
   /* grid-gap: 20px; */
+
 `
 
 const Memoji = styled.img`
@@ -55,6 +63,8 @@ const MenuBarDesktop = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
+    justify-items: center;
+
   }
 `
 
@@ -83,28 +93,32 @@ export default function Header() {
 
   return (
     <Container>
-      <Item to="/">
-        <Logo>
-          <Memoji src={Face} />
-          <div>{data.site.siteMetadata.title}</div>
-        </Logo>
-      </Item>
+      <Inner>
 
-      <Items>
-        {/* <div ref={node}> */}
-        <MenuBarDesktop>
-          <Item to="/services">Services</Item>
-          <Item to="/articles">Articles</Item>
-          <Item to="/travel/">Travel</Item>
-          <Item to="/about">About</Item>
-        </MenuBarDesktop>
+        <Item to="/">
+          <Logo>
+            <Memoji src={Face} />
+            <div>{data.site.siteMetadata.title}</div>
+          </Logo>
+        </Item>
 
-        <MenuBarMobile>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-        </MenuBarMobile>
-        {/* </div> */}
-      </Items>
+        <Items>
+          {/* <div ref={node}> */}
+          <MenuBarDesktop>
+
+            <Item to="/services">Services</Item>
+            <Item to="/articles">Articles</Item>
+            <Item to="/travel">Travel</Item>
+            <Item to="/about">About</Item>
+          </MenuBarDesktop>
+
+          <MenuBarMobile>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </MenuBarMobile>
+          {/* </div> */}
+        </Items>
+      </Inner>
     </Container>
   )
 }

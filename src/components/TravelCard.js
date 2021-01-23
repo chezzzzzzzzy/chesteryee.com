@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import { Date, Title, Description } from '../components/Collection'
+import { Date, Title, Subtitle, Description } from '../components/Collection'
 
 const ArticleDate = styled(Date)`
   color: white;
@@ -14,6 +14,8 @@ const Container = styled.div`
   color: white;
   position: relative;
   width: 100%;
+  border-radius: 4px;
+
 
   @media screen and (max-width: 768px) {
     margin-bottom: 16px;
@@ -23,6 +25,8 @@ const Container = styled.div`
 const Cover = styled.img`
   object-fit: cover;
   height: 100%;
+  border-radius: 4px;
+
 `
 
 const Info = styled.div`

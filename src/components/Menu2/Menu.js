@@ -68,7 +68,7 @@ const Menu = ({ open, ...props }) => {
       >
         <ItemsFM variants={item}><Item to="/services">Services</Item></ItemsFM>
         <ItemsFM variants={item}><Item to="/articles">Articles</Item></ItemsFM>
-        <ItemsFM variants={item}><Item to="/travel/">Travel</Item></ItemsFM>
+        <ItemsFM variants={item}><Item to="/travel">Travel</Item></ItemsFM>
         <ItemsFM variants={item}><Item to="/about">About</Item></ItemsFM>
       </Items>
     </StyledMenu>

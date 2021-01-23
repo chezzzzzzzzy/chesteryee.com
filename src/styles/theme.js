@@ -10,6 +10,10 @@ export default {
     mobile: '0 1.4rem',
     desktop: '0% 14%',
   },
+  margin: {
+    mobile: '0 1.4rem',
+    desktop: '0% 14%',
+  },
 
   fontSizes: {
     h1: '6.10em',
@@ -19,13 +23,15 @@ export default {
     h5: '2.50em',
     h6: '2.00em',
 
+    desktop_statistics: '4em',
     desktop_mega: '3em',
     desktop_title: '2.2em',
     desktop_subtitle: '1.7em',
     desktop_header: '1.5em',
     desktop_description: '1.1em',
-    desktop_pointer: '0.9em',
-
+    desktop_pointer: '0.8em',
+    
+    mobile_statistics: '2.6em',
     mobile_mega: '1.7em',
     mobile_title: '1.3em',
     mobile_subtitle: '1.1em',

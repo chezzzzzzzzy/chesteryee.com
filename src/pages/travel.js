@@ -5,26 +5,16 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import TravelCard from '../components/TravelCard'
 
-const Subject = styled.div`
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.6rem 1.4rem;
-  background-color: #151515;
+import { Subject } from '../components/Collection'
 
-  @media screen and (min-width: 768px) {
-    padding: 0.6rem 14%;
-    font-size: 1.6rem;
-  }
-`
 
 const Articles = styled.div`
   @media screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
+    max-width: 1260px;
     width: 100%;
-    padding: 0% 14%;
   }
 `
 
@@ -38,6 +28,12 @@ const ArticlesContainer = styled.div`
   }
 `
 
+const Inner = styled.div`
+    margin: auto;
+    max-width: 1260px;
+`
+
+
 const Article = styled(Link)`
   text-decoration: none;
   color: black;
@@ -47,7 +43,13 @@ export class travel extends Component {
   render() {
     return (
       <Layout>
-        <Subject>Travel</Subject>
+        <Subject>
+          <Inner>
+            Travel
+          </Inner>
+        </Subject>
+
+
         <ArticlesContainer>
           <Articles>
             {this.props.data.allPrismicTravel.edges.map(({ node }) => (
