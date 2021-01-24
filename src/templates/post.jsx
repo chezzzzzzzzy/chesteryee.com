@@ -11,9 +11,12 @@ import { Portrait } from "../components/Collection"
 const Container = styled.div`
   padding: 30px 1.4rem;
   overflow-wrap: normal;
+  max-width: 100%;
 
   @media screen and (min-width: 768px) {
     padding: 30px 14%;
+    max-width: 1260px;
+    margin: 0 auto;
   }
 `
 
@@ -70,30 +73,36 @@ const Content = styled.div`
   overflow-wrap: normal;
 `
 
+
+const Inner = styled.div`
+    margin: auto;
+    max-width: 1260px;
+`
+
+
+
 const Post = ({ data: { prismicArticle } }) => {
   const { data } = prismicArticle
   return (
     <Layout>
-      <ThemeProvider theme={theme}>
-        <Category>{data.category}</Category>
-        <Container>
-          <Date>{data.date}</Date>
-          {/* <Cover src={data.cover.fluid.src} /> */}
-          <Title>{data.title.text}</Title>
-          <Profile>
-            <Portrait
-              src={
-                "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
-              }
-            ></Portrait>
-            <div>
-              <Name>Chester Yee</Name>
-              <Description>Aspiring Software Engineer</Description>
-            </div>
-          </Profile>
-          <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
-        </Container>
-      </ThemeProvider>
+      <Category><Inner>{data.category}</Inner></Category>
+      <Container>
+        <Date>{data.date}</Date>
+        {/* <Cover src={data.cover.fluid.src} /> */}
+        <Title>{data.title.text}</Title>
+        <Profile>
+          <Portrait
+            src={
+              "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
+            }
+          ></Portrait>
+          <div>
+            <Name>Chester Yee</Name>
+            <Description>Aspiring Software Engineer</Description>
+          </div>
+        </Profile>
+        <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+      </Container>
     </Layout>
   )
 }

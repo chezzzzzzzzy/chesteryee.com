@@ -37,7 +37,7 @@ const CollaborateBanner = () => {
                     <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
                     <Title>Let's Collaborate!</Title>
                     <Cover data={cover_jump} />
-                    <Button>Get in Touch</Button>
+                    <Button href='mailto: hello@chesteryee.com'>Get in Touch</Button>
                 </Banner>
             </Section>
         </Container>

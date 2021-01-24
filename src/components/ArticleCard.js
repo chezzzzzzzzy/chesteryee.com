@@ -31,13 +31,15 @@ const Container = styled.div`
 `
 
 const Cover = styled.img`
-  width: ${props => props.width ? `${props.width}` : '100%'};
+  width: 100%;
   border-radius: 4px;
   height: ${props => props.height ? `${props.height}` : '160px'};
   object-fit: cover;
 
   @media (min-width: 768px) {
     /* display: none; */
+    width: ${props => props.width ? `${props.width}` : '100%'};
+
   }
 `
 

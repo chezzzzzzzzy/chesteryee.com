@@ -59,6 +59,7 @@ export class articles extends Component {
 
               <ArticleCard
                 focus
+                width='600px'
                 height='300px'
                 category={this.props.data.prismicArticle.data.category}
                 cover={this.props.data.prismicArticle.data.cover.fluid.src}
@@ -155,7 +156,7 @@ export const query = graphql`
     }
   }
 
-    allPrismicArticle {
+    allPrismicArticle(skip: 1) {
       edges {
         node {
           id

@@ -14,7 +14,7 @@ module.exports = {
     title: 'Chester Yee',
   },
   plugins: [
-    
+    `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sass',
     {
@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `chesteryee.com`,
+        name: `Chester Yee`,
         short_name: `chesteryee.com`,
         start_url: `/`,
         background_color: `#1D1D1D`,

@@ -23,6 +23,7 @@ export const Section = styled.div`
   height: ${props => props.height ? '100vh' : null};
 
   @media (${props => props.theme.mediaQueries.laptop}) {
+    justify-content: center;
   }
 `
 
@@ -207,13 +208,11 @@ export const Dot = styled.div`
 
 export const Portrait = styled.img`
   border-radius: 100px;
-  width: 8%;
+  max-width: 8%;
   height: 100%;
   margin-right: 10px;
 
-  @media (min-width: 768px) {
-    width: 10%;
-  }
+
 
 
 `
@@ -226,7 +225,7 @@ export const Category = styled.div`
   padding: 6px 16px;
   font-size: 0.6rem;
   display: inline-block;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
  
 `
 
@@ -302,7 +301,7 @@ export const FooterDescription = styled.div`
 
 `
 
-export const Button = styled.div`
+export const Button = styled.a`
     border-radius: 100px;
     background-color: #242424;
     padding: 10px 28px;
@@ -310,7 +309,9 @@ export const Button = styled.div`
     border: 1px solid transparent;
     transition: border 0.2s ease-in-out;
     font-size: 14px;
-
+    text-decoration: none;
+    color: white;
+    
     :hover {
       border: 1px solid ${props => props.theme.colors.accent};
 

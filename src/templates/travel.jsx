@@ -11,6 +11,8 @@ const Container = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 30px 14%;
+    max-width: 1260px;
+    margin: 0 auto;
   }
 `
 
@@ -54,11 +56,19 @@ const Content = styled.div`
   max-width: 100%;
 `
 
+
+
+const Inner = styled.div`
+    margin: auto;
+    max-width: 1260px;
+`
+
+
 const Travel = ({ data: { prismicTravel } }) => {
   const { data } = prismicTravel
   return (
     <Layout>
-      <Subject>{data.season.text}</Subject>
+      <Subject><Inner>{data.season.text}</Inner></Subject>
       <Container>
         <Date>{data.date}</Date>
         {/* <Cover src={data.cover.fluid.src} /> */}

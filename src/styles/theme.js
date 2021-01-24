@@ -28,7 +28,7 @@ export default {
     desktop_title: '2.2em',
     desktop_subtitle: '1.7em',
     desktop_header: '1.5em',
-    desktop_description: '1.1em',
+    desktop_description: '1.0em',
     desktop_pointer: '0.8em',
     
     mobile_statistics: '2.6em',

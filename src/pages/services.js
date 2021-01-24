@@ -20,6 +20,7 @@ const Inner = styled.div`
 const Cards = styled(motion.ul)`
     display: grid;
     grid-gap: 1rem;
+    padding: 2rem 0;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
         grid-template-columns: 1fr 1fr;

@@ -48,6 +48,7 @@ import {
   CenterWrapper
 } from '../components/Collection'
 
+import { Helmet } from 'react-helmet'
 
 
 // assets
@@ -57,52 +58,6 @@ import icon_expand from '../assets/expand-outline.svg'
 import icon_shapes from '../assets/shapes-outline.svg'
 import ServiceCard from '../components/ServiceCard'
 
-const ArticleDate = styled(Date)`
-  margin: 6px 0px;
-`
-
-const TitleContainer = styled(Title)`
-  padding: 0.8em 0em;
-`
-
-const Articles = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Article = styled(Link)`
-  text-decoration: none;
-  color: black;
-  padding: 10px 0px;
-`
-
-const SectionSplit = styled.div`
-  margin: 50px 0px;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 2fr 1.2fr;
-    align-items: center;
-    /* padding: ${props => props.theme.padding.desktop}; */
-    height: 90vh;
-  }
-`
-
-const SkillCards = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin: 40px 0px;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 100%;
-  }
-`
 
 const Projects = styled.div`
   display: grid;
@@ -113,50 +68,6 @@ const Projects = styled.div`
     grid-template-columns: 1fr 1fr;
   }
 `
-
-const CoverIcon = styled.object`
-  width: 100%;
-
-  @media (min-width: 768px) {
-    width: 50%;
-  }
-`
-
-const Details = styled.div`
-  padding: 0 1.4rem;
-`
-
-const FeatureSet = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 2fr; */
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`
-
-const Feature = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 6fr;
-  grid-gap: 16px;
-
-  padding: 24px 0px;
-`
-const Features = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Left = styled.div`
-  @media screen and (min-width: 768px) {
-    max-width: 60%;
-  }
-`
-
-
-
-
-
 
 
 
@@ -175,11 +86,6 @@ const Cards = styled(motion.ul)`
 
 const Card = styled(motion.li)`
 `
-
-const variants = {
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
-}
 
 
 
@@ -208,23 +114,6 @@ const Index = props => (
   <Layout>
     <ThemeProvider theme={theme}>
       <Container>
-        {/* <SectionSplit>
-          <Left>
-            <Mega>Hello,</Mega>
-            <Mega>I'm Chester</Mega>
-
-            <TitleContainer active>Aspiring Software Engineer</TitleContainer>
-
-            <Description>
-              Incoming Computer Science and Business undergraduate student at
-              Nanyang Technological University based in Singapore.
-            </Description>
-          </Left>
-
-          <motion.div animate={{ scale: 0.8 }}>
-            <Cover data={cover_intro} />
-          </motion.div>
-        </SectionSplit> */}
 
 
 
@@ -251,7 +140,7 @@ const Index = props => (
               </Description>
             </MarginWrapper>
 
-            <Button>Resume</Button>
+            {/* <Button>Resume</Button> */}
 
 
           </Section>
@@ -310,10 +199,9 @@ const Index = props => (
         </MarginWrapper>
       </Container>
 
+      <CollaborateBanner />
 
-      <Container width='100%' padding>
-        <CollaborateBanner />
-      </Container>
+
     </ThemeProvider>
   </Layout>
 )

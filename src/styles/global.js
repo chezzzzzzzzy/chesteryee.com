@@ -45,7 +45,7 @@ pre {
     background-color: #222222;
     border-radius: 6px;
     padding: 14px;
-    word-break: break-all;
+    word-wrap: break-word;
     max-width: 100%;
 }
 

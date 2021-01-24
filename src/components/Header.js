@@ -6,6 +6,11 @@ import Face from '../assets/faceLogo.png'
 import { Burger, Menu } from './'
 import { useOnClickOutside } from './'
 
+import {
+  Subject
+
+} from '../components/Collection'
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -119,6 +124,7 @@ export default function Header() {
           {/* </div> */}
         </Items>
       </Inner>
+
     </Container>
   )
 }

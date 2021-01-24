@@ -20,8 +20,8 @@ const Card = styled.div`
 `
 
 const Cover = styled.img`
-  margin: 40px 0px;
-  object-fit: cover;
+
+  margin: 40px auto;
   @media (min-width: 768px) {
 
   }
@@ -61,8 +61,10 @@ export class ProjectCard extends Component {
         <Card>
           <Company>{this.props.skillDescription}</Company>
           <FeatureSubtitle>{this.props.skillTitle}</FeatureSubtitle>
+          <div>
 
-          <Cover src={this.props.skillCover} />
+            <Cover src={this.props.skillCover} />
+          </div>
           <Controls>
             <FeatureControl data={icon_arrowForward}></FeatureControl>
             <FeaturePointer>View Work</FeaturePointer>
