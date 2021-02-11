@@ -30,7 +30,7 @@ import {
   SectionGrid,
 
 } from '../components/Collection'
-import CollaborateBanner from '../components/CollaborateBanner'
+import Banner from '../components/Banner'
 
 
 
@@ -302,7 +302,7 @@ const About = ({ data }) => (
 
 
     </Container>
-    <CollaborateBanner />
+    <Banner />
   </Layout >
 )
 

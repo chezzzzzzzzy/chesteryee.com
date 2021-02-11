@@ -12,19 +12,25 @@ import { Helmet } from 'react-helmet'
 
 const Wrapper = styled.div`
   height: 100%;
+
   display: flex;
   flex-direction: column;
 `
 
 const Content = styled.div`
   width: 100%;
-  
+  min-height: 100vh;
   @media screen and (min-width: 768px) {
     
   }
 `
 
 
+
+const Container = styled.div`
+  min-height: 100vh;
+
+`
 
 const Layout = ({ children }) => {
   return (
@@ -34,12 +40,14 @@ const Layout = ({ children }) => {
         <title>Chester Yee</title>
       </Helmet>
       <ThemeProvider theme={theme}>
-        {/* reusable title, subtitle, etc */}
-        <Header />
+        <Container>
 
-        <Content>{children}</Content>
+          {/* reusable title, subtitle, etc */}
+          <Header />
 
-        <Footer />
+          <Content>{children}</Content>
+          <Footer />
+        </Container>
       </ThemeProvider>
     </Wrapper>
   )

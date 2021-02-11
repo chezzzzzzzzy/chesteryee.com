@@ -17,6 +17,7 @@ export const Container = styled.div`
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: ${props => props.center ? 'center' : null};
   background-color: ${props => props.black ? '#151515' : 'null'};
   width: ${props => props.width ? `${props.width}` : '100%'};
@@ -127,7 +128,7 @@ export const Subject = styled.div`
 
 export const Cover = styled.object`
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
 `
 
 export const CoverBrands = styled.object`
@@ -165,8 +166,14 @@ export const Icon = styled.object`
 `
 
 export const FeatureIcon = styled.object`
-    width: 46px;
-    height: 46px;
+
+  width: 36px;
+  height: 36px;
+
+  @media (${props => props.theme.mediaQueries.laptop}) {
+      width: 46px;
+      height: 46px;
+  }
 `
 
 export const FeatureControl = styled.object`
@@ -203,12 +210,14 @@ export const Date = styled.div`
 
 export const Dot = styled.div`
   margin: 0px 4px;
+  color: ${props => props.theme.colors.textDarkGrey};
+
 `
 
 
 export const Portrait = styled.img`
   border-radius: 100px;
-  max-width: 8%;
+  max-width: 40px;
   height: 100%;
   margin-right: 10px;
 
@@ -259,7 +268,7 @@ export const FeaturePointer = styled.div`
     font-size: ${props => props.theme.fontSizes.mobile_pointer};
     font-weight: 500;
     letter-spacing: 1px;
-    color: #585858;
+    color: ${props => (props.active ? 'white' : props.theme.colors.textDarkGrey)};
 
     @media screen and (min-width: 768px) {
         font-size: ${props => props.theme.fontSizes.desktop_pointer};

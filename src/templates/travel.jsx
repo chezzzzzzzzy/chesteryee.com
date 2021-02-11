@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 
 import styled from "styled-components"
 
-import { Subject, Portrait } from "../components/Collection"
+import { Portrait, Name, Date, Subject } from "../components/Collection"
 
 const Container = styled.div`
   padding: 30px 1.4rem;
@@ -39,17 +39,17 @@ const Profile = styled.div`
   padding: 0.8rem 0;
 `
 
-const Name = styled.div`
-  font-size: 0.6rem;
-  color: #b9b9b9;
-  font-weight: bold;
-`
+// const Name = styled.div`
+//   font-size: 0.6rem;
+//   color: #b9b9b9;
+//   font-weight: bold;
+// `
 
-const Date = styled.div`
-  font-size: 0.7rem;
-  color: #585858;
-  font-weight: bold;
-`
+// const Date = styled.div`
+//   font-size: 0.7rem;
+//   color: #585858;
+//   font-weight: bold;
+// `
 
 const Content = styled.div`
   color: #b9b9b9;

@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import ArticleCard from '../components/ArticleCard'
 
 import styled from 'styled-components'
-import { Title, Subject, FeaturePointer, MarginWrapper, HR } from '../components/Collection'
+import { Mega, Title, Subject, FeaturePointer, MarginWrapper, HR } from '../components/Collection'
 
 
 const Articles = styled.div`
@@ -50,7 +50,7 @@ export class articles extends Component {
 
         <Container>
           <MarginWrapper margin='30px 0px'>
-            <Title>My Development Journal</Title>
+            <Mega>My Development Journal</Mega>
           </MarginWrapper>
 
           <LatestArticle>
@@ -79,7 +79,7 @@ export class articles extends Component {
 
           <MarginWrapper margin='24px 0px'>
             <MarginWrapper margin='4px 0px'>
-              <FeaturePointer>LATEST ARTICLES</FeaturePointer>
+              <FeaturePointer active>LATEST ARTICLES</FeaturePointer>
             </MarginWrapper>
             <HR></HR>
           </MarginWrapper>

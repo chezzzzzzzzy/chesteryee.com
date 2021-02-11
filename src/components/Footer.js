@@ -26,11 +26,12 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 1.4rem;
+  padding: 24px 1.4rem;
   background-color: #242424;
-  
+ 
   @media screen and (min-width: 768px) {
-  
+    padding: 24px 0rem;
+
   }
 
 `
@@ -84,7 +85,7 @@ const Sitemap = styled.div`
   grid-gap: 20px;
 
    @media screen and (min-width: 768px) {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr ;
     justify-items: flex-end;
   }
 
@@ -116,7 +117,7 @@ export class Footer extends Component {
               </div>
               <div>
                 <FooterTitle>Services</FooterTitle>
-                <FooterDescription>Web Design ( UI / UX )</FooterDescription>
+                <FooterDescription>Web Design (UI / UX)</FooterDescription>
                 <FooterDescription>Web Development</FooterDescription>
                 <FooterDescription>Prototyping</FooterDescription>
                 <FooterDescription>Illustration</FooterDescription>
@@ -132,6 +133,10 @@ export class Footer extends Component {
                 <FooterTitle>About</FooterTitle>
                 <FooterDescription>Press Kit</FooterDescription>
               </div>
+              {/* <div>
+                <FooterTitle>Stay Updated</FooterTitle>
+                <FooterDescription><input /></FooterDescription>
+              </div> */}
 
             </Sitemap>
 

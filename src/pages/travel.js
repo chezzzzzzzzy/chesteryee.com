@@ -40,7 +40,10 @@ const Article = styled(Link)`
 `
 
 export class travel extends Component {
+
   render() {
+
+
     return (
       <Layout>
         <Subject>
@@ -65,7 +68,11 @@ export class travel extends Component {
               </Article>
             ))}
           </Articles>
+
         </ArticlesContainer>
+
+      
+
       </Layout>
     )
   }
@@ -74,8 +81,13 @@ export class travel extends Component {
 export default travel
 
 export const query = graphql`
-  query {
-    allPrismicTravel(sort: { fields: data___date, order: DESC }) {
+  query{
+  # query allPrismicTravel($skip: Int!, $limit: Int!){
+    allPrismicTravel(
+      sort: { fields: data___date, order: DESC }
+      # limit: $limit
+      # skip: $skip
+      ) {
       edges {
         node {
           id

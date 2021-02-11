@@ -11,8 +11,8 @@ import ProjectCard from '../components/ProjectCard'
 import cover_intro from '../assets/behind mbp3.png'
 import icon_mail from '../assets/mail-outline.svg'
 import icon_phone from '../assets/phone-portrait-outline.svg'
-import cover_mpp2 from '../assets/cover_mpp2.png'
-import cover_nlp from '../assets/cover_nlp.png'
+import cover_mpp3 from '../assets/cover_mpp3.png'
+import cover_translation from '../assets/cover_translation.png'
 
 import icon_speaker from '../assets/interface.png'
 import icon_mockup from '../assets/project.png'
@@ -21,7 +21,7 @@ import icon_message from '../assets/message.png'
 import icon_flower from '../assets/flower.png'
 import icon_desktop from '../assets/desktop.png'
 
-import CollaborateBanner from '../components/CollaborateBanner'
+import Banner from '../components/Banner'
 
 import theme from '../styles/theme'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -69,14 +69,17 @@ const Projects = styled.div`
   }
 `
 
+const Project = styled(Link)`
+  text-decoration: none;
+`
 
-
-const Cards = styled(motion.ul)`
+const Cards = styled(motion.div)`
     display: grid;
     grid-gap: 1rem;
+    width: 100%;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
-      max-width: 1260px;
+      min-width: 1260px;
 
         grid-template-columns: 1fr 1fr;
     }
@@ -84,7 +87,7 @@ const Cards = styled(motion.ul)`
 
 `
 
-const Card = styled(motion.li)`
+const Card = styled(motion.div)`
 `
 
 
@@ -110,7 +113,7 @@ const item = {
   hidden: { opacity: 0, y: -10 },
 }
 
-const Index = props => (
+const Index = (props) => (
   <Layout>
     <ThemeProvider theme={theme}>
       <Container>
@@ -181,25 +184,26 @@ const Index = props => (
             <MarginWrapper margin='50px 0px'>
 
               <Projects>
-                <ProjectCard
-                  skillCover={cover_mpp2}
-                  skillTitle="Master Planner Portal"
-                  skillDescription="Singtel"
-                />
+                {props.data.allPrismicProject.edges.map(({ node }) => (
+                  <Project to={node.uid}>
 
-                <ProjectCard
-                  skillCover={cover_mpp2}
-                  skillTitle="Language Translation"
-                  skillDescription="ET0732 — MLAI"
-                />
+                    <ProjectCard
+                      skillCover={cover_mpp3}
+                      skillTitle={node.data.title.text}
+                      skillDescription={node.data.company.text}
+                    />
 
+
+                  </Project>
+                ))}
               </Projects>
+
             </MarginWrapper>
           </Section>
         </MarginWrapper>
       </Container>
 
-      <CollaborateBanner />
+      <Banner title="Let's Work Together" subtitle='DO YOU LIKE MY WORK?' />
 
 
     </ThemeProvider>
@@ -207,3 +211,38 @@ const Index = props => (
 )
 
 export default Index
+
+
+
+export const query = graphql`
+  query {
+
+    allPrismicProject {
+      edges {
+        node {
+          id
+          uid
+          url
+
+          first_publication_date
+          last_publication_date
+          data {
+           
+            date(formatString: "Do MMMM YYYY")
+            title {
+              text
+            }
+            company {
+              text
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+
+  }
+`

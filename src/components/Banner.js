@@ -12,7 +12,7 @@ import {
     MarginWrapper,
     FeaturePointer,
     CenterWrapper
-} from '../components/Collection'
+} from './Collection'
 import cover_jump from '../assets/cover_jump.png'
 
 
@@ -20,7 +20,7 @@ const Container = styled.div`
 `
 
 
-const Banner = styled.div`
+const BannerContainer = styled.div`
     padding: 60px 0px;
     display: flex;
     align-items: center;
@@ -29,19 +29,21 @@ const Banner = styled.div`
 `
 
 
-const CollaborateBanner = () => {
+const Banner = () => {
     return (
         <Container>
             <Section center black>
-                <Banner>
-                    <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
+                <BannerContainer>
+                    <MarginWrapper margin='8px 0px'>
+                        <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
+                    </MarginWrapper>
                     <Title>Let's Collaborate!</Title>
                     <Cover data={cover_jump} />
                     <Button href='mailto: hello@chesteryee.com'>Get in Touch</Button>
-                </Banner>
+                </BannerContainer>
             </Section>
         </Container>
     )
 }
 
-export default CollaborateBanner
+export default Banner

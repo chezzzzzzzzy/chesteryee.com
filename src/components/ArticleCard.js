@@ -25,6 +25,9 @@ const Container = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.focus ? 'row' : 'column'};
+    justify-content: flex-start;
+    grid-gap: ${props => props.focus ? '80px' : null};
+
   }
 
 

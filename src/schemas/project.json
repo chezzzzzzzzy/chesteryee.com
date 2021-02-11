@@ -1,0 +1,135 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "slug",
+        "placeholder": "slug"
+      }
+    },
+    "date": {
+      "type": "Date",
+      "config": {
+        "label": "date",
+        "placeholder": "date"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "title",
+        "placeholder": "title"
+      }
+    },
+    "company": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "company",
+        "placeholder": "company"
+      }
+    },
+    "cover": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "cover"
+      }
+    },
+    "content": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "content",
+        "placeholder": "content"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "list_of_articles": {
+            "type": "Slice",
+            "fieldset": "List of Articles",
+            "description": "Section title and article list",
+            "icon": "photo_filter",
+            "non-repeat": {
+              "title_of_section": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading2",
+                  "label": "Title of Section",
+                  "placeholder": "Featured"
+                }
+              }
+            },
+            "repeat": {
+              "articles_to_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Articles to link",
+                  "placeholder": "Selct your article"
+                }
+              }
+            }
+          },
+          "team1": {
+            "type": "Slice",
+            "fieldset": "Team",
+            "description": "Section for team member information with portrait",
+            "icon": "person_pin",
+            "non-repeat": {
+              "team_section": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Team Section",
+                  "placeholder": "Management"
+                }
+              }
+            },
+            "repeat": {
+              "first_and_lastname": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading3",
+                  "label": "First and LastName",
+                  "placeholder": "John Doe"
+                }
+              },
+              "position": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Position",
+                  "placeholder": "Design director"
+                }
+              },
+              "portrait": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 1000,
+                    "height": 1000
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "Mobile",
+                      "width": 500,
+                      "height": 500
+                    }
+                  ],
+                  "label": "Portrait"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

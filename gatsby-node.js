@@ -1,11 +1,11 @@
-const {createFilePath} = require("gatsby-source-filesystem");
+const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 
 
-exports.onCreateNode = ({node, getNode, actions}) => {
-  const {createNodeField} = actions;
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
   if (node.internal.type === "MarkdownRemark") {
-    const slug = createFilePath({node, getNode, basePath: "pages"});
+    const slug = createFilePath({ node, getNode, basePath: "pages" });
     createNodeField({
       node,
       name: "slug",
@@ -14,8 +14,8 @@ exports.onCreateNode = ({node, getNode, actions}) => {
   }
 };
 
-exports.createPages = async ({graphql, actions}) => {
-  const {createPage} = actions;
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
 
   // const result = await graphql(`
   //     query {
@@ -66,6 +66,23 @@ exports.createPages = async ({graphql, actions}) => {
       }
     }
 
+    allPrismicProject {
+      nodes {
+          tags
+          id
+          uid
+          first_publication_date
+          last_publication_date
+          data {
+            title {
+              text
+            }
+          }
+          url
+        
+      }
+    }
+
     allPrismicTravel {
       nodes {
 
@@ -82,18 +99,31 @@ exports.createPages = async ({graphql, actions}) => {
         url
       
       }
+      
     }
+    
   }
   
   `);
 
   const template = path.resolve("./src/templates/post.jsx");
   const travelTemplate = path.resolve("./src/templates/travel.jsx");
+  const projectTemplate = path.resolve("./src/templates/project.jsx");
 
   pages.data.allPrismicArticle.nodes.forEach((node) => {
     createPage({
       path: `/articles/${node.uid}`,
       component: template,
+      context: {
+        uid: node.uid,
+      },
+    });
+  });
+
+  pages.data.allPrismicProject.nodes.forEach((node) => {
+    createPage({
+      path: `/${node.uid}`,
+      component: projectTemplate,
       context: {
         uid: node.uid,
       },
@@ -109,4 +139,8 @@ exports.createPages = async ({graphql, actions}) => {
       },
     });
   });
+
+
 };
+
+
