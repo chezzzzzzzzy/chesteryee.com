@@ -128,7 +128,7 @@ export const Subject = styled.div`
 
 export const Cover = styled.object`
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 `
 
 export const CoverBrands = styled.object`
