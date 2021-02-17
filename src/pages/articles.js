@@ -4,8 +4,15 @@ import { graphql, Link } from 'gatsby'
 import ArticleCard from '../components/ArticleCard'
 
 import styled from 'styled-components'
-import { Mega, Title, Subject, FeaturePointer, MarginWrapper, HR } from '../components/Collection'
-
+import { Mega, Title, Subject, FeaturePointer, MarginWrapper, HR, Description, Pointer } from '../components/Collection'
+import CategoryCard from '../components/CategoryCard'
+import icon_laptop from '../assets/laptop-outline.svg'
+import icon_codeSlash from '../assets/icon_codeSlash.svg'
+import icon_server from '../assets/icon_server.svg'
+import icon_chip from '../assets/icon_chip.svg'
+import icon_wifi from '../assets/icon_wifi.svg'
+import icon_data from '../assets/icon_data.svg'
+import Banner from '../components/Banner'
 
 const Articles = styled.div`
   display: flex;
@@ -21,7 +28,7 @@ const Articles = styled.div`
 `
 
 const Container = styled.div`
-  padding: 0 1rem;
+  padding: 4rem 1.4rem;
   max-width: 1260px;
   margin: auto;    
 `
@@ -40,6 +47,31 @@ const Article = styled(Link)`
 `
 const LatestArticle = styled.div`
 
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+    border-radius: 16px;
+    background-image: url('https://images.unsplash.com/photo-1543053976-5fd9336b6de0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=3300&q=80');
+  }
+`
+
+const CategoryCards = styled.div`
+ 
+
+
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(6, 140px);
+  padding: 16px 0px;
+  overflow-x: auto;
+
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+
 `
 
 export class articles extends Component {
@@ -50,8 +82,11 @@ export class articles extends Component {
 
         <Container>
           <MarginWrapper margin='30px 0px'>
-            <Mega>My Development Journal</Mega>
+            <Title>Articles</Title>
+            <Description>Posts, tutorials, snippets, musings, and everything else.</Description>
           </MarginWrapper>
+
+
 
           <LatestArticle>
 
@@ -59,10 +94,10 @@ export class articles extends Component {
 
               <ArticleCard
                 focus
-                width='600px'
+                width='100px'
                 height='300px'
                 category={this.props.data.prismicArticle.data.category}
-                cover={this.props.data.prismicArticle.data.cover.fluid.src}
+                // cover={this.props.data.prismicArticle.data.cover.fluid.src}
                 title={this.props.data.prismicArticle.data.title.text}
                 description={this.props.data.prismicArticle.data.description.text}
                 portrait={
@@ -77,11 +112,27 @@ export class articles extends Component {
 
           </LatestArticle>
 
+
+          <MarginWrapper margin='24px 0px'>
+            <FeaturePointer>CATEGORIES</FeaturePointer>
+            <CategoryCards>
+              <CategoryCard icon={icon_laptop} label='Workflow' />
+              <CategoryCard icon={icon_codeSlash} label='Web' />
+              <CategoryCard icon={icon_server} label='Database' />
+              <CategoryCard icon={icon_chip} label='AI' />
+              <CategoryCard icon={icon_wifi} label='Networks' />
+              <CategoryCard icon={icon_data} label='Data' />
+
+            </CategoryCards>
+          </MarginWrapper>
+
+
+
           <MarginWrapper margin='24px 0px'>
             <MarginWrapper margin='4px 0px'>
-              <FeaturePointer active>LATEST ARTICLES</FeaturePointer>
+              <Title>Latest Reads</Title>
             </MarginWrapper>
-            <HR></HR>
+            {/* <HR></HR> */}
           </MarginWrapper>
 
 
@@ -93,7 +144,7 @@ export class articles extends Component {
                 <ArticleCard
 
                   category={node.data.category}
-                  cover={node.data.cover.fluid.src}
+                  // cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
                   description={node.data.description.text}
                   portrait={
@@ -105,7 +156,9 @@ export class articles extends Component {
               </Article>
             ))}
           </Articles>
+
         </Container>
+        <Banner title='Article Suggestion' />
 
       </Layout>
     )

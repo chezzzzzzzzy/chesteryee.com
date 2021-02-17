@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import cover_mpp3 from '../assets/cover_mpp3.png'
@@ -23,13 +23,19 @@ import cover_status2 from '../assets/cover_status2.png'
 import cover_update from '../assets/cover_update.png'
 import cover_view from '../assets/cover_view.png'
 import doc_cert from '../assets/doc_cert.jpg'
+import { useSpring, animated } from 'react-spring';
+
 
 const PageContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    min-height: 100vh;
+    text-align: center;
+    margin-top: 50px;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
+        text-align: start;
+        margin-top: 0px;
+        min-height: 100vh;
         align-items: center;
         justify-content: space-between;
         grid-template-columns: 1fr 1fr;
@@ -82,6 +88,21 @@ const Step = styled.div`
     @media (${props => props.theme.mediaQueries.laptop}) {
         align-items: center;
         text-align: center;
+
+        ::before {
+            content: '';
+            width: 20%;
+            border-bottom: solid 1px #fff;
+            position: relative;
+            left: 0;
+            top: 20%;
+            z-index: -100;
+            
+        };
+
+        ::after {
+           
+        }
     }
 `
 
@@ -93,8 +114,12 @@ const IconContainer = styled.div`
     justify-content: center;
     background-color: #60A9FF20;
 
+    
+
     @media (${props => props.theme.mediaQueries.laptop}) {
         padding: 16px;
+
+        
 
     }
 `
@@ -113,13 +138,15 @@ const CardSplit = styled.div`
 
 
 const project = () => {
+
+
     return (
         <Layout>
             <Container>
                 <PageContainer>
                     <div>
                         <MarginWrapper margin='4px 0px'>
-                            <Pointer>Singtel</Pointer>
+                            <Pointer>SINGTEL</Pointer>
                         </MarginWrapper>
                         <Mega>Master Planner Portal</Mega>
                         <MarginWrapper margin='24px 0px'>
@@ -189,7 +216,7 @@ const project = () => {
                                 <Features>
                                     <MarginWrapper margin='16px 0px'>
                                         <Feature>
-                                            <FeatureIcon data={icon_clock} />
+                                            <FeatureIcon data={icon_clock} pad bg />
                                             <div>
                                                 <Header>Service Level Agreement</Header>
                                                 <Description>
@@ -201,7 +228,7 @@ const project = () => {
                                     <MarginWrapper margin='16px 0px'>
 
                                         <Feature>
-                                            <FeatureIcon data={icon_mail} />
+                                            <FeatureIcon data={icon_mail} pad bg />
                                             <div>
                                                 <Header>Email Notifications</Header>
                                                 <Description>
@@ -214,7 +241,7 @@ const project = () => {
                                     <MarginWrapper margin='16px 0px'>
 
                                         <Feature>
-                                            <FeatureIcon data={icon_image} />
+                                            <FeatureIcon data={icon_image} pad bg />
                                             <div>
                                                 <Header>Photo Verification</Header>
                                                 <Description>

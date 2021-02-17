@@ -57,6 +57,7 @@ import icon_hammer from '../assets/hammer-outline.svg'
 import icon_expand from '../assets/expand-outline.svg'
 import icon_shapes from '../assets/shapes-outline.svg'
 import ServiceCard from '../components/ServiceCard'
+import { useSpring, animated } from 'react-spring'
 
 
 const Projects = styled.div`
@@ -113,102 +114,105 @@ const item = {
   hidden: { opacity: 0, y: -10 },
 }
 
-const Index = (props) => (
-  <Layout>
-    <ThemeProvider theme={theme}>
-      <Container>
+const Index = (props) => {
 
 
+  return (
+    <Layout>
+      <ThemeProvider theme={theme}>
+        <Container>
 
-        <MarginWrapper>
-          <Section center height>
-            <motion.div animate={{ scale: [0.9, 1, 0.9] }} transition={{ duration: 1 }}>
-              <Cover data={cover_intro} />
-            </motion.div>
 
-            <MarginWrapper margin='6px 0px'>
-              <FeaturePointer>ASPIRING SOFTWARE ENGINEER</FeaturePointer>
-            </MarginWrapper>
+          <MarginWrapper>
+            <Section center height>
+              <motion.div animate={{ scale: [0.9, 1, 0.9] }} transition={{ duration: 1 }}>
+                <Cover data={cover_intro} />
+              </motion.div>
 
-            <MarginWrapper margin='2px 0px'>
-              <Mega>Hello, I'm Chester.</Mega>
-            </MarginWrapper>
+              <MarginWrapper margin='6px 0px'>
+                <FeaturePointer>ASPIRING SOFTWARE ENGINEER</FeaturePointer>
+              </MarginWrapper>
 
-            <MarginWrapper margin='16px 0px'>
-              <Description>
-                <CenterWrapper>
-                  Incoming Computer Science and Business undergraduate at
-                  Nanyang Technological University.
+              <MarginWrapper margin='2px 0px'>
+                <Mega>Hello, I'm Chester.</Mega>
+              </MarginWrapper>
+
+              <MarginWrapper margin='16px 0px'>
+                <Description>
+                  <CenterWrapper>
+                    Incoming Computer Science and Business undergraduate at
+                    Nanyang Technological University.
                 </CenterWrapper>
-              </Description>
-            </MarginWrapper>
+                </Description>
+              </MarginWrapper>
 
-            {/* <Button>Resume</Button> */}
-
-
-          </Section>
-        </MarginWrapper>
+              {/* <Button>Resume</Button> */}
 
 
+            </Section>
+          </MarginWrapper>
 
 
 
 
 
-        <MarginWrapper margin='30px 0px'>
-          <Section center>
-            <FeaturePointer>WHAT I DO</FeaturePointer>
-            <Title>Services</Title>
-            <MarginWrapper margin='50px 0px'>
-
-              <Cards
-                initial="hidden"
-                animate="visible"
-                variants={list}
-              >
-                <Card variants={item}><ServiceCard featureIcon={icon_laptop} featureTitle='WEB DESIGN ( UI / UX )' featureDescription='My core business is designing pixel perfect websites and interfaces.' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_hammer} featureTitle='WEB DEVELOPMENT' featureDescription='I build quality products that you would use.' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='PROTOTYPING' featureDescription='I use high fidelity prototypes to learn how your website interacts.' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='ILLUSTRATION' featureDescription='In addition to UI/UX, I also make illustrations and animations.' /></Card>
-              </Cards>
-            </MarginWrapper>
-          </Section>
-        </MarginWrapper>
 
 
-        <MarginWrapper margin='30px 0px'>
-          <Section center>
-            <FeaturePointer>PROJECTS</FeaturePointer>
-            <Title>Recent Work</Title>
+          <MarginWrapper margin='30px 0px'>
+            <Section center>
+              <FeaturePointer>WHAT I DO</FeaturePointer>
+              <Title>Services</Title>
+              <MarginWrapper margin='50px 0px'>
 
-            <MarginWrapper margin='50px 0px'>
-
-              <Projects>
-                {props.data.allPrismicProject.edges.map(({ node }) => (
-                  <Project to={node.uid}>
-
-                    <ProjectCard
-                      skillCover={cover_mpp3}
-                      skillTitle={node.data.title.text}
-                      skillDescription={node.data.company.text}
-                    />
-
-
-                  </Project>
-                ))}
-              </Projects>
-
-            </MarginWrapper>
-          </Section>
-        </MarginWrapper>
-      </Container>
-
-      <Banner title="Let's Work Together" subtitle='DO YOU LIKE MY WORK?' />
+                <Cards
+                  initial="hidden"
+                  animate="visible"
+                  variants={list}
+                >
+                  <Card variants={item}><ServiceCard featureIcon={icon_laptop} featureTitle='WEB DESIGN ( UI / UX )' featureDescription='My core business is designing pixel perfect websites and interfaces.' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_hammer} featureTitle='WEB DEVELOPMENT' featureDescription='I build quality products that you would use.' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='PROTOTYPING' featureDescription='I use high fidelity prototypes to learn how your website interacts.' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='ILLUSTRATION' featureDescription='In addition to UI/UX, I also make illustrations and animations.' /></Card>
+                </Cards>
+              </MarginWrapper>
+            </Section>
+          </MarginWrapper>
 
 
-    </ThemeProvider>
-  </Layout>
-)
+          <MarginWrapper margin='30px 0px'>
+            <Section center>
+              <FeaturePointer>PROJECTS</FeaturePointer>
+              <Title>Recent Work</Title>
+
+              <MarginWrapper margin='50px 0px'>
+
+                <Projects>
+                  {props.data.allPrismicProject.edges.map(({ node }) => (
+                    <Project to={node.uid}>
+
+                      <ProjectCard
+                        skillCover={cover_mpp3}
+                        skillTitle={node.data.title.text}
+                        skillDescription={node.data.company.text}
+                      />
+
+
+                    </Project>
+                  ))}
+                </Projects>
+
+              </MarginWrapper>
+            </Section>
+          </MarginWrapper>
+        </Container>
+
+        <Banner title="Let's Work Together" subtitle='DO YOU LIKE MY WORK?' />
+
+
+      </ThemeProvider>
+    </Layout>
+  )
+}
 
 export default Index
 

@@ -1,5 +1,6 @@
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
+const _ = require("lodash")
 
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -48,67 +49,70 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // prismic inputs
   const pages = await graphql(`
-  {
-    allPrismicArticle {
-      nodes {
-          tags
-          id
-          uid
-          first_publication_date
-          last_publication_date
-          data {
-            title {
-              text
+    {
+      allPrismicArticle {
+        nodes {
+            tags
+            id
+            uid
+            first_publication_date
+            last_publication_date
+            data {
+              title {
+                text
+              }
             }
-          }
-          url
-        
-      }
-    }
-
-    allPrismicProject {
-      nodes {
-          tags
-          id
-          uid
-          first_publication_date
-          last_publication_date
-          data {
-            title {
-              text
-            }
-          }
-          url
-        
-      }
-    }
-
-    allPrismicTravel {
-      nodes {
-
-        id
-        uid
-        data {
-          country {
-            text
-          }
-          city {
-            text
-          }
+            url
+          
         }
-        url
-      
+      }
+
+      allPrismicProject {
+        nodes {
+            tags
+            id
+            uid
+            first_publication_date
+            last_publication_date
+            data {
+              title {
+                text
+              }
+            }
+            url
+          
+        }
+      }
+
+      allPrismicTravel {
+        nodes {
+
+          id
+          uid
+          data {
+            country {
+              text
+            }
+            city {
+              text
+            }
+          }
+          url
+        
+        }
+        
       }
       
     }
     
-  }
-  
-  `);
+    `);
 
   const template = path.resolve("./src/templates/post.jsx");
   const travelTemplate = path.resolve("./src/templates/travel.jsx");
   const projectTemplate = path.resolve("./src/templates/project.jsx");
+  const tagTemplate = path.resolve("./src/templates/tag.js");
+
+
 
   pages.data.allPrismicArticle.nodes.forEach((node) => {
     createPage({
@@ -139,6 +143,11 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+
+
+
+
 
 
 };

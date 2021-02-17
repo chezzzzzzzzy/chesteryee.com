@@ -31,7 +31,8 @@ import {
 
 } from '../components/Collection'
 import Banner from '../components/Banner'
-
+import Img from 'gatsby-image'
+import Pulse2 from '../components/Pulse'
 
 
 
@@ -141,176 +142,194 @@ const Inner = styled.div`
 `
 
 
-
-const About = ({ data }) => (
-  <Layout>
-    <Subject><Inner>About</Inner></Subject>
-    <SectionGrid black>
-
-      <Cover data={profile} />
-
-      <MarginWrapper margin='30px 1.4rem'>
-
-        <StatisticsContainer>
-          <StatisticsBlock>
-            <Statistics>4</Statistics>
-            <FeaturePointer>YEARS OF EXPERIENCE</FeaturePointer>
-          </StatisticsBlock>
-          <StatisticsBlock>
-            <Statistics>21</Statistics>
-            <FeaturePointer>YEARS OLD</FeaturePointer>
-          </StatisticsBlock>
-        </StatisticsContainer>
+const About = ({ data }) => {
+  return (
 
 
 
-        <MarginWrapper margin='30px 0px'>
+    <Layout>
+      <Subject><Inner>About</Inner></Subject>
 
-          <Description>
-            Technology has always been an interest of mine ever since I was
-            young. Apart from coding, there are many other things which I enjoy
-            doing as well. I enjoy travelling to different places around the
-            world to discover and seek new experience. I mainly focus in web and
-            mobile applications development. More recently, I also had the
-            chance to pick up the basics of Machine Learning and Deep Learning.
-            With the adoption of Artifiical Intelligence increasing steadily, I
-            would like to bring the 2 domains closer together by integrating
-            Artifical Intelligence in the projects I am doing.
-            </Description>
+
+      <SectionGrid black>
+
+        {/* <Cover data={profile} /> */}
+        <Img fluid={data.file.childImageSharp.fluid} />
+
+        <MarginWrapper margin='30px 1.4rem'>
+
+          <StatisticsContainer>
+            <StatisticsBlock>
+              <Statistics>4</Statistics>
+              <FeaturePointer>YEARS OF EXPERIENCE</FeaturePointer>
+            </StatisticsBlock>
+            <StatisticsBlock>
+              <Statistics>21</Statistics>
+              <FeaturePointer>YEARS OLD</FeaturePointer>
+            </StatisticsBlock>
+          </StatisticsContainer>
+
 
 
           <MarginWrapper margin='30px 0px'>
-            <FeaturePointer>PROFESSIONAL EXPERIENCE</FeaturePointer>
+
+            <Description>
+              Technology has always been an interest of mine ever since I was
+              young. Apart from coding, there are many other things which I enjoy
+              doing as well. I enjoy travelling to different places around the
+              world to discover and seek new experience. I mainly focus in web and
+              mobile applications development. More recently, I also had the
+              chance to pick up the basics of Machine Learning and Deep Learning.
+              With the adoption of Artifiical Intelligence increasing steadily, I
+              would like to bring the 2 domains closer together by integrating
+              Artifical Intelligence in the projects I am doing.
+          </Description>
+
+
+            <MarginWrapper margin='30px 0px'>
+              <FeaturePointer>PROFESSIONAL EXPERIENCE</FeaturePointer>
+            </MarginWrapper>
+
+            <MarginWrapper margin='16px 0px'>
+              <Description>
+                Co-Founder
+        </Description>
+              <Pointer>RENIU</Pointer>
+            </MarginWrapper>
+
+            <MarginWrapper margin='16px 0px'>
+              <Description>
+                Intern
+        </Description>
+              <Pointer>Singtel</Pointer>
+            </MarginWrapper>
+
+            <MarginWrapper margin='16px 0px'>
+              <Description>
+                Teaching Assistant / Instructor
+        </Description>
+              <Pointer>Code in the Community</Pointer>
+            </MarginWrapper>
+
           </MarginWrapper>
 
-          <MarginWrapper margin='16px 0px'>
-            <Description>
-              Co-Founder
-          </Description>
-            <Pointer>RENIU</Pointer>
-          </MarginWrapper>
 
-          <MarginWrapper margin='16px 0px'>
-            <Description>
-              Intern
-          </Description>
-            <Pointer>Singtel</Pointer>
-          </MarginWrapper>
+          <Socials>
+            <Icon data={icon_github}><a href='github.com/chezzzzzzzzy'></a></Icon>
+            <Icon data={icon_instagram}><a href='instagram.com/chezy'></a></Icon>
+          </Socials>
 
-          <MarginWrapper margin='16px 0px'>
-            <Description>
-              Teaching Assistant / Instructor
-          </Description>
-            <Pointer>Code in the Community</Pointer>
-          </MarginWrapper>
 
         </MarginWrapper>
 
 
-
-        <Socials>
-          <Icon data={icon_github}><a href='github.com/chezzzzzzzzy'></a></Icon>
-          <Icon data={icon_instagram}><a href='instagram.com/chezy'></a></Icon>
-        </Socials>
-
-
-      </MarginWrapper>
-
-
-    </SectionGrid>
+      </SectionGrid>
 
 
 
 
 
-    <Container>
+      <Container>
 
-      <MarginWrapper margin='30px 0px'>
-        <SectionGrid center>
-          <Left>
-            <MarginWrapper margin='4px 0px'>
-              <FeaturePointer>LOCATION</FeaturePointer>
+        <MarginWrapper margin='30px 0px'>
+          <SectionGrid center>
+            <Left>
+              <MarginWrapper margin='4px 0px'>
+                <FeaturePointer>LOCATION</FeaturePointer>
+              </MarginWrapper>
+              <Title>Singapore</Title>
+              <Wrapper margin='16px 0px'>
+                <Description>
+                  I am currently living in the Republic of Singapore. From my lab, I help to position companies and start-ups in the digital world.
+            </Description>
+              </Wrapper>
+            </Left>
+            <div>
+              <Cover data={map_singapore} />
+              <Pulse2 />
+            </div>
+          </SectionGrid>
+        </MarginWrapper>
+
+
+        <MarginWrapper margin='30px 0px'>
+          <Section center>
+            <MarginWrapper margin='30px 0px'>
+              <FeaturePointer>EDUCATION</FeaturePointer>
             </MarginWrapper>
-            <Title>Singapore</Title>
-            <Wrapper margin='16px 0px'>
-              <Description>
-                I am currently living in the Republic of Singapore. From my lab, I help to position companies and start-ups in the digital world.
-              </Description>
-            </Wrapper>
-          </Left>
+            <Cards>
+              {education.map(e => {
+                return (
+                  <ExperienceCard
+                    entity={e.entity}
+                    description={e.degree}
+                    timeframe={e.timeframe}
+                  />
+                )
+              })}
+            </Cards>
 
-          <Cover data={map_singapore} />
-        </SectionGrid>
-      </MarginWrapper>
+          </Section>
+        </MarginWrapper>
 
+        <MarginWrapper margin='30px 0px'>
+          <Section center>
+            <MarginWrapper margin='30px 0px'>
+              <FeaturePointer>ACCOLADES</FeaturePointer>
+            </MarginWrapper>
+            <Cards>
+              {accolades.map(e => {
+                return (
+                  <ExperienceCard
+                    entity={e.name}
+                    description={e.name}
+                    timeframe={e.provider}
+                  />
+                )
+              })}
+            </Cards>
 
-      <MarginWrapper margin='30px 0px'>
-        <Section center>
-          <MarginWrapper margin='30px 0px'>
-            <FeaturePointer>EDUCATION</FeaturePointer>
-          </MarginWrapper>
-          <Cards>
-            {education.map(e => {
-              return (
-                <ExperienceCard
-                  entity={e.entity}
-                  description={e.degree}
-                  timeframe={e.timeframe}
-                />
-              )
-            })}
-          </Cards>
+          </Section>
+        </MarginWrapper>
 
-        </Section>
-      </MarginWrapper>
+        <MarginWrapper margin='30px 0px'>
+          <Section center>
+            <MarginWrapper margin='30px 0px'>
+              <FeaturePointer>COMPANIES I WORKED WITH</FeaturePointer>
+            </MarginWrapper>
+            <Companies>
+              <CoverBrands data={logo_reniu} />
+              <CoverBrands data={logo_singtel} />
+              <CoverBrands data={logo_citc} />
+              <CoverBrands data={logo_sk} />
+            </Companies>
 
-      <MarginWrapper margin='30px 0px'>
-        <Section center>
-          <MarginWrapper margin='30px 0px'>
-            <FeaturePointer>ACCOLADES</FeaturePointer>
-          </MarginWrapper>
-          <Cards>
-            {accolades.map(e => {
-              return (
-                <ExperienceCard
-                  entity={e.name}
-                  description={e.name}
-                  timeframe={e.provider}
-                />
-              )
-            })}
-          </Cards>
-
-        </Section>
-      </MarginWrapper>
-
-      <MarginWrapper margin='30px 0px'>
-        <Section center>
-          <MarginWrapper margin='30px 0px'>
-            <FeaturePointer>COMPANIES I WORKED WITH</FeaturePointer>
-          </MarginWrapper>
-          <Companies>
-            <CoverBrands data={logo_reniu} />
-            <CoverBrands data={logo_singtel} />
-            <CoverBrands data={logo_citc} />
-            <CoverBrands data={logo_sk} />
-          </Companies>
-
-        </Section>
-      </MarginWrapper>
+          </Section>
+        </MarginWrapper>
 
 
 
-    </Container>
-    <Banner />
-  </Layout >
-)
+      </Container>
+      <Banner />
+    </Layout >
+  )
+}
+
 
 export const query = graphql`
   query {
     site {
       siteMetadata {
         title
+      }
+    }
+
+    file(relativePath: { eq: "assets/linkedin profile.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 600, quality: 100) {
+          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluidLimitPresentationSize
+        }
       }
     }
   }

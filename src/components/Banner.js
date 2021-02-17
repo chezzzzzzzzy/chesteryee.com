@@ -29,7 +29,7 @@ const BannerContainer = styled.div`
 `
 
 
-const Banner = () => {
+const Banner = ({ title }) => {
     return (
         <Container>
             <Section center black>
@@ -37,7 +37,7 @@ const Banner = () => {
                     <MarginWrapper margin='8px 0px'>
                         <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
                     </MarginWrapper>
-                    <Title>Let's Collaborate!</Title>
+                    <Title>{title ? title: "Let's Collaborate!"}</Title>
                     <Cover data={cover_jump} />
                     <Button href='mailto: hello@chesteryee.com'>Get in Touch</Button>
                 </BannerContainer>

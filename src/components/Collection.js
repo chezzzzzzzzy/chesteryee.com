@@ -169,6 +169,10 @@ export const FeatureIcon = styled.object`
 
   width: 36px;
   height: 36px;
+  /* background-color: ${props => props.bg ? '#60A9FF20' : 'null'};
+  padding: ${props => props.pad ? '16px' : 'null'};
+  border-radius: 16px;
+   */
 
   @media (${props => props.theme.mediaQueries.laptop}) {
       width: 46px;
@@ -201,7 +205,7 @@ export const Name = styled.div`
 
 export const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};
+  color: ${props => props.theme.colors.textDarkGrey};
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_pointer};
@@ -216,7 +220,7 @@ export const Dot = styled.div`
 
 
 export const Portrait = styled.img`
-  border-radius: 100px;
+  border-radius: 8px;
   max-width: 40px;
   height: 100%;
   margin-right: 10px;
@@ -229,12 +233,12 @@ export const Portrait = styled.img`
 export const Category = styled.div`
   color: ${props => props.theme.colors.accent};
   font-weight: 500;
-  border-radius: 1000px;
-  background-color: #60A9FF10;
-  padding: 6px 16px;
-  font-size: 0.6rem;
+  /* border-radius: 1000px; */
+  /* background-color: #60A9FF10;
+  padding: 6px 16px; */
+  font-size: 0.8rem;
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
  
 `
 
@@ -334,6 +338,8 @@ export const CenterWrapper = styled.div`
 `
 
 export const HR = styled.hr`
-  margin: 10px 0px;
-  border: 0.6px solid ${props => props.theme.colors.textDarkGrey};
+  margin: 0px 0px;
+  margin-bottom: 16px;
+  border-radius: 100px;
+  border: 0.8px solid ${props => props.theme.colors.textDarkGrey};
 `

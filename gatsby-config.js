@@ -14,13 +14,14 @@ module.exports = {
     title: 'Chester Yee',
   },
   plugins: [
+
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'chesteryeecom',       
+        repositoryName: 'chesteryeecom',
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => article => `/${article.url}`,
         schemas: {
@@ -38,6 +39,11 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+
+
 
     {
       resolve: 'gatsby-plugin-scroll-reveal',
