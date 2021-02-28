@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Layout from '../components/layout'
 
 const tag = ({ pageContext, data }) => {
-    const { tag } = pageContext
+    const { category } = pageContext
     const { edges, totalCount } = data.allPrismicArticle
     const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
-        } tagged with "${tag}"`
+        } tagged with "${category}"`
     return (
-        <div>
+        <Layout>
             <h1>{tagHeader}</h1>
             <ul>
                 {edges.map(({ node }) => {
-                    const slug = node.url
+                    const slug = node.uid
                     const title = node.data.title.text;
                     return (
                         <li key={slug}>
@@ -25,7 +26,7 @@ const tag = ({ pageContext, data }) => {
               You'll come back to it!
             */}
             <Link to="/tags">All tags</Link>
-        </div>
+        </Layout>
     )
 }
 
@@ -33,19 +34,21 @@ const tag = ({ pageContext, data }) => {
 export default tag
 
 export const pageQuery = graphql`
-    query {
-        allPrismicArticle(sort: {fields: data___date, order: DESC}) {
-            edges {
-                node {
-                    url
-                    data {
-                        title {
-                            text
-                        }
-            }   
-        } 
-    }
+    query($category: String) {
+  allPrismicArticle(filter: {data: {category: {in: [$category]}}}, sort: {order: DESC, fields: data___date}) {
     totalCount
-  }
+    edges {
+      node {
+          uid
+          url
+        data {
+          title {
+            text
+          }
+        }
+      }
     }
+  }
+}
+
 `

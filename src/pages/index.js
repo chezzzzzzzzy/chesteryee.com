@@ -26,6 +26,7 @@ import Banner from '../components/Banner'
 import theme from '../styles/theme'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.scss'
+import { Parallax } from 'react-parallax';
 
 import {
   Mega,
@@ -127,6 +128,7 @@ const Index = (props) => {
             <Section center height>
               <motion.div animate={{ scale: [0.9, 1, 0.9] }} transition={{ duration: 1 }}>
                 <Cover data={cover_intro} />
+                
               </motion.div>
 
               <MarginWrapper margin='6px 0px'>

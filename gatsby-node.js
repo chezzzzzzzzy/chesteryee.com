@@ -61,6 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
               title {
                 text
               }
+              category
             }
             url
           
@@ -144,7 +145,15 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-
+  pages.data.allPrismicArticle.nodes.forEach((node) => {
+    createPage({
+      path: `/tags/${node.data.category}`,
+      component: tagTemplate,
+      context: {
+        category: node.data.category,
+      },
+    });
+  });
 
 
 

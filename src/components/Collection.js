@@ -131,6 +131,16 @@ export const Cover = styled.object`
   max-width: 600px;
 `
 
+export const BannerCover = styled.object`
+  max-width: 500px;
+  margin: 40px 0px;
+  width: 80%;
+
+  @media screen and (min-width: 768px) {
+      width: 100%;
+  }
+`
+
 export const CoverBrands = styled.object`
   width: 100px;
   display: flex;
@@ -311,6 +321,11 @@ export const FooterDescription = styled.div`
   font-size: 0.7rem;
   color: #b9b9b9;
   margin-bottom:4px; 
+  transition: 0.2s color ease-in-out ;
+  
+  :hover{
+    color: #60A9FF;
+  }
 
 `
 
@@ -339,7 +354,7 @@ export const CenterWrapper = styled.div`
 
 export const HR = styled.hr`
   margin: 0px 0px;
-  margin-bottom: 16px;
-  border-radius: 100px;
+  margin-bottom: 20px;
+  border-radius: 100px;   
   border: 0.8px solid ${props => props.theme.colors.textDarkGrey};
 `

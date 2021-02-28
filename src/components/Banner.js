@@ -5,7 +5,7 @@ import {
     Title,
     Pointer,
     Description,
-    Cover,
+    BannerCover,
     Section,
 
     Button,
@@ -37,8 +37,8 @@ const Banner = ({ title }) => {
                     <MarginWrapper margin='8px 0px'>
                         <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
                     </MarginWrapper>
-                    <Title>{title ? title: "Let's Collaborate!"}</Title>
-                    <Cover data={cover_jump} />
+                    <Title>{title ? title : "Let's Collaborate!"}</Title>
+                    <BannerCover data={cover_jump} />
                     <Button href='mailto: hello@chesteryee.com'>Get in Touch</Button>
                 </BannerContainer>
             </Section>

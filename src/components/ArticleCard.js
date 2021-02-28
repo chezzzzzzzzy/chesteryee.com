@@ -29,6 +29,7 @@ const Container = styled.div`
   /* padding: 40px; */
   background-color: #151515;
   border-radius: 16px;
+  /* box-shadow: 0px 8px 30px #01010160; */
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.focus ? 'row' : 'column'};
@@ -111,10 +112,10 @@ export class ArticleCard extends Component {
           </Top>
 
           <Divider>
-            <HR></HR>
+            {/* <HR></HR> */}
             <Profile>
               <ProfileDetails>
-                <Portrait src={this.props.portrait}></Portrait>
+                {/* <Portrait src={this.props.portrait}></Portrait> */}
                 <div>
                   <Name>{this.props.name}</Name>
                   <Date>{this.props.date}</Date>

@@ -246,7 +246,7 @@ const About = ({ data }) => {
             </Left>
             <div>
               <Cover data={map_singapore} />
-              <Pulse2 />
+              {/* <Pulse2 /> */}
             </div>
           </SectionGrid>
         </MarginWrapper>

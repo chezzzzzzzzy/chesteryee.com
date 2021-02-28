@@ -13,6 +13,8 @@ import icon_chip from '../assets/icon_chip.svg'
 import icon_wifi from '../assets/icon_wifi.svg'
 import icon_data from '../assets/icon_data.svg'
 import Banner from '../components/Banner'
+import cover_profile from '../assets/cover_profile.jpeg'
+
 
 const Articles = styled.div`
   display: flex;
@@ -28,7 +30,7 @@ const Articles = styled.div`
 `
 
 const Container = styled.div`
-  padding: 4rem 1.4rem;
+  padding: 1rem 1.4rem;
   max-width: 1260px;
   margin: auto;    
 `
@@ -81,7 +83,7 @@ export class articles extends Component {
         <Subject><Inner>Code</Inner></Subject>
 
         <Container>
-          <MarginWrapper margin='30px 0px'>
+          <MarginWrapper margin='20px 0px'>
             <Title>Articles</Title>
             <Description>Posts, tutorials, snippets, musings, and everything else.</Description>
           </MarginWrapper>
@@ -100,9 +102,7 @@ export class articles extends Component {
                 // cover={this.props.data.prismicArticle.data.cover.fluid.src}
                 title={this.props.data.prismicArticle.data.title.text}
                 description={this.props.data.prismicArticle.data.description.text}
-                portrait={
-                  'https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q'
-                }
+                portrait={cover_profile}
                 name="Chester Yee"
                 date={this.props.data.prismicArticle.data.date}
               />
@@ -112,7 +112,7 @@ export class articles extends Component {
 
           </LatestArticle>
 
-
+{/* 
           <MarginWrapper margin='24px 0px'>
             <FeaturePointer>CATEGORIES</FeaturePointer>
             <CategoryCards>
@@ -124,7 +124,7 @@ export class articles extends Component {
               <CategoryCard icon={icon_data} label='Data' />
 
             </CategoryCards>
-          </MarginWrapper>
+          </MarginWrapper> */}
 
 
 
@@ -147,9 +147,7 @@ export class articles extends Component {
                   // cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
                   description={node.data.description.text}
-                  portrait={
-                    'https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q'
-                  }
+                  portrait={cover_profile}
                   name="Chester Yee"
                   date={node.data.date}
                 />

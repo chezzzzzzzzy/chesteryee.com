@@ -11,7 +11,7 @@ import { Subject } from '../components/Collection'
 const Articles = styled.div`
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 1rem;
     max-width: 1260px;
     width: 100%;
@@ -19,9 +19,9 @@ const Articles = styled.div`
 `
 
 const ArticlesContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
+  padding: 1rem 1.4rem;
 
   @media screen and (min-width: 768px) {
     padding: 50px 0px;
@@ -71,7 +71,7 @@ export class travel extends Component {
 
         </ArticlesContainer>
 
-      
+
 
       </Layout>
     )

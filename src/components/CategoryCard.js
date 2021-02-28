@@ -12,7 +12,7 @@ const Card = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 50px;
+    padding: 20px 30px;
     background-color: #151515;
     border-radius: 16px;
 
@@ -20,7 +20,7 @@ const Card = styled.div`
 
 const Label = styled.div`
     font-weight: 500;
-    margin-top: 8px;
+    margin-top: 2px;
 `
 
 const CategoryCard = ({ icon, label }) => {
