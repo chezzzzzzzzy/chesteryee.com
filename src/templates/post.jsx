@@ -7,6 +7,9 @@ import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme"
 
 import { Portrait, Name, Date } from "../components/Collection"
+import { RichText } from 'prismic-reactjs'
+import ReactMarkdown from "react-markdown";
+
 
 const Container = styled.div`
   padding: 30px 1.4rem;
@@ -24,6 +27,7 @@ const Title = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   padding: 0.6rem 0;
+
 `
 
 const Subtitle = styled.div``
@@ -36,12 +40,7 @@ const Cover = styled.img`
   border-radius: 8px;
 `
 
-const Profile = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0.8rem 0;
-`
+
 // `
 // const Name = styled.div`
 //   font-size: 0.6rem;
@@ -82,7 +81,12 @@ const Inner = styled.div`
 
 
 const Post = ({ data: { prismicArticle } }) => {
+
+
   const { data } = prismicArticle
+
+  const rawMarkdown = RichText.asText(data.content.html)
+
   return (
     <Layout>
       <Category><Inner>{data.category}</Inner></Category>
@@ -90,19 +94,19 @@ const Post = ({ data: { prismicArticle } }) => {
         <Date>{data.date}</Date>
         {/* <Cover src={data.cover.fluid.src} /> */}
         <Title>{data.title.text}</Title>
-        <Profile>
-          <Portrait
-            src={
-              "https://media-exp1.licdn.com/dms/image/C5603AQH7Hr4lav5A4A/profile-displayphoto-shrink_400_400/0/1607911342354?e=1614211200&v=beta&t=c_MO7Nt7aseitV5f-Bq7WPb3HouV-xMAFxfrr3j-q_Q"
-            }
-          ></Portrait>
-          <div>
-            <Name>Chester Yee</Name>
-            <Description>Aspiring Software Engineer</Description>
-          </div>
-        </Profile>
+        <Name>Chester Yee</Name>
         <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+
+
+        <div>Read Next</div>
+        <div>
+          <ReactMarkdown source={rawMarkdown} />
+
+        </div>
+
       </Container>
+
+
     </Layout>
   )
 }

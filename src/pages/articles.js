@@ -23,7 +23,7 @@ const Articles = styled.div`
   @media screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
+    grid-gap: 24px;
     width: 1260px;
     margin: 0 auto;    
   }
@@ -46,17 +46,10 @@ const Article = styled(Link)`
   text-decoration: none;
   color: black;
   margin: 8px 0px;
-`
-const LatestArticle = styled.div`
+  scroll-snap-align: center;
 
-  @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 40px;
-    border-radius: 16px;
-    background-image: url('https://images.unsplash.com/photo-1543053976-5fd9336b6de0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=3300&q=80');
-  }
 `
+
 
 const CategoryCards = styled.div`
  
@@ -76,6 +69,29 @@ const CategoryCards = styled.div`
 
 `
 
+const Articles2 = styled.div`
+  display: grid;
+  grid-gap: 16px;
+
+`
+
+const Articles3 = styled.div`
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-columns: 300px;
+  grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+
+  @media (min-width: 768px) {
+    grid-auto-columns: 400px;
+  }
+
+
+
+`
+
+
 export class articles extends Component {
   render() {
     return (
@@ -90,49 +106,27 @@ export class articles extends Component {
 
 
 
-          <LatestArticle>
+          <Article to={this.props.data.prismicArticle.uid}>
 
-            <Article to={this.props.data.prismicArticle.uid}>
+            <ArticleCard
+              focus
+              height='500px'
+              width='50%'
+              category={this.props.data.prismicArticle.data.category}
+              cover={this.props.data.prismicArticle.data.cover.fluid.src}
+              title={this.props.data.prismicArticle.data.title.text}
+              description={this.props.data.prismicArticle.data.description.text}
+              portrait={cover_profile}
+              name="Chester Yee"
+              date={this.props.data.prismicArticle.data.date}
+            />
+          </Article>
 
-              <ArticleCard
-                focus
-                width='100px'
-                height='300px'
-                category={this.props.data.prismicArticle.data.category}
-                // cover={this.props.data.prismicArticle.data.cover.fluid.src}
-                title={this.props.data.prismicArticle.data.title.text}
-                description={this.props.data.prismicArticle.data.description.text}
-                portrait={cover_profile}
-                name="Chester Yee"
-                date={this.props.data.prismicArticle.data.date}
-              />
-            </Article>
-
-
-
-          </LatestArticle>
-
-{/* 
-          <MarginWrapper margin='24px 0px'>
-            <FeaturePointer>CATEGORIES</FeaturePointer>
-            <CategoryCards>
-              <CategoryCard icon={icon_laptop} label='Workflow' />
-              <CategoryCard icon={icon_codeSlash} label='Web' />
-              <CategoryCard icon={icon_server} label='Database' />
-              <CategoryCard icon={icon_chip} label='AI' />
-              <CategoryCard icon={icon_wifi} label='Networks' />
-              <CategoryCard icon={icon_data} label='Data' />
-
-            </CategoryCards>
-          </MarginWrapper> */}
 
 
 
           <MarginWrapper margin='24px 0px'>
-            <MarginWrapper margin='4px 0px'>
-              <Title>Latest Reads</Title>
-            </MarginWrapper>
-            {/* <HR></HR> */}
+            <Title>Latest Reads</Title>
           </MarginWrapper>
 
 
@@ -142,9 +136,9 @@ export class articles extends Component {
             {this.props.data.allPrismicArticle.edges.map(({ node }) => (
               <Article to={node.uid}>
                 <ArticleCard
-
+                  mt
                   category={node.data.category}
-                  // cover={node.data.cover.fluid.src}
+                  cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
                   description={node.data.description.text}
                   portrait={cover_profile}
@@ -154,6 +148,75 @@ export class articles extends Component {
               </Article>
             ))}
           </Articles>
+
+
+          <MarginWrapper margin='24px 0px'>
+            <Title>For you</Title>
+          </MarginWrapper>
+
+
+          <Articles2>
+
+
+            <Article to={this.props.data.prismicArticle.uid}>
+
+              <ArticleCard
+                focus
+                height='340px'
+                width='60%'
+                category={this.props.data.prismicArticle.data.category}
+                cover={this.props.data.prismicArticle.data.cover.fluid.src}
+                title={this.props.data.prismicArticle.data.title.text}
+                description={this.props.data.prismicArticle.data.description.text}
+                portrait={cover_profile}
+                name="Chester Yee"
+                date={this.props.data.prismicArticle.data.date}
+              />
+            </Article>
+
+
+            <Article to={this.props.data.prismicArticle.uid}>
+
+              <ArticleCard
+                focus
+                height='340px'
+                width='60%'
+                category={this.props.data.prismicArticle.data.category}
+                cover={this.props.data.prismicArticle.data.cover.fluid.src}
+                title={this.props.data.prismicArticle.data.title.text}
+                description={this.props.data.prismicArticle.data.description.text}
+                portrait={cover_profile}
+                name="Chester Yee"
+                date={this.props.data.prismicArticle.data.date}
+              />
+            </Article>
+
+          </Articles2>
+
+          <MarginWrapper margin='24px 0px'>
+            <Title>For those</Title>
+          </MarginWrapper>
+
+
+
+          <Articles3>
+            {this.props.data.allPrismicArticle.edges.map(({ node }) => (
+              <Article to={node.uid}>
+                <ArticleCard
+                  mt
+                  category={node.data.category}
+                  cover={node.data.cover.fluid.src}
+                  title={node.data.title.text}
+                  description={node.data.description.text}
+                  portrait={cover_profile}
+                  name="Chester Yee"
+                  date={node.data.date}
+                />
+              </Article>
+            ))}
+          </Articles3>
+
+
 
         </Container>
         <Banner title='Article Suggestion' />
@@ -194,7 +257,7 @@ export const query = graphql`
       description {
         text
       }
-      date(formatString: "Do MMMM YYYY")
+      date(formatString: "Do MMM YYYY")
       cover {
         fluid {
           src
@@ -222,7 +285,7 @@ export const query = graphql`
                 src
               }
             }
-            date(formatString: "Do MMMM YYYY")
+            date(formatString: "Do MMM YYYY")
             title {
               text
             }

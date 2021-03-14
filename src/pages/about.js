@@ -32,7 +32,6 @@ import {
 } from '../components/Collection'
 import Banner from '../components/Banner'
 import Img from 'gatsby-image'
-import Pulse2 from '../components/Pulse'
 
 
 
@@ -110,22 +109,7 @@ const Pulsate = keyframes`
 
 
 
-const Pulse = styled.div`
-  background: #60A9FF;
-	border-radius: 50%;
-	margin: 10px;
-	height: 20px;
-	width: 20px;
-  position: relatvie;
-  left: 100;
-  top: 100;
-  z-index: 1000;
 
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-	transform: scale(1);
-  animation: ${Pulsate} 1s linear infinite;
-
-`
 
 const Left = styled.div`
 
@@ -246,7 +230,6 @@ const About = ({ data }) => {
             </Left>
             <div>
               <Cover data={map_singapore} />
-              {/* <Pulse2 /> */}
             </div>
           </SectionGrid>
         </MarginWrapper>

@@ -24,20 +24,28 @@ const Container = styled.div`
 `
 
 const Inner = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: space-between;
   align-items: center;
   width: 1260px;
   margin: auto;
+
+  @media screen and (min-width: 768px) {
+    
+  }
 `
 
 const Item = styled(Link)`
+display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: bold;
   z-index: 1000;
+
 
   @media screen and (min-width: 768px) {
     font-size: 0.9rem;
@@ -49,12 +57,13 @@ const Items = styled.div`
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-columns: 1fr ; */
   /* grid-gap: 20px; */
+  
 
 `
 
 const Memoji = styled.img`
-  width: 30px;
-  margin-right: 10px;
+  width: 24px;
+  margin-right: 8px;
 `
 const Logo = styled.div`
   display: flex;
@@ -100,12 +109,8 @@ export default function Header() {
     <Container>
       <Inner>
 
-        <Item to="/">
-          <Logo>
-            <Memoji src={Face} />
-            <div>{data.site.siteMetadata.title}</div>
-          </Logo>
-        </Item>
+
+
 
         <Items>
           {/* <div ref={node}> */}
@@ -124,6 +129,17 @@ export default function Header() {
           </MenuBarMobile>
           {/* </div> */}
         </Items>
+
+
+        <Item to="/">
+          <Logo>
+            <Memoji src={Face} />
+            <div>{data.site.siteMetadata.title}</div>
+          </Logo>
+        </Item>
+
+        <div></div>
+
       </Inner>
 
     </Container>

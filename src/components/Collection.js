@@ -171,8 +171,8 @@ export const IconLabel = styled.div`
 
 export const Icon = styled.object`
   /* filter: invert(100%); */
-  width: 20px;
-  height: 20px;
+  width: ${props => props.size ? `${props.size}` : '20px'};
+  height: ${props => props.size ? `${props.size}` : '20px'};
 `
 
 export const FeatureIcon = styled.object`
@@ -216,6 +216,7 @@ export const Name = styled.div`
 export const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
   color: ${props => props.theme.colors.textDarkGrey};
+  font-weight: 500;
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_pointer};
@@ -243,9 +244,9 @@ export const Portrait = styled.img`
 export const Category = styled.div`
   color: ${props => props.theme.colors.accent};
   font-weight: 500;
-  /* border-radius: 1000px; */
-  /* background-color: #60A9FF10;
-  padding: 6px 16px; */
+  border-radius: 1000px;
+  background-color: #60A9FF10;
+  padding: 6px 16px;
   font-size: 0.8rem;
   display: inline-block;
   margin-bottom: 10px;
@@ -354,7 +355,7 @@ export const CenterWrapper = styled.div`
 
 export const HR = styled.hr`
   margin: 0px 0px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   border-radius: 100px;   
-  border: 0.8px solid ${props => props.theme.colors.textDarkGrey};
+  border: 0.8px solid #292929;
 `
