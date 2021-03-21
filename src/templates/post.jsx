@@ -40,6 +40,10 @@ const Description = styled.div`
 
 const Cover = styled.img`
   border-radius: 6px;
+
+  @media screen and (min-width: 768px) {
+
+  }
 `
 
 
@@ -150,7 +154,9 @@ export const pageQuery = graphql`
     prismicArticle(uid: { eq: $uid }) {
       url
       uid
+      tags
       data {
+        
         category
         body {
         ... on PrismicArticleBodyCode {

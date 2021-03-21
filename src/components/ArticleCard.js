@@ -136,7 +136,11 @@ const ContentBottom = styled.div`
 `
 
 export class ArticleCard extends Component {
+
+
   render() {
+
+    const x = this.props.tags
     return (
       <Container focus={this.props.focus}>
 
@@ -163,7 +167,9 @@ export class ArticleCard extends Component {
           <ContentBottom>
             <ContentFoot>
               <Tags>
-                <Category>{this.props.category}</Category>
+                {
+                  x && x.map(index => <Category>{index}</Category>)
+                }
               </Tags>
               <BookmarkContainer>
                 <Icon data={icon_bookmark} />

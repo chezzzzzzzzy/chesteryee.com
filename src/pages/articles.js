@@ -143,6 +143,7 @@ export class articles extends Component {
               focus
               height='400px'
               width='50%'
+              tags={this.props.data.prismicArticle.tags}
               category={this.props.data.prismicArticle.data.category}
               cover={this.props.data.prismicArticle.data.cover.fluid.src}
               title={this.props.data.prismicArticle.data.title.text}
@@ -168,6 +169,7 @@ export class articles extends Component {
               <Article to={node.uid}>
                 <ArticleCard
                   mt
+                  tags={node.tags}
                   category={node.data.category}
                   cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
@@ -203,6 +205,8 @@ export class articles extends Component {
                 focus
                 height='340px'
                 width='60%'
+                tags={this.props.data.prismicArticle.tags}
+
                 category={this.props.data.prismicArticle.data.category}
                 cover={this.props.data.prismicArticle.data.cover.fluid.src}
                 title={this.props.data.prismicArticle.data.title.text}
@@ -214,21 +218,7 @@ export class articles extends Component {
             </Article>
 
 
-            <Article to={this.props.data.prismicArticle.uid}>
 
-              <ArticleCard
-                focus
-                height='340px'
-                width='60%'
-                category={this.props.data.prismicArticle.data.category}
-                cover={this.props.data.prismicArticle.data.cover.fluid.src}
-                title={this.props.data.prismicArticle.data.title.text}
-                description={this.props.data.prismicArticle.data.description.text}
-                portrait={cover_profile}
-                name="Chester Yee"
-                date={this.props.data.prismicArticle.data.date}
-              />
-            </Article>
 
           </Articles2>
 
@@ -251,6 +241,7 @@ export class articles extends Component {
               <Article to={node.uid}>
                 <ArticleCard
                   mt
+                  tags={node.tags}
                   category={node.data.category}
                   cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
@@ -297,8 +288,9 @@ export const query = graphql`
 
     prismicArticle {
       uid
-
+      tags
     data {
+      
       title {
         text
       }
@@ -350,6 +342,7 @@ export const query = graphql`
               text
             }
           }
+          tags
         }
       }
     }

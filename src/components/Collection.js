@@ -106,7 +106,6 @@ export const Pointer = styled.div`
 export const Description = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
   line-height: 1.6;
-  color: ${props => (props.active ? props.theme.colors.textGrey : 'white')};
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_description};
@@ -260,6 +259,7 @@ export const Category = styled.div`
   font-size: 0.8rem;
   display: inline-block;
   margin-bottom: 10px;
+  margin-right: 8px;
  
 `
 
@@ -323,16 +323,17 @@ export const FeatureSubtitle = styled.div`
 
 
 export const FooterTitle = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  margin-bottom:10px; 
+  margin-bottom:16px; 
 `
 
 export const FooterDescription = styled.div`
   font-size: 0.7rem;
   color: #b9b9b9;
   margin-bottom:4px; 
-  transition: 0.2s color ease-in-out ;
+  transition: 0.2s color ease-in-out;
+  margin: 10px 0px;
   
   :hover{
     color: #60A9FF;

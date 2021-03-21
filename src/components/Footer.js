@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import icon_github from '../assets/logo-github.svg'
 import icon_instagram from '../assets/logo-instagram.svg'
 import Face from '../assets/faceLogo.png'
-import { FooterTitle, FooterDescription, FeatureDescription, FeaturePointer } from './Collection'
+import { FooterTitle, FooterDescription, FeatureDescription, FeaturePointer, HR } from './Collection'
 
 const Socials = styled.div`
   display: grid;
@@ -14,6 +14,7 @@ const Socials = styled.div`
 
 const Icon = styled.object`
   height: 16px;
+
 `
 
 const Footnote = styled.div`
@@ -30,7 +31,7 @@ const Container = styled.div`
   background-color: #242424;
  
   @media screen and (min-width: 768px) {
-    padding: 24px 0rem;
+    padding: 40px 0rem;
 
   }
 
@@ -41,7 +42,7 @@ const Foot = styled.div`
   display: grid;
   grid-template-rows: 1fr;
 
-  grid-gap: 50px;
+  grid-gap: 24px;
   width: 100%;
 
 `
@@ -94,6 +95,7 @@ const Sitemap = styled.div`
 const Final = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `
 
 
@@ -133,13 +135,12 @@ export class Footer extends Component {
                 <FooterTitle>About</FooterTitle>
                 <FooterDescription>Press Kit</FooterDescription>
               </div>
-              {/* <div>
-                <FooterTitle>Stay Updated</FooterTitle>
-                <FooterDescription><input /></FooterDescription>
-              </div> */}
+
 
             </Sitemap>
 
+
+            <HR></HR>
             <Final>
 
               <FooterDescription>
