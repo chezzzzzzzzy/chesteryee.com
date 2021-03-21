@@ -6,9 +6,11 @@ import styled from "styled-components"
 import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme"
 
-import { Portrait, Name, Date } from "../components/Collection"
+import { Portrait, Name, Date, Mega, MarginWrapper, ButtonNav, Icon } from "../components/Collection"
 import { RichText } from 'prismic-reactjs'
 import ReactMarkdown from "react-markdown";
+import icon_forward from '../assets/icon_forward.svg'
+import icon_backward from '../assets/icon_backward.svg'
 
 
 const Container = styled.div`
@@ -18,7 +20,7 @@ const Container = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 30px 14%;
-    max-width: 1260px;
+    max-width: 1060px;
     margin: 0 auto;
   }
 `
@@ -37,22 +39,9 @@ const Description = styled.div`
 `
 
 const Cover = styled.img`
-  border-radius: 8px;
+  border-radius: 6px;
 `
 
-
-// `
-// const Name = styled.div`
-//   font-size: 0.6rem;
-//   color: #b9b9b9;
-//   font-weight: bold;
-// `
-
-// const Date = styled.div`
-//   font-size: 0.7rem;
-//   color: #585858;
-//   font-weight: bold;
-// ``
 
 const Category = styled.div`
   color: white;
@@ -78,6 +67,30 @@ const Inner = styled.div`
     max-width: 1260px;
 `
 
+const Middle = styled.div`
+  text-align: center;
+`
+
+
+const HC = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const handleNav = (direction) => {
+  if (direction == 'left') {
+    this.navRef ? (this.navRef.current.scrollBy({
+      left: -200,
+      behavior: 'smooth'
+    })) : null
+  } else {
+    this.navRef ? (this.navRef.current.scrollBy({
+      left: 200,
+      behavior: 'smooth'
+    })) : null
+  }
+}
 
 
 const Post = ({ data: { prismicArticle } }) => {
@@ -85,24 +98,44 @@ const Post = ({ data: { prismicArticle } }) => {
 
   const { data } = prismicArticle
 
-  const rawMarkdown = RichText.asText(data.content.html)
+  const rMD = data.body.map(slice => {
+    switch (slice.slice_type) {
+      case "code":
+        return (
+          <div>{slice.primary.implementation.raw}</div>
+        )
+    }
+  })
+
 
   return (
     <Layout>
       <Category><Inner>{data.category}</Inner></Category>
       <Container>
-        <Date>{data.date}</Date>
-        {/* <Cover src={data.cover.fluid.src} /> */}
-        <Title>{data.title.text}</Title>
-        <Name>Chester Yee</Name>
+        <Middle>
+          <Name>Chester Yee</Name>
+          <MarginWrapper margin='10px 0px 40px'>
+            <Mega>{data.title.text}</Mega>
+          </MarginWrapper>
+        </Middle>
+        <Cover src={data.cover.fluid.src} />
         <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
 
 
-        <div>Read Next</div>
-        <div>
-          <ReactMarkdown source={rawMarkdown} />
+        <MarginWrapper margin='24px 0px'>
+          <HC>
+            <Title>You might also like</Title>
+            <HC>
+              <ButtonNav onClick={() => this.handleNav('left')}><Icon data={icon_backward} /></ButtonNav>
+              <ButtonNav onClick={() => this.handleNav('right')} style={{ marginLeft: '6px' }}><Icon data={icon_forward} /></ButtonNav>
+            </HC>
 
-        </div>
+          </HC>
+
+        </MarginWrapper>
+
+        <ReactMarkdown source={rMD} style={{ width: '960px' }} />
+
 
       </Container>
 
@@ -119,6 +152,41 @@ export const pageQuery = graphql`
       uid
       data {
         category
+        body {
+        ... on PrismicArticleBodyCode {
+          slice_type
+          primary {
+            implementation {
+              text
+            }
+          }
+          items {
+            code {
+              raw
+              text
+            }
+            type {
+              text
+            }
+          }
+         
+        }
+        ... on PrismicArticleBodySection {
+          slice_type
+          primary {
+            sectiontitle {
+              text
+            }
+          }
+          items {
+            sectionbody {
+              text
+            }
+          }
+        }
+        __typename
+
+      }
 
         date(formatString: "Do MMMM YYYY")
         cover {
@@ -130,6 +198,11 @@ export const pageQuery = graphql`
           html
           raw
           text
+        }
+
+        markdown {
+          raw
+          html
         }
         title {
           text

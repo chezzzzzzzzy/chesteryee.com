@@ -53,84 +53,81 @@
         "placeholder": "content"
       }
     },
+    "markdown": {
+      "type": "StructuredText",
+      "config": {
+        "single": "preformatted",
+        "label": "markdown",
+        "placeholder": "markdown"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": {},
+        "labels": {
+          "code": [],
+          "section": []
+        },
         "choices": {
-          "list_of_articles": {
+          "code": {
             "type": "Slice",
-            "fieldset": "List of Articles",
-            "description": "Section title and article list",
-            "icon": "photo_filter",
+            "fieldset": "code",
+            "description": "code",
+            "icon": "code",
+            "display": "list",
             "non-repeat": {
-              "title_of_section": {
+              "implementation": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "heading2",
-                  "label": "Title of Section",
-                  "placeholder": "Featured"
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "implementation",
+                  "placeholder": "implementation"
                 }
               }
             },
             "repeat": {
-              "articles_to_link": {
-                "type": "Link",
+              "type": {
+                "type": "StructuredText",
                 "config": {
-                  "label": "Articles to link",
-                  "placeholder": "Selct your article"
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "type",
+                  "placeholder": "type"
+                }
+              },
+              "code": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "preformatted",
+                  "label": "code",
+                  "placeholder": "code"
                 }
               }
             }
           },
-          "team1": {
+          "section": {
             "type": "Slice",
-            "fieldset": "Team",
-            "description": "Section for team member information with portrait",
-            "icon": "person_pin",
+            "fieldset": "section",
+            "description": "section",
+            "icon": "library_books",
+            "display": "list",
             "non-repeat": {
-              "team_section": {
+              "sectiontitle": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "heading2",
-                  "label": "Team Section",
-                  "placeholder": "Management"
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "sectionTitle",
+                  "placeholder": "sectionTitle"
                 }
               }
             },
             "repeat": {
-              "first_and_lastname": {
+              "sectionbody": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "heading3",
-                  "label": "First and LastName",
-                  "placeholder": "John Doe"
-                }
-              },
-              "position": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Position",
-                  "placeholder": "Design director"
-                }
-              },
-              "portrait": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": 1000,
-                    "height": 1000
-                  },
-                  "thumbnails": [
-                    {
-                      "name": "Mobile",
-                      "width": 500,
-                      "height": 500
-                    }
-                  ],
-                  "label": "Portrait"
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "sectionBody",
+                  "placeholder": "sectionBody"
                 }
               }
             }

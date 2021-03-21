@@ -133,11 +133,11 @@ export const Cover = styled.object`
 
 export const BannerCover = styled.object`
   max-width: 500px;
-  margin: 40px 0px;
+  margin: 20px 0px;
   width: 80%;
 
   @media screen and (min-width: 768px) {
-      width: 100%;
+      width: 80%;
   }
 `
 
@@ -175,6 +175,16 @@ export const Icon = styled.object`
   height: ${props => props.size ? `${props.size}` : '20px'};
 `
 
+export const MovingIcon = styled.object`
+  width: ${props => props.size ? `${props.size}` : '20px'};
+  height: ${props => props.size ? `${props.size}` : '20px'};
+  transition: transform 0.4s;
+  
+  :hover {
+    transform: translateX(4px);
+  }
+`
+
 export const FeatureIcon = styled.object`
 
   width: 36px;
@@ -205,7 +215,7 @@ export const Label = styled.div`
 export const Name = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
   color: ${props => props.theme.colors.textGrey};  
-  font-weight: bold;
+  font-weight: 500;
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_pointer};
@@ -215,7 +225,7 @@ export const Name = styled.div`
 
 export const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textDarkGrey};
+  color: ${props => props.theme.colors.textGrey};
   font-weight: 500;
 
   @media screen and (min-width: 768px) {
@@ -349,13 +359,30 @@ export const Button = styled.a`
     
 `
 
+export const ButtonNav = styled.a`
+    border-radius: 100px;
+    background-color: #242424;
+    padding: 10px 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: border 0.2s ease-in-out;
+    text-decoration: none;
+    
+    :hover {
+      border: 1px solid ${props => props.theme.colors.accent};
+
+    }
+
+    
+`
+
+
 export const CenterWrapper = styled.div`
   text-align: center;
 `
 
 export const HR = styled.hr`
   margin: 0px 0px;
-  margin-top: 20px;
   border-radius: 100px;   
-  border: 0.8px solid #292929;
+  border: 0.6px solid #292929;
 `

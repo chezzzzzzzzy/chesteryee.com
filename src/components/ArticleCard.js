@@ -17,8 +17,8 @@ import {
   Icon
 } from '../components/Collection'
 
-import icon_bookmark from '../assets/icon_bookmark.svg'
-import icon_calendar from '../assets/icon_calendar.svg'
+import icon_bookmark from '../assets/icon_bookmark2.svg'
+import icon_calendar from '../assets/icon_calendar2.svg'
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +31,7 @@ const Container = styled.div`
   @media (min-width: 768px) {
     flex-direction: ${props => props.focus ? 'row' : 'column'};
     grid-gap: ${props => props.focus ? '60px' : null};
+    /* border: ${props => props.focus ? '0.6px solid #292929' : null}; */
   }
 
 
@@ -52,7 +53,7 @@ const Cover = styled.img`
 
 const Content = styled.div`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 
   display: flex;
   flex-direction: column;
@@ -63,12 +64,18 @@ const ContentHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${props => props.mt ? '16px' : null};
+  margin-top: ${props => props.mt ? '16px' : '16px'};
   flex-basis: 50%;
+
+  @media (min-width: 768px) {
+    margin-top: ${props => props.mt ? null : '0px'};
+
+  }
 `
 
 const ContentBody = styled.div`
   margin: 16px 0px;
+  
 
 `
 
@@ -76,7 +83,7 @@ const ContentFoot = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0px;
+  margin: 8px 0px;
 
 
 
@@ -84,7 +91,7 @@ const ContentFoot = styled.div`
 
 const Author = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textDarkGrey};
+  color: ${props => props.theme.colors.textGrey};
   font-weight: 500;
 
   @media screen and (min-width: 768px) {
@@ -118,6 +125,9 @@ const Tags = styled.div`
 `
 
 const ContentTop = styled.div`
+  @media (min-width: 768px) {
+    padding: ${props => props.focus ? '20px 20px 0px 0px' : null};
+  }
 
 `
 
@@ -139,7 +149,7 @@ export class ArticleCard extends Component {
               <Author>{this.props.name}</Author>
               <DateContainer>
                 <Icon size='14px' data={icon_calendar} />
-                <Date style={{ marginLeft: '4px' }}>{this.props.date}</Date>
+                <Date style={{ marginLeft: '5px' }}>{this.props.date}</Date>
               </DateContainer>
             </ContentHead>
 
