@@ -61,7 +61,7 @@ export class travel extends Component {
                   country={node.data.country.text}
                   city={node.data.city.text}
                   date={node.data.date}
-                  cover={node.data.cover.fluid.src}
+                  cover={node.data.cover.url}
                   season={node.data.season.text}
                   title={node.data.title.text}
                 />
@@ -104,6 +104,8 @@ export const query = graphql`
               fluid {
                 src
               }
+              url(imgixParams: {q: 80})
+
             }
             city {
               text

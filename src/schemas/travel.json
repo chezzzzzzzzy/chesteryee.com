@@ -54,12 +54,144 @@
         "label": "cover"
       }
     },
-    "content": {
-      "type": "StructuredText",
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "label": "content",
-        "placeholder": "content"
+        "labels": {},
+        "choices": {
+          "section": {
+            "type": "Slice",
+            "fieldset": "section",
+            "description": "section",
+            "icon": "assignment",
+            "display": "list",
+            "non-repeat": {
+              "header": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "header",
+                  "placeholder": "header"
+                }
+              }
+            },
+            "repeat": {
+              "sectioncover": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "sectionCover"
+                }
+              },
+              "sectiontitle": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "sectionTitle",
+                  "placeholder": "sectionTitle"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "allowTargetBlank": true,
+                  "label": "description",
+                  "placeholder": "description"
+                }
+              },
+              "address": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "allowTargetBlank": true,
+                  "label": "address",
+                  "placeholder": "address"
+                }
+              },
+              "coord": {
+                "type": "GeoPoint",
+                "config": {
+                  "label": "coord"
+                }
+              }
+            }
+          },
+          "alternate_grid": {
+            "type": "Slice",
+            "fieldset": "AlternateGrid",
+            "description": "A predesigned Text Grid with Image left or right",
+            "icon": "wrap_text",
+            "display": "list",
+            "non-repeat": {
+              "eyebrow_headline": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Eyebrow headline"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "description"
+                }
+              },
+              "optional_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Optional image"
+                }
+              },
+              "image_side": {
+                "type": "Select",
+                "config": {
+                  "options": ["left", "right"],
+                  "label": "Image side"
+                }
+              }
+            },
+            "repeat": {
+              "optional_icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Optional Icon"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "description"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 
 import styled from "styled-components"
 
-import { Portrait, Name, Date, Subject, Mega, MarginWrapper } from "../components/Collection"
+import { Portrait, Header, Text, Name, Date, Subject, Mega, MarginWrapper } from "../components/Collection"
 
 const Container = styled.div`
   padding: 30px 1.4rem;
@@ -23,10 +23,7 @@ const Title = styled.div`
 `
 
 const Subtitle = styled.div``
-const Description = styled.div`
-  font-size: 0.6rem;
-  color: #585858;
-`
+
 
 const Cover = styled.img`
   width: 100%;
@@ -67,14 +64,32 @@ const Travel = ({ data: { prismicTravel } }) => {
   return (
     <Layout>
       <Subject><Inner>{data.season.text}</Inner></Subject>
-      <Cover src={data.cover.fluid.src} />
+      <Cover src={data.cover.url} />
       <Container>
         <Name>Chester Yee</Name>
         <MarginWrapper margin='0px 0px 32px'>
           <Mega>{data.title.text}</Mega>
         </MarginWrapper>
 
-        <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+
+
+        {
+          data.body.map(slice => {
+            return (
+              <div>{slice.items.map(i => {
+                return (
+                  <div>
+                    <Header>{i.sectiontitle.text}</Header>
+                    <Text>{i.description.text}</Text>
+                    {/* <div>{i.coord.latitude}, {i.coord.longitude}</div> */}
+                    <Cover src={i.sectioncover.url} />
+                  </div>
+                )
+              }
+              )}</div>
+            )
+          })
+        }
       </Container>
     </Layout>
   )
@@ -88,15 +103,36 @@ export const pageQuery = graphql`
       uid
       data {
         date(formatString: "Do MMMM YYYY")
-        content {
-          html
-          raw
-          text
+        body {
+        ... on PrismicTravelBodySection {
+          id
+          items {
+            address {
+              text
+            }
+            coord {
+              latitude
+              longitude
+            }
+            description {
+              text
+            }
+            sectioncover {
+              url(imgixParams: {q: 80})
+            }
+            sectiontitle {
+              text
+            }
+          }
+          slice_type
         }
+      }
         cover{
           fluid{
             src
           }
+          url(imgixParams: {q: 80})
+
         }
         country {
           text

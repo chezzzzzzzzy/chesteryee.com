@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme"
 
-import { Portrait, Name, Date, Mega, MarginWrapper, ButtonNav, Icon } from "../components/Collection"
+import { Header, Name, Date, Text, Mega, MarginWrapper, ButtonNav, Icon, Subtitle, Category } from "../components/Collection"
 import { RichText } from 'prismic-reactjs'
 import ReactMarkdown from "react-markdown";
 import icon_forward from '../assets/icon_forward.svg'
@@ -32,22 +32,22 @@ const Title = styled.div`
 
 `
 
-const Subtitle = styled.div``
 const Description = styled.div`
   font-size: 0.6rem;
   color: #585858;
 `
 
 const Cover = styled.img`
-  border-radius: 6px;
 
   @media screen and (min-width: 768px) {
-
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
   }
 `
 
 
-const Category = styled.div`
+const Category2 = styled.div`
   color: white;
   font-weight: bold;
   font-size: 1rem;
@@ -97,38 +97,92 @@ const handleNav = (direction) => {
 }
 
 
+const Part = styled.div`
+  margin: 0px 0px 20px;
+`
+
+const Tags = styled.div`
+
+`
+
 const Post = ({ data: { prismicArticle } }) => {
 
 
   const { data } = prismicArticle
 
-  const rMD = data.body.map(slice => {
-    switch (slice.slice_type) {
-      case "code":
-        return (
-          <div>{slice.primary.implementation.raw}</div>
-        )
-    }
-  })
+  const x = prismicArticle.tags
 
 
+  const coverUrl = data.cover.url
   return (
     <Layout>
-      <Category><Inner>{data.category}</Inner></Category>
+      <Category2><Inner>{data.category}</Inner></Category2>
+      <Cover src={coverUrl} />
+
       <Container>
-        <Middle>
-          <Name>Chester Yee</Name>
-          <MarginWrapper margin='10px 0px 40px'>
+        <Name>Chester Yee</Name>
+        <MarginWrapper margin='0px 0px 40px'>
+          <MarginWrapper margin='6px 0px 16px'>
             <Mega>{data.title.text}</Mega>
           </MarginWrapper>
-        </Middle>
-        <Cover src={data.cover.fluid.src} />
-        <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+          <Tags>
 
+            {
+              x && x.map(index => <Category>{index}</Category>)
+            }
+          </Tags>
+        </MarginWrapper>
+
+
+
+
+
+
+        {
+          data.body.map(slice => {
+            switch (slice.slice_type) {
+              case "code":
+                console.log()
+                return (
+
+
+                  <div>{slice.items.map(i => {
+                    const x = RichText.asText(i.code.raw)
+                    return (
+                      <div>
+                        <div>{i.type.text}</div>
+                        <ReactMarkdown source={x} style={{ width: '960px' }} />
+                      </div>
+                    )
+                  }
+
+                  )}</div>
+                )
+              case "section":
+                console.log()
+                return (
+                  <div>
+
+                    <Header>{slice.primary.sectiontitle.text}</Header>
+
+                    <div>{slice.items.map(i => {
+                      return (
+                        <Part>
+                          <Text>{i.sectionbody.text}</Text>
+                        </Part>
+                      )
+                    }
+
+                    )}</div>
+                  </div>
+                )
+            }
+          })
+        }
 
         <MarginWrapper margin='24px 0px'>
           <HC>
-            <Title>You might also like</Title>
+            <Subtitle>You might also like</Subtitle>
             <HC>
               <ButtonNav onClick={() => this.handleNav('left')}><Icon data={icon_backward} /></ButtonNav>
               <ButtonNav onClick={() => this.handleNav('right')} style={{ marginLeft: '6px' }}><Icon data={icon_forward} /></ButtonNav>
@@ -137,8 +191,6 @@ const Post = ({ data: { prismicArticle } }) => {
           </HC>
 
         </MarginWrapper>
-
-        <ReactMarkdown source={rMD} style={{ width: '960px' }} />
 
 
       </Container>
@@ -169,6 +221,7 @@ export const pageQuery = graphql`
           items {
             code {
               raw
+              html
               text
             }
             type {
@@ -199,17 +252,12 @@ export const pageQuery = graphql`
           fluid {
             src
           }
-        }
-        content {
-          html
-          raw
-          text
-        }
+          url(imgixParams: {q: 80})
 
-        markdown {
-          raw
-          html
         }
+        
+
+       
         title {
           text
         }

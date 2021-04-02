@@ -41,11 +41,10 @@ h1, h2, h3, h4, h5, h6 {
 
 pre {
 
-    /* color: #707070; */
     background-color: #222222;
     border-radius: 6px;
     padding: 14px;
-    word-wrap: break-word;
+    white-space: pre-wrap;
     max-width: 100%;
 }
 

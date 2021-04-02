@@ -303,13 +303,8 @@ export const query = graphql`
           src
         }
       }
-      markdown {
-          raw
-          html
-        }
-      content {
-        text
-      }
+     
+     
       category
     }
   }
@@ -334,10 +329,7 @@ export const query = graphql`
               text
             }
             category
-            markdown {
-          raw
-          html
-        }
+         
             description {
               text
             }

@@ -106,6 +106,19 @@ export const Pointer = styled.div`
 export const Description = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
   line-height: 1.6;
+  color: ${props => props.theme.colors.textGrey};
+
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_description};
+  }
+`
+
+export const Text = styled.div`
+  font-size: ${props => props.theme.fontSizes.mobile_description};
+  line-height: 1.6;
+  color: ${props => props.theme.colors.text};
+
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_description};

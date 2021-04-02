@@ -2,6 +2,7 @@ export default {
   colors: {
     background: '#1D1D1D',
     accent: '#60A9FF',
+    text: '#d1d1d1',
     textGrey: '#9e9e9e',
     textDarkGrey: '#585858',
   },
@@ -30,7 +31,7 @@ export default {
     desktop_header: '1.4em',
     desktop_description: '1.0em',
     desktop_pointer: '0.8em',
-    
+
     mobile_statistics: '2.6em',
     mobile_mega: '1.7em',
     mobile_title: '1.3em',

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import cover_mpp3 from '../assets/cover_mpp3.png'
-import { Container, Mega, Title, Cover, Description, Pointer, Section, FeaturePointer, MarginWrapper, Header, FeatureIcon, Button, Icon, Name, Date } from '../components/Collection'
+import { Container, Mega, Statistics, Title, Cover, Description, Pointer, Section, FeaturePointer, MarginWrapper, Header, FeatureIcon, Button, Icon, Name, Date } from '../components/Collection'
 import icon_linkedin from '../assets/logo-github.svg'
 import icon_allocation from '../assets/icon_allocation.svg'
 import icon_checkmark from '../assets/icon_checkmark.svg'
@@ -24,7 +24,7 @@ import cover_update from '../assets/cover_update.png'
 import cover_view from '../assets/cover_view.png'
 import doc_cert from '../assets/doc_cert.jpg'
 import { useSpring, animated } from 'react-spring';
-
+import logo_singtel from '../assets/logo_singtel.png'
 
 const PageContainer = styled.div`
     display: grid;
@@ -35,7 +35,7 @@ const PageContainer = styled.div`
     @media (${props => props.theme.mediaQueries.laptop}) {
         text-align: start;
         margin-top: 0px;
-        min-height: 100vh;
+        min-height: 80vh;
         align-items: center;
         justify-content: space-between;
         grid-template-columns: 1fr 1fr;
@@ -61,7 +61,7 @@ const Features = styled.div`
 
 const Feature = styled.div`
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
 
 `
 
@@ -127,56 +127,75 @@ const IconContainer = styled.div`
 
 const CardSplit = styled.div`
     display: grid;
-    justify-content: space-between;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 3fr;
         grid-gap: 100px;
     }
 
 `
 
+const LogoCover = styled.object`
+    width: 70px;
+`
+
+
+
+const FullHeightCover = styled.img`
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: ${props => props.w ? props.w : '100vw'};
+    height: ${props => props.h ? props.h : '100vh'};
+`
 
 const project = () => {
 
 
     return (
         <Layout>
+
             <Container>
                 <PageContainer>
                     <div>
-                        <MarginWrapper margin='4px 0px'>
-                            <Pointer>SINGTEL</Pointer>
+                        <MarginWrapper margin='16px 0px'>
+                            <LogoCover data={logo_singtel}></LogoCover>
                         </MarginWrapper>
-                        <Mega>Master Planner Portal</Mega>
-                        <MarginWrapper margin='24px 0px'>
+                        <Statistics>Master Planner Portal</Statistics>
+                        <MarginWrapper margin='32px 0px'>
                             <Description active>CRM for service fulfilment in exchanges and datacenters</Description>
                         </MarginWrapper>
-                        <MarginWrapper margin='40px 0px'>
-                            <Button>Learn More</Button>
-                        </MarginWrapper>
                     </div>
-                    <Cover data={cover_mpp3}></Cover>
                 </PageContainer>
+
+            </Container>
+
+            <FullHeightCover src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'></FullHeightCover>
+
+
+            <Container>
+
+
+
 
 
                 <Section>
-                    <MarginWrapper margin='30px 0px'>
+                    <MarginWrapper margin='60px 0px'>
                         <CardSplit>
                             <div>
                                 <MarginWrapper margin='4px 0px'>
                                     <FeaturePointer>MISSION</FeaturePointer>
                                 </MarginWrapper>
                                 <Title>Objective</Title>
-                                <MarginWrapper margin='24px 0px'>
-                                    <Description>
-                                        This objective of this project was to solve the constant stream of emails
-                                        that were received to request for the installation of fixtures and
-                                        equipments in Singtel Exchanges and Datacenters.
-                            </Description>
-                                </MarginWrapper>
                             </div>
-                            <div></div>
+                            <div>
+                                <Description>
+                                    This objective of this project was to solve the constant stream of emails
+                                    that were received to request for the installation of fixtures and
+                                    equipments in Singtel Exchanges and Datacenters.
+                                </Description>
+                            </div>
                         </CardSplit>
                     </MarginWrapper>
 
@@ -187,25 +206,31 @@ const project = () => {
                                     <FeaturePointer>MISSION</FeaturePointer>
                                 </MarginWrapper>
                                 <Title>Goal</Title>
-                                <MarginWrapper margin='24px 0px'>
-                                    <Description>
-                                        The goal of this project was to streamline the process of having people request for the installation
-                                        of fixtures and equipments in a single platform. The conventional way that
-                                        people were requesting for the installation fo fixtures and equipments was
-                                        by filling up an excel sheet with their specifications required followed by
-                                        sending it through a series of people for approval first before it arrives
-                                        at the Planner for action to be taken. With this process in mind, it is
-                                        exceptionally hard to keep track of the progress and time consuming on the
-                                        other hand.
-                                    </Description>
-                                </MarginWrapper>
                             </div>
-                            <div></div>
+                            <div>
+                                <Description>
+                                    The goal of this project was to streamline the process of having people request for the installation
+                                    of fixtures and equipments in a single platform. The conventional way that
+                                    people were requesting for the installation fo fixtures and equipments was
+                                    by filling up an excel sheet with their specifications required followed by
+                                    sending it through a series of people for approval first before it arrives
+                                    at the Planner for action to be taken. With this process in mind, it is
+                                    exceptionally hard to keep track of the progress and time consuming on the
+                                    other hand.
+                                </Description>
+                            </div>
                         </CardSplit>
 
                     </MarginWrapper>
 
                 </Section>
+
+            </Container>
+
+            <FullHeightCover w='90vw' h='90vh' src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'></FullHeightCover>
+
+
+            <Container>
 
                 <Section>
                     <FeatureContainer>
