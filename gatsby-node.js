@@ -50,7 +50,12 @@ exports.createPages = async ({ graphql, actions }) => {
   // prismic inputs
   const pages = await graphql(`
     {
-      allPrismicArticle {
+      allPrismicArticle(sort: { order: DESC, fields: [data___date] }) {
+        group(field: tags) {
+          fieldValue
+          field
+          totalCount
+      }
         nodes {
             tags
             id
@@ -108,22 +113,32 @@ exports.createPages = async ({ graphql, actions }) => {
     
     `);
 
+
+
+
   const template = path.resolve("./src/templates/post.jsx");
   const travelTemplate = path.resolve("./src/templates/travel.jsx");
   const projectTemplate = path.resolve("./src/templates/project.jsx");
   const tagTemplate = path.resolve("./src/templates/tag.js");
 
+  const articles = pages.data.allPrismicArticle.nodes
 
 
-  pages.data.allPrismicArticle.nodes.forEach((node) => {
+  pages.data.allPrismicArticle.nodes.forEach((node, index) => {
     createPage({
       path: `/articles/${node.uid}`,
       component: template,
       context: {
         uid: node.uid,
+        prev: index === 0 ? null : articles[index - 1],
+        next: index === articles.length - 1 ? null : articles[index + 1]
+
       },
     });
   });
+  
+
+
 
   pages.data.allPrismicProject.nodes.forEach((node) => {
     createPage({
@@ -145,16 +160,18 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  pages.data.allPrismicArticle.nodes.forEach((node) => {
+
+
+  const tags = pages.data.allPrismicArticle.group
+  tags.forEach(tag => {
     createPage({
-      path: `/tags/${node.data.category}`,
+      path: `/tags/${tag.fieldValue}/`,
       component: tagTemplate,
       context: {
-        category: node.data.category,
+        tag: tag.fieldValue,
       },
-    });
-  });
-
+    })
+  })
 
 
 

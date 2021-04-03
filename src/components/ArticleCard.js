@@ -61,7 +61,7 @@ const Content = styled.div`
 `
 
 const ContentHead = styled.div`
-  display: flex;
+display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: ${props => props.mt ? '16px' : '16px'};

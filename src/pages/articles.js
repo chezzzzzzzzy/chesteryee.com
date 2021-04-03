@@ -309,7 +309,7 @@ export const query = graphql`
     }
   }
 
-    allPrismicArticle(skip: 1) {
+    allPrismicArticle(sort: {order: DESC, fields: data___date}) {
       edges {
         node {
           id

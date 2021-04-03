@@ -58,6 +58,10 @@ const Inner = styled.div`
     max-width: 1260px;
 `
 
+const Part = styled.div`
+  margin: 0px 0px 20px;
+`
+
 
 const Travel = ({ data: { prismicTravel } }) => {
   const { data } = prismicTravel
@@ -80,7 +84,9 @@ const Travel = ({ data: { prismicTravel } }) => {
                 return (
                   <div>
                     <Header>{i.sectiontitle.text}</Header>
-                    <Text>{i.description.text}</Text>
+                    <Part>
+                      <Text>{i.description.text}</Text>
+                    </Part>
                     {/* <div>{i.coord.latitude}, {i.coord.longitude}</div> */}
                     <Cover src={i.sectioncover.url} />
                   </div>

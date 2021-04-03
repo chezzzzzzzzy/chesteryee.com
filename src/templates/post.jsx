@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 import styled from "styled-components"
@@ -12,6 +12,8 @@ import ReactMarkdown from "react-markdown";
 import icon_forward from '../assets/icon_forward.svg'
 import icon_backward from '../assets/icon_backward.svg'
 
+
+import NavCard from '../components/NavCard'
 
 const Container = styled.div`
   padding: 30px 1.4rem;
@@ -77,9 +79,15 @@ const Middle = styled.div`
 
 
 const HC = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+
+  }
 `
 
 const handleNav = (direction) => {
@@ -105,7 +113,7 @@ const Tags = styled.div`
 
 `
 
-const Post = ({ data: { prismicArticle } }) => {
+const Post = ({ data: { prismicArticle }, pageContext }) => {
 
 
   const { data } = prismicArticle
@@ -114,6 +122,24 @@ const Post = ({ data: { prismicArticle } }) => {
 
 
   const coverUrl = data.cover.url
+
+  // const { currentPage, numPages } = this.props.pageContext
+
+  const prev = pageContext.prev
+    ? {
+      url: `/articles/${pageContext.prev.uid}`,
+      title: pageContext.prev.data.title.text
+    }
+    : null
+
+  const next = pageContext.next
+    ? {
+      url: `/articles/${pageContext.next.uid}`,
+      title: pageContext.next.data.title.text
+    }
+    : null
+
+
   return (
     <Layout>
       <Category2><Inner>{data.category}</Inner></Category2>
@@ -142,9 +168,7 @@ const Post = ({ data: { prismicArticle } }) => {
           data.body.map(slice => {
             switch (slice.slice_type) {
               case "code":
-                console.log()
                 return (
-
 
                   <div>{slice.items.map(i => {
                     const x = RichText.asText(i.code.raw)
@@ -159,7 +183,6 @@ const Post = ({ data: { prismicArticle } }) => {
                   )}</div>
                 )
               case "section":
-                console.log()
                 return (
                   <div>
 
@@ -180,17 +203,22 @@ const Post = ({ data: { prismicArticle } }) => {
           })
         }
 
-        <MarginWrapper margin='24px 0px'>
-          <HC>
-            <Subtitle>You might also like</Subtitle>
-            <HC>
-              <ButtonNav onClick={() => this.handleNav('left')}><Icon data={icon_backward} /></ButtonNav>
-              <ButtonNav onClick={() => this.handleNav('right')} style={{ marginLeft: '6px' }}><Icon data={icon_forward} /></ButtonNav>
-            </HC>
+        <MarginWrapper margin='100px 0px 0px'>
 
+          <HC>
+            {prev && (
+              <NavCard direction='Previous' title={prev.title} to={prev.url} />
+            )}
+
+            {next && (
+              <NavCard direction='Next' title={next.title} to={next.url} end />
+
+            )}
           </HC>
 
+
         </MarginWrapper>
+
 
 
       </Container>

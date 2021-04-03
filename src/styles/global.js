@@ -46,6 +46,7 @@ pre {
     padding: 14px;
     white-space: pre-wrap;
     max-width: 100%;
+    line-height: 1.6;
 }
 
 img {
