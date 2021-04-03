@@ -22,6 +22,8 @@ import icon_calendar from '../assets/icon_calendar2.svg'
 
 const Container = styled.div`
   display: flex;
+  width: 100%;
+  
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
@@ -30,8 +32,8 @@ const Container = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.focus ? 'row' : 'column'};
-    grid-gap: ${props => props.focus ? '60px' : null};
-    /* border: ${props => props.focus ? '0.6px solid #292929' : null}; */
+    /* grid-gap: ${props => props.focus ? '60px' : 'null'}; */
+    
   }
 
 
@@ -40,13 +42,15 @@ const Container = styled.div`
 const Cover = styled.img`
   width: 100%;
   border-radius: 4px;
-  height: ${props => props.height ? `${props.height}` : '240px'};
+  height: 240px;
   object-fit: cover;
 
 
   @media (min-width: 768px) {
     /* display: none; */
     width: ${props => props.width ? `${props.width}` : '100%'};
+    height: ${props => props.height ? `${props.height}` : '240px'};
+
 
   }
 `
@@ -58,6 +62,13 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: 768px) {
+    /* display: none; */
+    margin: ${props => props.m ? `${props.m}` : '0px%'};
+
+
+  }
 `
 
 const ContentHead = styled.div`
@@ -146,7 +157,7 @@ export class ArticleCard extends Component {
 
         <Cover src={this.props.cover} height={this.props.height} width={this.props.width} />
 
-        <Content>
+        <Content m={this.props.m}>
           <ContentTop>
 
             <ContentHead mt={this.props.mt}>
