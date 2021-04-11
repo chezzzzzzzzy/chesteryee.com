@@ -82,7 +82,7 @@ const Travel = ({ data: { prismicTravel } }) => {
             return (
               <div>{slice.items.map(i => {
                 return (
-                  <div>
+                  <div style={{ margin: '40px 0px' }}>
                     <Header>{i.sectiontitle.text}</Header>
                     <Part>
                       <Text>{i.description.text}</Text>

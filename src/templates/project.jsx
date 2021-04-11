@@ -89,7 +89,7 @@ const Step = styled.div`
         align-items: center;
         text-align: center;
 
-        ::before {
+        /* ::before {
             content: '';
             width: 20%;
             border-bottom: solid 1px #fff;
@@ -102,7 +102,7 @@ const Step = styled.div`
 
         ::after {
            
-        }
+        } */
     }
 `
 
@@ -147,7 +147,12 @@ const FullHeightCover = styled.img`
     margin-right: auto;
     object-fit: cover;
     width: ${props => props.w ? props.w : '100vw'};
-    height: ${props => props.h ? props.h : '100vh'};
+    height: 100%;
+    
+    @media (${props => props.theme.mediaQueries.laptop}) {
+        width: ${props => props.w ? props.w : '100vw'};
+        height: ${props => props.h ? props.h : '100vh'};
+    }
 `
 
 const project = () => {
@@ -171,7 +176,7 @@ const project = () => {
 
             </Container>
 
-            <FullHeightCover src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'></FullHeightCover>
+            <FullHeightCover src='https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'></FullHeightCover>
 
 
             <Container>
@@ -181,7 +186,7 @@ const project = () => {
 
 
                 <Section>
-                    <MarginWrapper margin='60px 0px'>
+                    <MarginWrapper margin='112px 56px 32px'>
                         <CardSplit>
                             <div>
                                 <MarginWrapper margin='4px 0px'>
@@ -199,7 +204,7 @@ const project = () => {
                         </CardSplit>
                     </MarginWrapper>
 
-                    <MarginWrapper margin='30px 0px'>
+                    <MarginWrapper margin='32px 56px 112px'>
                         <CardSplit>
                             <div>
                                 <MarginWrapper margin='4px 0px'>
@@ -227,7 +232,7 @@ const project = () => {
 
             </Container>
 
-            <FullHeightCover w='90vw' h='90vh' src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'></FullHeightCover>
+            <FullHeightCover w='90vw' h='90vh' src='https://www.zdnet.com/a/hub/i/2019/01/15/85f2a328-b7e3-41ab-9486-d9a6334d23d2/ibx-equinix.jpg'></FullHeightCover>
 
 
             <Container>

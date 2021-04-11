@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 import { motion } from 'framer-motion'
 
 
@@ -260,6 +261,12 @@ export const Portrait = styled.img`
 
 
 
+
+`
+
+export const Tag = styled(Link)`
+  text-decoration: none;
+  color: ${props => props.theme.colors.accent};
 
 `
 

@@ -205,9 +205,8 @@ export class articles extends Component {
               <ArticleCard
                 focus
                 m='0px 0px 0px 24px'
+                width='32%'
 
-                height='340px'
-                width='100%'
                 tags={this.props.data.prismicArticle.tags}
 
                 category={this.props.data.prismicArticle.data.category}

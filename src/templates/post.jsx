@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme"
 
-import { Header, Name, Date, Text, Mega, MarginWrapper, ButtonNav, Icon, Subtitle, Category } from "../components/Collection"
+import { Header, Name, Date, Text, Mega, MarginWrapper, ButtonNav, Icon, Subtitle, Category, Tag } from "../components/Collection"
 import { RichText } from 'prismic-reactjs'
 import ReactMarkdown from "react-markdown";
 import icon_forward from '../assets/icon_forward.svg'
@@ -154,7 +154,7 @@ const Post = ({ data: { prismicArticle }, pageContext }) => {
           <Tags>
 
             {
-              x && x.map(index => <Category>{index}</Category>)
+              x && x.map(index => <Category><Tag to={`/tags/${index}`}>{index}</Tag></Category>)
             }
           </Tags>
         </MarginWrapper>
