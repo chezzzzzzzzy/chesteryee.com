@@ -10,22 +10,21 @@ export const Container = styled.div`
   margin: 0px auto;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
-    max-width: ${props => props.width ? `${props.width}` : '1260px'};
+    max-width: ${props => props.width ? `${props.width}` : '100%'};
     padding: 0px;
   }
 `
 
 export const Section = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: ${props => props.column ? 'row' : 'column'};
   align-items: ${props => props.center ? 'center' : null};
   background-color: ${props => props.black ? '#151515' : 'null'};
   width: ${props => props.width ? `${props.width}` : '100%'};
   height: ${props => props.height ? '100vh' : null};
 
   @media (${props => props.theme.mediaQueries.laptop}) {
-    justify-content: center;
+    justify-content: ${props => props.center ? 'center' : null};;
   }
 `
 
@@ -95,8 +94,18 @@ export const Subtitle = styled.div`
 `
 
 export const Pointer = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  /* font-size: ${props => props.theme.fontSizes.mobile_pointer};
   font-weight: 600;
+  color: #585858;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_pointer};
+  } */
+
+  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  color: ${props => props.theme.colors.textGrey};
+  font-weight: 300;
+  margin: 2px 0px;
   color: #585858;
 
   @media screen and (min-width: 768px) {
@@ -107,6 +116,7 @@ export const Pointer = styled.div`
 export const Description = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
   line-height: 1.6;
+  font-weight: 400;
   color: ${props => props.theme.colors.textGrey};
 
 
@@ -114,6 +124,19 @@ export const Description = styled.div`
     font-size: ${props => props.theme.fontSizes.desktop_description};
   }
 `
+
+export const Description2 = styled.div`
+  font-size: ${props => props.theme.fontSizes.mobile_description};
+  line-height: 1.6;
+  font-weight: 500;
+  color: ${props => props.theme.colors.textGrey};
+
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.desktop_description};
+  }
+`
+
 
 export const Text = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
@@ -283,13 +306,13 @@ export const Category = styled.div`
  
 `
 
-// used for adjusting y margin
-export const MarginWrapper = styled(motion.div)`
+export const Box = styled(motion.div)`
   margin: ${props => props.margin ? `${props.margin}` : 'null'};
   padding: ${props => props.padding ? `${props.padding}` : 'null'};
+  width: ${props => props.width ? '100%' : 'null'};
 
   @media (${props => props.theme.mediaQueries.laptop}) {
-    margin: ${props => props.margin ? `${props.margin}` : 'null'};
+    width: ${props => props.width ? `${props.width}` : 'null'};
   }
 
 `
@@ -334,7 +357,7 @@ export const FeatureDescription = styled.div`
 export const FeatureSubtitle = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_subtitle};
   color: ${props => (props.active ? props.theme.colors.accent : 'white')};
-  font-weight: 600;
+  font-weight: 500;
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_subtitle};
@@ -405,5 +428,5 @@ export const CenterWrapper = styled.div`
 export const HR = styled.hr`
   margin: 0px 0px;
   border-radius: 100px;   
-  border: 0.6px solid #292929;
+  border: 0.6px solid #202020;
 `

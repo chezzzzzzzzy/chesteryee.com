@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Description, Header, Subtitle, Title, MarginWrapper, FeaturePointer } from './Collection'
+import { Description, Header, Subtitle, Title, Box, FeaturePointer } from './Collection'
 
 const Container = styled.div`
 
@@ -40,13 +40,13 @@ export class CardHalfCoverHalfText extends Component {
             <Container>
                 <Card>
                     <Details>
-                        <MarginWrapper margin='4px 0px'>
+                        <Box margin='4px 0px'>
                             <FeaturePointer>FORMS</FeaturePointer>
-                        </MarginWrapper>
+                        </Box>
                         <Subtitle>{this.props.title}</Subtitle>
-                        <MarginWrapper margin='30px 0px'>
+                        <Box margin='30px 0px'>
                             <Description>{this.props.description}</Description>
-                        </MarginWrapper>
+                        </Box>
 
                     </Details>
                     <Cover src={this.props.cover} />

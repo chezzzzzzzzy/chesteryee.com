@@ -1,17 +1,28 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import Layout from '../components/layout'
 
-import styled from "styled-components"
-import { ThemeProvider } from "styled-components"
-import theme from "../styles/theme"
+import styled from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import theme from '../styles/theme'
 
-import { Header, Name, Date, Text, Mega, MarginWrapper, ButtonNav, Icon, Subtitle, Category, Tag } from "../components/Collection"
+import {
+  Header,
+  Name,
+  Date,
+  Text,
+  Mega,
+  Box,
+  ButtonNav,
+  Icon,
+  Subtitle,
+  Category,
+  Tag,
+} from '../components/Collection'
 import { RichText } from 'prismic-reactjs'
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from 'react-markdown'
 import icon_forward from '../assets/icon_forward.svg'
 import icon_backward from '../assets/icon_backward.svg'
-
 
 import NavCard from '../components/NavCard'
 
@@ -31,7 +42,6 @@ const Title = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   padding: 0.6rem 0;
-
 `
 
 const Description = styled.div`
@@ -40,14 +50,12 @@ const Description = styled.div`
 `
 
 const Cover = styled.img`
-
   @media screen and (min-width: 768px) {
     width: 100%;
     height: 50vh;
     object-fit: cover;
   }
 `
-
 
 const Category2 = styled.div`
   color: white;
@@ -67,59 +75,57 @@ const Content = styled.div`
   overflow-wrap: normal;
 `
 
-
 const Inner = styled.div`
-    margin: auto;
-    max-width: 1260px;
+  margin: auto;
+  max-width: 1260px;
 `
 
 const Middle = styled.div`
   text-align: center;
 `
 
-
 const HC = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px;
 
-
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-
   }
 `
 
-const handleNav = (direction) => {
+const handleNav = direction => {
   if (direction == 'left') {
-    this.navRef ? (this.navRef.current.scrollBy({
-      left: -200,
-      behavior: 'smooth'
-    })) : null
+    this.navRef
+      ? this.navRef.current.scrollBy({
+          left: -200,
+          behavior: 'smooth',
+        })
+      : null
   } else {
-    this.navRef ? (this.navRef.current.scrollBy({
-      left: 200,
-      behavior: 'smooth'
-    })) : null
+    this.navRef
+      ? this.navRef.current.scrollBy({
+          left: 200,
+          behavior: 'smooth',
+        })
+      : null
   }
 }
-
 
 const Part = styled.div`
   margin: 0px 0px 20px;
 `
 
-const Tags = styled.div`
+const Tags = styled.div``
 
+const Mega2 = styled(Mega)`
+  font-weight: 600;
 `
 
 const Post = ({ data: { prismicArticle }, pageContext }) => {
-
-
   const { data } = prismicArticle
 
   const x = prismicArticle.tags
-
 
   const coverUrl = data.cover.url
 
@@ -127,50 +133,44 @@ const Post = ({ data: { prismicArticle }, pageContext }) => {
 
   const prev = pageContext.prev
     ? {
-      url: `/articles/${pageContext.prev.uid}`,
-      title: pageContext.prev.data.title.text
-    }
+        url: `/blog/${pageContext.prev.uid}`,
+        title: pageContext.prev.data.title.text,
+      }
     : null
 
   const next = pageContext.next
     ? {
-      url: `/articles/${pageContext.next.uid}`,
-      title: pageContext.next.data.title.text
-    }
+        url: `/blog/${pageContext.next.uid}`,
+        title: pageContext.next.data.title.text,
+      }
     : null
-
 
   return (
     <Layout>
-      <Category2><Inner>{data.category}</Inner></Category2>
       <Cover src={coverUrl} />
 
       <Container>
         <Name>Chester Yee</Name>
-        <MarginWrapper margin='0px 0px 40px'>
-          <MarginWrapper margin='6px 0px 16px'>
-            <Mega>{data.title.text}</Mega>
-          </MarginWrapper>
+        <Box margin="0px 0px 40px">
+          <Box margin="6px 0px 16px">
+            <Mega2>{data.title.text}</Mega2>
+          </Box>
           <Tags>
-
-            {
-              x && x.map(index => <Category><Tag to={`/tags/${index}`}>{index}</Tag></Category>)
-            }
+            {x &&
+              x.map(index => (
+                <Category>
+                  <Tag to={`/tags/${index}`}>{index}</Tag>
+                </Category>
+              ))}
           </Tags>
-        </MarginWrapper>
+        </Box>
 
-
-
-
-
-
-        {
-          data.body.map(slice => {
-            switch (slice.slice_type) {
-              case "code":
-                return (
-
-                  <div>{slice.items.map(i => {
+        {data.body.map(slice => {
+          switch (slice.slice_type) {
+            case 'code':
+              return (
+                <div>
+                  {slice.items.map(i => {
                     const x = RichText.asText(i.code.raw)
                     return (
                       <div>
@@ -178,52 +178,40 @@ const Post = ({ data: { prismicArticle }, pageContext }) => {
                         <ReactMarkdown source={x} style={{ width: '960px' }} />
                       </div>
                     )
-                  }
+                  })}
+                </div>
+              )
+            case 'section':
+              return (
+                <div>
+                  <Header>{slice.primary.sectiontitle.text}</Header>
 
-                  )}</div>
-                )
-              case "section":
-                return (
                   <div>
-
-                    <Header>{slice.primary.sectiontitle.text}</Header>
-
-                    <div>{slice.items.map(i => {
+                    {slice.items.map(i => {
                       return (
                         <Part>
                           <Text>{i.sectionbody.text}</Text>
                         </Part>
                       )
-                    }
-
-                    )}</div>
+                    })}
                   </div>
-                )
-            }
-          })
-        }
+                </div>
+              )
+          }
+        })}
 
-        <MarginWrapper margin='100px 0px 0px'>
-
+        <Box margin="100px 0px 0px">
           <HC>
             {prev && (
-              <NavCard direction='Previous' title={prev.title} to={prev.url} />
+              <NavCard direction="Previous" title={prev.title} to={prev.url} />
             )}
 
             {next && (
-              <NavCard direction='Next' title={next.title} to={next.url} end />
-
+              <NavCard direction="Next" title={next.title} to={next.url} end />
             )}
           </HC>
-
-
-        </MarginWrapper>
-
-
-
+        </Box>
       </Container>
-
-
     </Layout>
   )
 }
@@ -236,56 +224,50 @@ export const pageQuery = graphql`
       uid
       tags
       data {
-        
         category
         body {
-        ... on PrismicArticleBodyCode {
-          slice_type
-          primary {
-            implementation {
-              text
+          ... on PrismicArticleBodyCode {
+            slice_type
+            primary {
+              implementation {
+                text
+              }
+            }
+            items {
+              code {
+                raw
+                html
+                text
+              }
+              type {
+                text
+              }
             }
           }
-          items {
-            code {
-              raw
-              html
-              text
+          ... on PrismicArticleBodySection {
+            slice_type
+            primary {
+              sectiontitle {
+                text
+              }
             }
-            type {
-              text
+            items {
+              sectionbody {
+                text
+              }
             }
           }
-         
+          __typename
         }
-        ... on PrismicArticleBodySection {
-          slice_type
-          primary {
-            sectiontitle {
-              text
-            }
-          }
-          items {
-            sectionbody {
-              text
-            }
-          }
-        }
-        __typename
-
-      }
 
         date(formatString: "Do MMMM YYYY")
         cover {
           fluid {
             src
           }
-          url(imgixParams: {q: 80})
-
+          url(imgixParams: { q: 80 })
         }
-        
 
-       
         title {
           text
         }

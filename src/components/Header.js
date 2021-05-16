@@ -17,7 +17,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 1.4rem;
-  background-color: #242424;
+  background-color: #101010;
   @media screen and (min-width: 768px) {
     
   }
@@ -28,7 +28,7 @@ const Inner = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 1260px;
+  width: 1500px;
   margin: auto;
 `
 
@@ -36,8 +36,10 @@ const Item = styled(Link)`
   color: white;
   text-decoration: none;
   font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: 600;
   z-index: 1000;
+
+
   @media screen and (min-width: 768px) {
     font-size: 0.9rem;
   }
@@ -57,15 +59,15 @@ const Memoji = styled.img`
 const Logo = styled.div`
   display: flex;
   align-items: center;
+  
 `
 
 const MenuBarDesktop = styled.div`
   display: none;
   @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-    justify-items: center;
+    display: flex;
+    grid-gap: 16px;
+    justify-items: flex-end;
   }
 `
 
@@ -103,21 +105,16 @@ export default function Header() {
         </Item>
 
         <Items>
-          {/* <div ref={node}> */}
           <MenuBarDesktop>
 
-            <Item to="/services">Services</Item>
-            <Item to="/articles">Articles</Item>
-            <Item to="/travel">Travel</Item>
-            <Item to="/about">About</Item>
-            {/* <Item to="/setup">Setup</Item> */}
+            <Item to="/blog">Blog</Item>
+            {/* <Item to="/about">About</Item> */}
           </MenuBarDesktop>
 
           <MenuBarMobile>
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </MenuBarMobile>
-          {/* </div> */}
         </Items>
       </Inner>
 

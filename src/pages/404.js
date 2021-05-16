@@ -16,6 +16,7 @@ const Details = styled.div`
 
 
 
+
 export class Error extends Component {
   render() {
     return (

@@ -18,9 +18,16 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
-  width: 100%;
   min-height: 100vh;
+  /* padding: 0px 20px; */
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+
+
+
   @media screen and (min-width: 768px) {
+   
     
   }
 `
@@ -46,6 +53,7 @@ const Layout = ({ children }) => {
           <Header />
 
           <Content>{children}</Content>
+          
           <Footer />
         </Container>
       </ThemeProvider>

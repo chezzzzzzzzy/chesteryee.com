@@ -66,10 +66,9 @@ const Menu = ({ open, ...props }) => {
         animate="visible"
         variants={list}
       >
-        <ItemsFM variants={item}><Item to="/services">Services</Item></ItemsFM>
-        <ItemsFM variants={item}><Item to="/articles">Articles</Item></ItemsFM>
-        <ItemsFM variants={item}><Item to="/travel">Travel</Item></ItemsFM>
-        <ItemsFM variants={item}><Item to="/about">About</Item></ItemsFM>
+        <ItemsFM variants={item}><Item to="/blog">Blog</Item></ItemsFM>
+        {/* <ItemsFM variants={item}><Item to="/travel">Travel</Item></ItemsFM> */}
+        {/* <ItemsFM variants={item}><Item to="/about">About</Item></ItemsFM> */}
       </Items>
     </StyledMenu>
   )

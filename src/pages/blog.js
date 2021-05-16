@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import ArticleCard from '../components/ArticleCard'
 
 import styled from 'styled-components'
-import { Mega, Title, Subject, FeaturePointer, MarginWrapper, HR, Description, Button, ButtonNav, MovingIcon, Icon } from '../components/Collection'
+import { Mega, Title, Subject, FeaturePointer, Box, HR, Description, Button, ButtonNav, MovingIcon, Icon } from '../components/Collection'
 import CategoryCard from '../components/CategoryCard'
 import icon_laptop from '../assets/laptop-outline.svg'
 import icon_codeSlash from '../assets/icon_codeSlash.svg'
@@ -19,23 +19,23 @@ import icon_forward from '../assets/icon_forward.svg'
 import icon_backward from '../assets/icon_backward.svg'
 
 
+import LatestArticleCard from '../components/LatestArticleCard'
+
+
 const Articles = styled.div`
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 24px;
-    width: 1260px;
+    grid-template-columns: repeat(12,1fr);
+    grid-gap: 16px;
     margin: 0 auto;    
   }
 `
 
 const Container = styled.div`
-  padding: 1rem 1.4rem;
-  max-width: 1260px;
-  margin: auto;    
+  margin: 100px 0px;
 `
 
 
@@ -48,8 +48,9 @@ const Inner = styled.div`
 const Article = styled(Link)`
   text-decoration: none;
   color: black;
-  margin: 8px 0px;
+  margin: 16px 0px;
   scroll-snap-align: center;
+  grid-column: ${props => props.spanCol};
 
 `
 
@@ -91,7 +92,7 @@ const Articles3 = styled.div`
     display: none;
   }
   @media (min-width: 768px) {
-    grid-auto-columns: 32.5%;
+    grid-auto-columns: 24.5%;
   }
 
 
@@ -130,20 +131,19 @@ export class articles extends Component {
   render() {
     return (
       <Layout>
-        <Subject><Inner>Code</Inner></Subject>
 
-        <Container>
-
+        <Container style={{ padding: '40px 20px', maxWidth: '1500px', margin: '0px auto' }}>
 
 
 
           <Article to={this.props.data.prismicArticle.uid}>
 
-            <ArticleCard
-              focus
+            <LatestArticleCard fs
+              lm
+              latestArticle
               m='0px 0px 0px 24px'
-              height='400px'
-              width='50%'
+              height='550px'
+              width='54%'
               tags={this.props.data.prismicArticle.tags}
               category={this.props.data.prismicArticle.data.category}
               cover={this.props.data.prismicArticle.data.cover.fluid.src}
@@ -151,30 +151,32 @@ export class articles extends Component {
               description={this.props.data.prismicArticle.data.description.text}
               portrait={cover_profile}
               name="Chester Yee"
-              date={this.props.data.prismicArticle.data.date}
-            />
+              date={this.props.data.prismicArticle.data.date} />
           </Article>
 
 
 
 
-          <MarginWrapper margin='24px 0px'>
+          <Box margin='48px 0px 24px 0px'>
             <Title>Latest Reads</Title>
-          </MarginWrapper>
+          </Box>
 
 
 
 
           <Articles>
-            {this.props.data.allPrismicArticle.edges.map(({ node }) => (
-              <Article to={node.uid}>
+            {this.props.data.allPrismicArticle.edges.map(({ node }, index) => (
+
+              <Article to={node.uid} spanCol={index == 0 | index == 1 | index == 2 ? "span 4" : "span 3"}>
                 <ArticleCard
                   mt
+                  rev={index == 0 | index == 1 | index == 2}
+                  height={index == 0 | index == 1 | index == 2 ? '320px' : null}
                   tags={node.tags}
                   category={node.data.category}
                   cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
-                  description={node.data.description.text}
+                  description={index == 0 | index == 1 | index == 2 ? node.data.description.text : null}
                   portrait={cover_profile}
                   name="Chester Yee"
                   date={node.data.date}
@@ -184,49 +186,11 @@ export class articles extends Component {
           </Articles>
 
 
-          <MarginWrapper margin='24px 0px'>
+
+          {/* 
+          <Box margin='48px 0px 24px 0px'>
             <HC>
-              <Title>Popular</Title>
-              <Button href='./articles'>
-                <HC>
-                  <div style={{ marginRight: '4px' }}>Explore</div>
-                  <MovingIcon size='16px' data={icon_forward}></MovingIcon>
-                </HC>
-              </Button>
-            </HC>
-
-          </MarginWrapper>
-
-          <Articles2>
-
-
-            <Article to={this.props.data.prismicArticle.uid}>
-
-              <ArticleCard
-                focus
-                m='0px 0px 0px 24px'
-                width='32%'
-
-                tags={this.props.data.prismicArticle.tags}
-
-                category={this.props.data.prismicArticle.data.category}
-                cover={this.props.data.prismicArticle.data.cover.fluid.src}
-                title={this.props.data.prismicArticle.data.title.text}
-                description={this.props.data.prismicArticle.data.description.text}
-                portrait={cover_profile}
-                name="Chester Yee"
-                date={this.props.data.prismicArticle.data.date}
-              />
-            </Article>
-
-
-
-
-          </Articles2>
-
-          <MarginWrapper margin='24px 0px'>
-            <HC>
-              <Title>You might also like</Title>
+              <Title>Categories</Title>
               <HC>
                 <ButtonNav onClick={() => this.handleNav('left')}><Icon data={icon_backward} /></ButtonNav>
                 <ButtonNav onClick={() => this.handleNav('right')} style={{ marginLeft: '6px' }}><Icon data={icon_forward} /></ButtonNav>
@@ -234,7 +198,7 @@ export class articles extends Component {
 
             </HC>
 
-          </MarginWrapper>
+          </Box>
 
 
 
@@ -256,11 +220,10 @@ export class articles extends Component {
             ))}
 
           </Articles3>
-
+ */}
 
 
         </Container>
-        <Banner title='Article Suggestion' />
 
       </Layout >
     )
@@ -299,7 +262,7 @@ export const query = graphql`
       description {
         text
       }
-      date(formatString: "Do MMM YY")
+      date(formatString: "MMMM D, YYYY")
       cover {
         fluid {
           src
@@ -311,7 +274,7 @@ export const query = graphql`
     }
   }
 
-    allPrismicArticle(sort: {order: DESC, fields: data___date}) {
+    allPrismicArticle(sort: {order: DESC, fields: data___date}, limit: 11) {
       edges {
         node {
           id
@@ -326,7 +289,7 @@ export const query = graphql`
                 src
               }
             }
-            date(formatString: "Do MMM YY")
+            date(formatString: "MMMM D, YYYY")
             title {
               text
             }

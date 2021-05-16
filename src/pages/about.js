@@ -21,7 +21,7 @@ import {
   Title,
   Description,
   Wrapper,
-  MarginWrapper,
+  Box,
   Cover,
   Pointer,
   CoverBrands,
@@ -122,7 +122,7 @@ const Left = styled.div`
 
 const Inner = styled.div`
     margin: auto;
-    max-width: 1260px;
+    max-width: 1500px;
 `
 
 
@@ -132,7 +132,6 @@ const About = ({ data }) => {
 
 
     <Layout>
-      <Subject><Inner>About</Inner></Subject>
 
 
       <SectionGrid black>
@@ -140,7 +139,7 @@ const About = ({ data }) => {
         {/* <Cover data={profile} /> */}
         <Img fluid={data.file.childImageSharp.fluid} />
 
-        <MarginWrapper margin='30px 1.4rem'>
+        <Box margin='30px 1.4rem'>
 
           <StatisticsContainer>
             <StatisticsBlock>
@@ -155,7 +154,7 @@ const About = ({ data }) => {
 
 
 
-          <MarginWrapper margin='30px 0px'>
+          <Box margin='30px 0px'>
 
             <Description>
               Technology has always been an interest of mine ever since I was
@@ -170,32 +169,32 @@ const About = ({ data }) => {
           </Description>
 
 
-            <MarginWrapper margin='30px 0px'>
+            <Box margin='30px 0px'>
               <FeaturePointer>PROFESSIONAL EXPERIENCE</FeaturePointer>
-            </MarginWrapper>
+            </Box>
 
-            <MarginWrapper margin='16px 0px'>
+            <Box margin='16px 0px'>
               <Description>
                 Co-Founder
         </Description>
               <Pointer>RENIU</Pointer>
-            </MarginWrapper>
+            </Box>
 
-            <MarginWrapper margin='16px 0px'>
+            <Box margin='16px 0px'>
               <Description>
                 Intern
         </Description>
               <Pointer>Singtel</Pointer>
-            </MarginWrapper>
+            </Box>
 
-            <MarginWrapper margin='16px 0px'>
+            <Box margin='16px 0px'>
               <Description>
                 Teaching Assistant / Instructor
         </Description>
               <Pointer>Code in the Community</Pointer>
-            </MarginWrapper>
+            </Box>
 
-          </MarginWrapper>
+          </Box>
 
 
           <Socials>
@@ -204,7 +203,7 @@ const About = ({ data }) => {
           </Socials>
 
 
-        </MarginWrapper>
+        </Box>
 
 
       </SectionGrid>
@@ -215,12 +214,12 @@ const About = ({ data }) => {
 
       <Container>
 
-        <MarginWrapper margin='30px 0px'>
+        <Box margin='30px 0px'>
           <SectionGrid center>
             <Left>
-              <MarginWrapper margin='4px 0px'>
+              <Box margin='4px 0px'>
                 <FeaturePointer>LOCATION</FeaturePointer>
-              </MarginWrapper>
+              </Box>
               <Title>Singapore</Title>
               <Wrapper margin='16px 0px'>
                 <Description>
@@ -232,14 +231,14 @@ const About = ({ data }) => {
               <Cover data={map_singapore} />
             </div>
           </SectionGrid>
-        </MarginWrapper>
+        </Box>
 
 
-        <MarginWrapper margin='30px 0px'>
+        <Box margin='30px 0px'>
           <Section center>
-            <MarginWrapper margin='30px 0px'>
+            <Box margin='30px 0px'>
               <FeaturePointer>EDUCATION</FeaturePointer>
-            </MarginWrapper>
+            </Box>
             <Cards>
               {education.map(e => {
                 return (
@@ -253,13 +252,13 @@ const About = ({ data }) => {
             </Cards>
 
           </Section>
-        </MarginWrapper>
+        </Box>
 
-        <MarginWrapper margin='30px 0px'>
+        <Box margin='30px 0px'>
           <Section center>
-            <MarginWrapper margin='30px 0px'>
+            <Box margin='30px 0px'>
               <FeaturePointer>ACCOLADES</FeaturePointer>
-            </MarginWrapper>
+            </Box>
             <Cards>
               {accolades.map(e => {
                 return (
@@ -273,13 +272,13 @@ const About = ({ data }) => {
             </Cards>
 
           </Section>
-        </MarginWrapper>
+        </Box>
 
-        <MarginWrapper margin='30px 0px'>
+        <Box margin='30px 0px'>
           <Section center>
-            <MarginWrapper margin='30px 0px'>
+            <Box margin='30px 0px'>
               <FeaturePointer>COMPANIES I WORKED WITH</FeaturePointer>
-            </MarginWrapper>
+            </Box>
             <Companies>
               <CoverBrands data={logo_reniu} />
               <CoverBrands data={logo_singtel} />
@@ -288,7 +287,7 @@ const About = ({ data }) => {
             </Companies>
 
           </Section>
-        </MarginWrapper>
+        </Box>
 
 
 

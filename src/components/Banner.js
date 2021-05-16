@@ -9,11 +9,11 @@ import {
     Section,
 
     Button,
-    MarginWrapper,
+    Box,
     FeaturePointer,
     CenterWrapper
 } from './Collection'
-import cover_jump from '../assets/cover_jump.png'
+import cover_jump from '../assets/cover_workTogether3.png'
 
 
 const Container = styled.div`
@@ -34,9 +34,9 @@ const Banner = ({ title }) => {
         <Container>
             <Section center black>
                 <BannerContainer>
-                    <MarginWrapper margin='8px 0px'>
+                    <Box margin='8px 0px'>
                         <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>
-                    </MarginWrapper>
+                    </Box>
                     <Title>{title ? title : "Let's Collaborate!"}</Title>
                     <BannerCover data={cover_jump} />
                     <Button href='mailto: hello@chesteryee.com'>Get in Touch</Button>

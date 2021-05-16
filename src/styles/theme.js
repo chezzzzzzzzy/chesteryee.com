@@ -3,7 +3,7 @@ export default {
     background: '#1D1D1D',
     accent: '#60A9FF',
     text: '#d1d1d1',
-    textGrey: '#9e9e9e',
+    textGrey: '#e6e6e6',
     textDarkGrey: '#585858',
   },
 

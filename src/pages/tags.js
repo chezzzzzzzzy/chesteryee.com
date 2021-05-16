@@ -6,7 +6,7 @@ import {
     Subject,
     Container,
     Category,
-    MarginWrapper
+    Box
 } from '../components/Collection'
 
 const Inner = styled.div`
@@ -23,9 +23,8 @@ const Tag = styled(Link)`
 const tags = ({ data: { allPrismicArticle: { group } } }) => {
     return (
         <Layout>
-            <Subject><Inner>Tags</Inner></Subject>
-            <Container>
-                <MarginWrapper margin='20px 0px'>
+            <Container style={{ padding: '0px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+                <Box margin='20px 0px'>
                     {group.map(tag => (
                         <Tag key={tag.fieldValue} to={`/tags/${tag.fieldValue}/`}>
                             <div>
@@ -33,7 +32,7 @@ const tags = ({ data: { allPrismicArticle: { group } } }) => {
                             </div>
                         </Tag>
                     ))}
-                </MarginWrapper>
+                </Box>
             </Container>
         </Layout>
     )

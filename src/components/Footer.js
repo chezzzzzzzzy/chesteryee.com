@@ -28,7 +28,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 24px 1.4rem;
-  background-color: #242424;
+  background-color: #101010 ;
  
   @media screen and (min-width: 768px) {
     padding: 40px 0rem;
@@ -52,7 +52,7 @@ const Inner = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1260px;
+  width: 1500px;
   margin: auto;
 `
 
@@ -86,8 +86,7 @@ const Sitemap = styled.div`
   grid-gap: 20px;
 
    @media screen and (min-width: 768px) {
-    grid-template-columns: 2fr 1fr 1fr 1fr ;
-    justify-items: flex-end;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   }
 
 `
@@ -130,6 +129,10 @@ export class Footer extends Component {
                 <FooterDescription>Components</FooterDescription>
                 <FooterDescription>Fonts</FooterDescription>
                 <FooterDescription>Illustrations</FooterDescription>
+              </div>
+              <div>
+                <FooterTitle>About</FooterTitle>
+                <FooterDescription>Press Kit</FooterDescription>
               </div>
               <div>
                 <FooterTitle>About</FooterTitle>

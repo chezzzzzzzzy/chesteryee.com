@@ -6,7 +6,7 @@ import {
   Subject,
   Container,
   Category,
-  MarginWrapper,
+  Box,
   Button
 } from '../components/Collection'
 import ArticleCard from '../components/ArticleCard'
@@ -31,15 +31,17 @@ const tag = ({ pageContext, data }) => {
     } tagged with "${tag}"`
   return (
     <Layout>
-      <Subject><Inner>{tagHeader}</Inner></Subject>
-      <Container>
-        <MarginWrapper margin='20px 0px'>
+      <Container style={{ padding: '0px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+
+        <div>{tagHeader}</div>
+
+        <Box margin='20px 0px'>
           {edges.map(({ node }) => {
             const uid = node.uid
             const title = node.data.title.text
             return (
-              <MarginWrapper margin='24px 0px'>
-                <Tag key={uid} to={`/articles/` + uid}>
+              <Box margin='24px 0px'>
+                <Tag key={uid} to={`/blog/` + uid}>
                   <ArticleCard
                     focus
                     m='0px 0px 0px 24px'
@@ -54,18 +56,18 @@ const tag = ({ pageContext, data }) => {
 
 
 
-              </MarginWrapper>
+              </Box>
 
             )
           })}
 
-          <MarginWrapper margin='48px 0px'>
+          <Box margin='48px 0px'>
 
             <Tag to="/tags">
               <Button>All Tags</Button>
             </Tag>
-          </MarginWrapper>
-        </MarginWrapper>
+          </Box>
+        </Box>
 
 
       </Container>
@@ -82,29 +84,29 @@ export default tag
 
 export const pageQuery = graphql`
   query($tag: String) {
-    allPrismicArticle(
-      filter: {tags: {in: [$tag]}},
+          allPrismicArticle(
+            filter: {tags: {in: [$tag]}},
       sort: {order: DESC, fields: data___date}) {
-      totalCount
+          totalCount
       edges {
-        node {
-            uid
+          node {
+          uid
             url
             data {
-            cover {
-              fluid {
-                src
-              }
+          cover {
+          fluid {
+          src
+        }
             }
             date(formatString: "Do MMM YY")
             title {
-              text
-            }
+          text
+        }
             category
-         
+
             description {
-              text
-            }
+          text
+        }
           }
         }
       }

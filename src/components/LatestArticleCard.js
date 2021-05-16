@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-
 import {
-  Description,
+    Description,
 
 } from '../components/Collection'
-
 
 
 const Container = styled.div`
@@ -16,7 +14,7 @@ const Container = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.latestArticle ? 'row' : 'column'};
-    
+    margin: 100px 0px;
   }
 
 
@@ -30,7 +28,6 @@ const Cover = styled.img`
   /* border-radius: 4px; */
   height: 240px;
   object-fit: cover;
-  margin-bottom: 12px;
 
 
   @media (min-width: 768px) {
@@ -48,7 +45,7 @@ const Content = styled.div`
 
   @media (min-width: 768px) {
     margin-left: ${props => props.lm ? '3rem' : null};
-    flex-direction: ${props => props.rev ? 'column' : 'column-reverse'};
+    margin-top: 32px;
   }
 `
 
@@ -59,7 +56,8 @@ const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
   color: ${props => props.theme.colors.textGrey};
   font-weight: 300;
-  margin: 4px 0px;
+  margin: 12px 0px;
+
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_pointer};
@@ -69,13 +67,13 @@ const Date = styled.div`
 
 
 const Title = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_subtitle};
+  font-size: ${props => props.theme.fontSizes.mobile_title};
   color: ${props => (props.active ? props.theme.colors.accent : 'white')};
-  font-weight: 500;
-  margin: 4px 0px;
+  font-weight: 600;
+  margin-bottom: 8px;
 
   @media screen and (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes.desktop_header};
+    font-size: 2rem;
   }
 `
 
@@ -85,29 +83,19 @@ const Title = styled.div`
 
 
 
-export class ArticleCard extends Component {
-
-
-  render() {
-
+const LatestArticleCard = (props) => {
     return (
 
-
-      <Container latestArticle={this.props.latestArticle}>
-        <Cover src={this.props.cover} height={this.props.height} width={this.props.width} />
-        <Content lm={this.props.lm} rev={this.props.rev}>
-          <Date>{this.props.date}</Date>
-          <Title>{this.props.title}</Title>
-          <Description active>{this.props.description}</Description>
-        </Content>
-      </Container>
+        <Container latestArticle={props.latestArticle}>
+            <Cover src={props.cover} height={props.height} width={props.width} />
+            <Content lm={props.lm}>
+                <Date>{props.date}</Date>
+                <Title>{props.title}</Title>
+                <Description active>{props.description}</Description>
+            </Content>
+        </Container>
     )
-  }
 }
 
-export default ArticleCard
 
-
-
-
-
+export default LatestArticleCard
