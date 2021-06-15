@@ -9,6 +9,7 @@ import Theme from './theme'
 import Global from '../styles/global'
 import theme from '../styles/theme'
 import { Helmet } from 'react-helmet'
+import { motion } from 'framer-motion';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -41,23 +42,33 @@ const Container = styled.div`
 
 const Layout = ({ children }) => {
   return (
-    <Wrapper>
-      <Global />
-      <Helmet>
-        <title>Chester Yee</title>
-      </Helmet>
-      <ThemeProvider theme={theme}>
-        <Container>
+    <motion.div initial="pageInitial" animate="pageAnimate" variants={{
+      pageInitial: {
+        opacity: 0
+      },
+      pageAnimate: {
+        opacity: 1
+      },
+    }}>
+      <Wrapper>
+        <Global />
+        <Helmet>
+          <title>Chester Yee</title>
+        </Helmet>
+        <ThemeProvider theme={theme}>
+          <Container>
 
-          {/* reusable title, subtitle, etc */}
-          <Header />
+            {/* reusable title, subtitle, etc */}
+            <Header />
 
-          <Content>{children}</Content>
-          
-          <Footer />
-        </Container>
-      </ThemeProvider>
-    </Wrapper>
+            <Content>{children}</Content>
+
+            <Footer />
+          </Container>
+        </ThemeProvider>
+      </Wrapper>
+    </motion.div>
+
   )
 }
 

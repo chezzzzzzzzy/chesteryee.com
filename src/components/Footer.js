@@ -28,10 +28,11 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 24px 1.4rem;
-  background-color: #101010 ;
+  background-color: #f7f7f7;
+  border-top: 1px solid #f4f5f7;
  
   @media screen and (min-width: 768px) {
-    padding: 40px 0rem;
+    padding: 40px 100px;
 
   }
 
@@ -52,7 +53,7 @@ const Inner = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1500px;
+  width: 1200px;
   margin: auto;
 `
 
@@ -63,13 +64,13 @@ const Memoji = styled.img`
 `
 
 const LogoType = styled.div`
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   font-weight: bold;
   margin-left: 6px;
-  color: white;
+  color: black;
 
   @media screen and (min-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 `
 const Logo = styled.div`
@@ -118,25 +119,26 @@ export class Footer extends Component {
               </div>
               <div>
                 <FooterTitle>Services</FooterTitle>
-                <FooterDescription>Web Design (UI / UX)</FooterDescription>
+                <FooterDescription>Web Design</FooterDescription>
                 <FooterDescription>Web Development</FooterDescription>
                 <FooterDescription>Prototyping</FooterDescription>
                 <FooterDescription>Illustration</FooterDescription>
+                <FooterDescription>Animation</FooterDescription>
               </div>
               <div>
                 <FooterTitle>Resources</FooterTitle>
-                <FooterDescription>Design System</FooterDescription>
-                <FooterDescription>Components</FooterDescription>
-                <FooterDescription>Fonts</FooterDescription>
+                <FooterDescription>University Notes</FooterDescription>
                 <FooterDescription>Illustrations</FooterDescription>
+                <FooterDescription>Fonts</FooterDescription>
+              </div>
+              <div>
+                <FooterTitle>Case Studies</FooterTitle>
+                <FooterDescription>Master Planner Portal</FooterDescription>
+                <FooterDescription>Reniu</FooterDescription>
               </div>
               <div>
                 <FooterTitle>About</FooterTitle>
-                <FooterDescription>Press Kit</FooterDescription>
-              </div>
-              <div>
-                <FooterTitle>About</FooterTitle>
-                <FooterDescription>Press Kit</FooterDescription>
+                <FooterDescription>Media</FooterDescription>
               </div>
 
 
@@ -147,7 +149,7 @@ export class Footer extends Component {
             <Final>
 
               <FooterDescription>
-                © {new Date().getFullYear()} Chester Yee | Built in Singapore 🇸🇬
+                © {new Date().getFullYear()} Chester Yee · Built in Singapore 🇸🇬
               </FooterDescription>
 
               <Socials>

@@ -14,12 +14,14 @@ import {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid #f4f5f7;
   justify-content: space-between;
   align-items: center;
   padding: 10px 1.4rem;
-  background-color: #101010;
+  background-color: #fff;
   @media screen and (min-width: 768px) {
-    
+    padding: 10px 100px;
+
   }
 `
 
@@ -28,12 +30,12 @@ const Inner = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 1500px;
+  width: 1200px;
   margin: auto;
 `
 
 const Item = styled(Link)`
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 600;
@@ -108,7 +110,8 @@ export default function Header() {
           <MenuBarDesktop>
 
             <Item to="/blog">Blog</Item>
-            {/* <Item to="/about">About</Item> */}
+            <Item to="/">Case Studies</Item>
+            <Item to="/">About</Item>
           </MenuBarDesktop>
 
           <MenuBarMobile>

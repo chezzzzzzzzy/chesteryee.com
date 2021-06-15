@@ -7,8 +7,8 @@ const Container = styled.div`
 `
 const Card = styled.div`
     display: grid;
-    background-color: #151515;
-    border-radius: 8px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
     flex-direction: column;
     margin: 16px 0px;
     

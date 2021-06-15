@@ -17,6 +17,7 @@ import cover_jump from '../assets/cover_workTogether3.png'
 
 
 const Container = styled.div`
+    background-color: #f3f3f3;
 `
 
 
@@ -32,7 +33,7 @@ const BannerContainer = styled.div`
 const Banner = ({ title }) => {
     return (
         <Container>
-            <Section center black>
+            <Section center>
                 <BannerContainer>
                     <Box margin='8px 0px'>
                         <FeaturePointer>SAY HELLO 👋🏻</FeaturePointer>

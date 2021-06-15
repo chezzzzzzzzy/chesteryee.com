@@ -99,7 +99,7 @@ export const query = graphql`
             season {
               text
             }
-            date(formatString: "Do MMMM YYYY")
+            date(formatString: "MMMM D, YYYY")
             cover {
               fluid {
                 src

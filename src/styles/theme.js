@@ -1,7 +1,18 @@
+const breakpoints = ['480px', '768px', '1024px', '1200px']
+
+// aliases
+breakpoints.sm = breakpoints[0]
+breakpoints.md = breakpoints[1]
+breakpoints.lg = breakpoints[2]
+breakpoints.xl = breakpoints[3]
+
+
 export default {
+  breakpoints,
+
   colors: {
-    background: '#1D1D1D',
-    accent: '#60A9FF',
+    background: '#fff',
+    accent: '#07f',
     text: '#d1d1d1',
     textGrey: '#e6e6e6',
     textDarkGrey: '#585858',
@@ -17,12 +28,16 @@ export default {
   },
 
   fontSizes: {
-    h1: '6.10em',
-    h2: '4.88em',
-    h3: '3.91em',
-    h4: '3.13em',
-    h5: '2.50em',
-    h6: '2.00em',
+    h1: '4.209rem',
+    h2: '3.157rem',
+    h3: '2.369rem',
+    h4: '1.777rem',
+    h5: '1.333rem',
+
+    p: '1rem',
+
+    small: '0.75rem',
+
 
     desktop_statistics: '4em',
     desktop_mega: '2.8em',

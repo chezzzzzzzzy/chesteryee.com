@@ -20,10 +20,10 @@ const Tag = styled(Link)`
 
 `
 
-const tags = ({ data: { allPrismicArticle: { group } } }) => {
+const tags = ({ data: { allPrismicBlogPost: { group } } }) => {
     return (
         <Layout>
-            <Container style={{ padding: '0px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+            <Container style={{ padding: '0px 20px', maxWidth: '1200px', margin: '0px auto' }}>
                 <Box margin='20px 0px'>
                     {group.map(tag => (
                         <Tag key={tag.fieldValue} to={`/tags/${tag.fieldValue}/`}>
@@ -43,7 +43,7 @@ export default tags
 
 export const pageQuery = graphql`
   query {
-    allPrismicArticle {
+    allPrismicBlogPost {
         group(field: tags) {
             fieldValue
             field

@@ -14,12 +14,9 @@ const Card = styled(motion.div)`
     display: flex;
     justify-items: space-between;
     flex-direction: column;
-    padding: 1rem;
-    background-color: #242424;
-    border-radius: 6px;
+    /* background-color: #f9f9f9; */
 
     @media (${props => props.theme.mediaQueries.laptop}) {
-        padding: 2rem;
     }
    
 `
@@ -27,6 +24,7 @@ const Card = styled(motion.div)`
 const ServiceTitle = styled.div`
     font-size: 1rem;
     font-weight: 600;
+    color: black;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
         font-size: 1.4rem;
@@ -52,7 +50,7 @@ export class ServiceCard extends Component {
                     <div>
 
                         <FeatureIcon data={this.props.featureIcon} />
-                        <Box margin='32px 0px 8px'>
+                        <Box margin='16px 0px 8px'>
                             <ServiceTitle>{this.props.featureTitle}</ServiceTitle>
                         </Box>
                         <Description>{this.props.featureDescription}</Description>

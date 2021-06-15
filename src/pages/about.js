@@ -93,17 +93,17 @@ const Socials = styled.div`
 const Pulsate = keyframes`
   from {
     transform: scale(0.8);
-		box-shadow: 0 0 0 0 #60A9FF;  
+		box-shadow: 0 0 0 0 #07f;  
   }
 
   to {
     transform: scale(1);
-		box-shadow: 0 0 0 10px #60A9FF;
+		box-shadow: 0 0 0 10px #07f;
   }
 
   to {
     transform: scale(0.7);
-		box-shadow: 0 0 0 0 #60A9FF;
+		box-shadow: 0 0 0 0 #07f;
   }
 `;
 

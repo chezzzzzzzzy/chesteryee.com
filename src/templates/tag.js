@@ -9,7 +9,7 @@ import {
   Box,
   Button
 } from '../components/Collection'
-import ArticleCard from '../components/ArticleCard'
+import MoreStoriesCard from '../components/MoreStoriesCard'
 
 
 const Inner = styled.div`
@@ -19,19 +19,19 @@ const Inner = styled.div`
 
 const Tag = styled(Link)`
   text-decoration: none;
-  color: grey;
+  color: inherit;
 
 `
 
 
 const tag = ({ pageContext, data }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allPrismicArticle
+  const { edges, totalCount } = data.allPrismicBlogPost
   const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
     } tagged with "${tag}"`
   return (
     <Layout>
-      <Container style={{ padding: '0px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+      <Container style={{ padding: '0px 20px', maxWidth: '1200px', margin: '0px auto' }}>
 
         <div>{tagHeader}</div>
 
@@ -42,15 +42,10 @@ const tag = ({ pageContext, data }) => {
             return (
               <Box margin='24px 0px'>
                 <Tag key={uid} to={`/blog/` + uid}>
-                  <ArticleCard
-                    focus
-                    m='0px 0px 0px 24px'
-                    width='32%'
+                  <MoreStoriesCard
                     cover={node.data.cover.fluid.src}
                     title={node.data.title.text}
-                    description={node.data.description.text}
                     date={node.data.date}
-                    name="Chester Yee"
                   />
                 </Tag>
 
@@ -84,7 +79,7 @@ export default tag
 
 export const pageQuery = graphql`
   query($tag: String) {
-          allPrismicArticle(
+    allPrismicBlogPost(
             filter: {tags: {in: [$tag]}},
       sort: {order: DESC, fields: data___date}) {
           totalCount
@@ -98,13 +93,13 @@ export const pageQuery = graphql`
           src
         }
             }
-            date(formatString: "Do MMM YY")
+            date(formatString: "MMMM D, YYYY")
             title {
           text
         }
-            category
+            
 
-            description {
+            subtitle {
           text
         }
           }

@@ -1,17 +1,18 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { motion } from 'framer-motion'
+import { space, layout, color } from 'styled-system'
 
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${props => props.padding ? '0px' : `${props.theme.padding.mobile}`};
+  padding: 0 1.4rem;
   margin: 0px auto;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
     max-width: ${props => props.width ? `${props.width}` : '100%'};
-    padding: 0px;
+    padding: 0px 100px;
   }
 `
 
@@ -47,6 +48,7 @@ export const SectionGrid = styled.div`
 export const Statistics = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_statistics};
   font-weight: bold;
+  color: black;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
     font-size: ${props => props.theme.fontSizes.desktop_statistics};
@@ -55,6 +57,7 @@ export const Statistics = styled.div`
 export const Mega = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_mega};
   font-weight: bold;
+  color: black;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
     font-size: ${props => props.theme.fontSizes.desktop_mega};
@@ -65,7 +68,7 @@ export const Title = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_title};
   font-weight: bold;
   padding: 0.4px 0px;
-  color: ${props => (props.active ? props.theme.colors.accent : 'white')};
+  color: ${props => (props.active ? props.theme.colors.accent : 'black')};
 
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_title};
@@ -85,7 +88,7 @@ export const Header = styled.div`
 
 export const Subtitle = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_subtitle};
-  color: ${props => (props.active ? props.theme.colors.accent : 'white')};
+  color: black;
   font-weight: 600;
 
   @media screen and (min-width: 768px) {
@@ -104,7 +107,7 @@ export const Pointer = styled.div`
 
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
   color: ${props => props.theme.colors.textGrey};
-  font-weight: 300;
+  font-weight: 400;
   margin: 2px 0px;
   color: #585858;
 
@@ -117,7 +120,7 @@ export const Description = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
   line-height: 1.6;
   font-weight: 400;
-  color: ${props => props.theme.colors.textGrey};
+  color: black;
 
 
   @media screen and (min-width: 768px) {
@@ -129,7 +132,7 @@ export const Description2 = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_description};
   line-height: 1.6;
   font-weight: 500;
-  color: ${props => props.theme.colors.textGrey};
+  color: black;
 
 
   @media screen and (min-width: 768px) {
@@ -164,7 +167,11 @@ export const Subject = styled.div`
 
 export const Cover = styled.object`
   width: 100%;
-  max-width: 600px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 400px;
+
+  }
 `
 
 export const BannerCover = styled.object`
@@ -173,7 +180,7 @@ export const BannerCover = styled.object`
   width: 80%;
 
   @media screen and (min-width: 768px) {
-      width: 80%;
+      width: 60%;
   }
 `
 
@@ -225,7 +232,7 @@ export const FeatureIcon = styled.object`
 
   width: 36px;
   height: 36px;
-  /* background-color: ${props => props.bg ? '#60A9FF20' : 'null'};
+  /* background-color: ${props => props.bg ? '#07f20' : 'null'};
   padding: ${props => props.pad ? '16px' : 'null'};
   border-radius: 16px;
    */
@@ -250,7 +257,7 @@ export const Label = styled.div`
 
 export const Name = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};  
+  color: black;
   font-weight: 500;
 
   @media screen and (min-width: 768px) {
@@ -261,7 +268,7 @@ export const Name = styled.div`
 
 export const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};
+  color: black;
   font-weight: 500;
 
   @media screen and (min-width: 768px) {
@@ -289,7 +296,7 @@ export const Portrait = styled.img`
 
 export const Tag = styled(Link)`
   text-decoration: none;
-  color: ${props => props.theme.colors.accent};
+  color: #07f;
 
 `
 
@@ -297,7 +304,7 @@ export const Category = styled.div`
   color: ${props => props.theme.colors.accent};
   font-weight: 500;
   border-radius: 1000px;
-  background-color: #60A9FF10;
+  background-color: #07f010;
   padding: 6px 16px;
   font-size: 0.8rem;
   display: inline-block;
@@ -317,6 +324,8 @@ export const Box = styled(motion.div)`
 
 `
 
+
+
 export const PaddingWrapper = styled.div`
 padding: ${props => props.padding ? `${props.padding}` : 'null'};
 
@@ -334,9 +343,9 @@ export const Wrapper = styled.div`
 
 export const FeaturePointer = styled.div`
     font-size: ${props => props.theme.fontSizes.mobile_pointer};
-    font-weight: 500;
+    font-weight: 450;
     letter-spacing: 1px;
-    color: ${props => (props.active ? 'white' : props.theme.colors.textDarkGrey)};
+    color: gray;
 
     @media screen and (min-width: 768px) {
         font-size: ${props => props.theme.fontSizes.desktop_pointer};
@@ -356,7 +365,7 @@ export const FeatureDescription = styled.div`
 
 export const FeatureSubtitle = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_subtitle};
-  color: ${props => (props.active ? props.theme.colors.accent : 'white')};
+  color: black;
   font-weight: 500;
 
   @media screen and (min-width: 768px) {
@@ -366,39 +375,34 @@ export const FeatureSubtitle = styled.div`
 
 
 export const FooterTitle = styled.div`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  margin-bottom:16px; 
+  margin-bottom:16px;
+  color: #1d1d1f;
 `
 
 export const FooterDescription = styled.div`
-  font-size: 0.7rem;
-  color: #b9b9b9;
-  margin-bottom:4px; 
+  font-size: 0.8rem;
+  color: #3d3d4e;
   transition: 0.2s color ease-in-out;
   margin: 10px 0px;
   
-  :hover{
-    color: #60A9FF;
-  }
+
 
 `
 
 export const Button = styled.a`
     border-radius: 100px;
-    background-color: #242424;
+    background-color: #07f;
     padding: 10px 28px;
     font-weight: 600;
-    border: 1px solid transparent;
-    transition: border 0.2s ease-in-out;
+    /* border: 1px solid ${props => props.theme.colors.accent}; */
+    transition: background-color 0.1s ease-in-out;
     font-size: 14px;
     text-decoration: none;
     color: white;
     
-    :hover {
-      border: 1px solid ${props => props.theme.colors.accent};
-
-    }
+  
 
     
 `
@@ -428,5 +432,23 @@ export const CenterWrapper = styled.div`
 export const HR = styled.hr`
   margin: 0px 0px;
   border-radius: 100px;   
-  border: 0.6px solid #202020;
+  border: 0.6px solid #e5e7eb;
 `
+
+
+export const H1 = styled.h1`
+  font-size: 3.052rem;
+`
+export const H2 = styled.h2`
+  font-size: 2.441rem;
+`
+export const H3 = styled.h3`
+  font-size: 1.953rem;
+`
+export const H4 = styled.h4`
+  font-size: 1.563rem;
+`
+export const H5 = styled.h5`
+  font-size: 1.25rem
+`
+

@@ -45,7 +45,7 @@ const item = {
 
 
 const Item = styled(Link)`
-  color: white;
+  color: black;
   text-decoration: none;
   /* font-size: 0.8rem; */
   font-size: 1.6rem;

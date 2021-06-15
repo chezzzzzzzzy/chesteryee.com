@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 
 import Layout from '../components/layout'
 import GeneralCard from '../components/GeneralCard'
@@ -9,7 +10,7 @@ import ProjectCard from '../components/ProjectCard'
 
 import cover_intro from '../assets/behind mbp3.png'
 import icon_mail from '../assets/mail-outline.svg'
-import icon_phone from '../assets/phone-portrait-outline.svg'
+import icon_phone from '../assets/icon_phone.svg'
 import cover_mpp3 from '../assets/cover_mpp3.png'
 import cover_translation from '../assets/cover_translation.png'
 
@@ -23,6 +24,8 @@ import icon_desktop from '../assets/desktop.png'
 import icon_layers from '../assets/icon_layers.svg'
 import icon_codeSlash2 from '../assets/icon_codeSlash2.svg'
 import icon_rocket from '../assets/icon_rocket.svg'
+import icon_pwa from '../assets/icon_pwa.svg'
+import icon_flask from '../assets/icon_flask.svg'
 
 
 import Banner from '../components/Banner'
@@ -30,6 +33,7 @@ import Banner from '../components/Banner'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.scss'
 import { Parallax } from 'react-parallax';
+import { color, fontSize } from 'styled-system'
 
 import {
   Mega,
@@ -51,9 +55,12 @@ import {
   Wrapper,
   Button,
   Box,
+  BoxNew,
+
   FeaturePointer,
   CenterWrapper,
-  MovingIcon
+  MovingIcon,
+  H5
 } from '../components/Collection'
 import icon_forward from '../assets/icon_forward.svg'
 
@@ -72,10 +79,10 @@ import { useSpring, animated } from 'react-spring'
 import p2 from '../assets/profile2.png'
 import profile from '../assets/linkedin profile.jpg'
 
-import logo_reniu from '../assets/logo_reniu.png'
-import logo_singtel from '../assets/singtel_logo_white.png'
+import logo_reniu from '../assets/logo_reniu_black.png'
+import logo_singtel from '../assets/logo_singtel_black.png'
 import logo_citc from '../assets/logo_citc.png'
-import logo_sk from '../assets/logo_sk.png'
+import logo_sk from '../assets/logo_sk_black.png'
 
 import saly from '../assets/saly.png'
 const Projects = styled.div`
@@ -83,7 +90,7 @@ const Projects = styled.div`
   grid-gap: 1rem;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 `
 
@@ -109,12 +116,12 @@ const Project = styled(Link)`
 
 const Cards = styled(motion.div)`
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     width: 100%;
 
     @media (${props => props.theme.mediaQueries.laptop}) {
 
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
 
@@ -123,14 +130,21 @@ const Cards = styled(motion.div)`
 const MainSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 50px);
   justify-content: center;
-  background-color: #151515;
+  background-color: #fff;
   padding: 0 20px;
+
+  @media screen and (min-width: 768px) {
+      padding: 0 100px;
+
+  }
+
+
 `
 
 const Content = styled.div`
-  max-width: 1500px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 `
@@ -180,22 +194,7 @@ const item = {
 }
 
 
-const CTAButton = styled.a`
-  border-radius: 100px;
-  background-color: transparent;
-  padding: 10px 28px;
-  font-weight: 600;
-  border: 1.4px solid #60a9ff;
-  transition: background-color 0.2s ease-in-out;
-  font-size: 14px;
-  text-decoration: none;
-  color: white;
-  
-  :hover {
-    background-color: #60a9ff;
 
-  }
-`
 
 const StatisticsBlock = styled.div`
 
@@ -207,51 +206,80 @@ const StatisticsContainer = styled.div`
   justify-content: space-between;
 `
 
-const Skills = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  width: 100%;
-  margin: 2rem 0px;
-
-  @media (${props => props.theme.mediaQueries.laptop}) {
-    grid-template-columns: 1fr 1fr
-  }
-
-`
-
-const Skill = styled.div`
-  display: flex;
-  height: 500px;
-  width: 100%;
-  background-color: #111111;
-  position: relative;
 
 
-  
-`
-
-const SkillTitle = styled.div`
-  font-size: 1.4rem;
-  font-weight: 600;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`
 
 const Card = styled(motion.div)`
     display: flex;
     justify-items: space-between;
     flex-direction: column;
-    padding: 1rem;
-    background-color: #242424;
    
+`
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
+
+const SkillCategory = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`
+
+const SkillSub = styled.div`
+
+`
+
+
+const Description3 = styled.div`
+  font-weight: 450;
+  margin: 1rem 0px;
+  font-size: 1.1rem;
+
+  @media (min-width: 768px) {
+    margin: 0rem 0px;
+    font-size: 1.4rem;
+
+  }
 `
 
 
 
+
+
 const Index = (props) => {
+
+  const { ref, inView } = useInView()
+  const animation = useAnimation()
+  useEffect(() => {
+
+    console.log(inView)
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: {
+          type: 'spring',
+          duration: 1.5
+        }
+      })
+
+
+
+    }
+
+    if (!inView) {
+      animation.start({
+        x: '-100vw', transition: {
+          type: 'spring',
+          duration: 1.5
+        }
+      })
+    }
+  })
+
 
 
   return (
@@ -259,111 +287,174 @@ const Index = (props) => {
 
 
       <MainSection>
-        <Content>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={list}
+        >
+          <Content>
 
-          <Box margin='6px 0px'>
-            <FeaturePointer>ASPIRING SOFTWARE ENGINEER</FeaturePointer>
-          </Box>
+            <Box margin='6px 0px'>
+              <FeaturePointer>ASPIRING SOFTWARE ENGINEER</FeaturePointer>
+            </Box>
 
-          <Box margin='2px 0px'>
-            <Mega>Hello, I'm Chester.</Mega>
-          </Box>
+            <Box margin='2px 0px'>
+              <Mega>Hello, I'm Chester.</Mega>
+            </Box>
 
-          <Box margin='16px 0px'>
-            <Description>
-              Incoming Computer Science and Business undergraduate at
-              Nanyang Technological University
+            <Box margin='16px 0px'>
+              <Description>
+                Incoming Computer Science and Business undergraduate at
+                Nanyang Technological University
               </Description>
-          </Box>
+            </Box>
 
-          <Box margin='48px 0px'>
-            <CTAButton>Resume</CTAButton>
-          </Box>
-
-        </Content>
+          </Content>
+        </motion.div>
       </MainSection>
 
-      <Container style={{ padding: '0px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+      <Container style={{ margin: '0px auto', backgroundColor: '#f9f9f9' }}>
 
+
+        <div style={{ maxWidth: '1200px', margin: '0px auto' }}>
+
+
+          <Box margin='48px 0px'>
+            <Box margin='0px 0px 32px'>
+              <Title>Professional Experience</Title>
+            </Box>
+
+
+            <HC ref={ref} >
+              <motion.div animate={animation}>
+
+                <Box margin='32px 0px'>
+                  <Description2>Co-Founder</Description2>
+                  <Pointer>RENIU</Pointer>
+
+                  <Box margin='16px 0px' width='70%'>
+                    <Description>
+                      Local startup that aims to produce sustainable and positively impactful fuel that is carbon neutral through the use of livestock and agricultural waste as the main medium in our product formulation. Idea founded in Yogyakarta during an Overseas Social Innovation Programme while solving issues for the villagers of Kali Tengah Lor at the foothill of Mount Merapi.
+                      Incubated at Singapore Polytechnic’s incubator office (SPinOFF) for close to 2 years.
+                      Pitched to top VCs at several hackathons and exhibited at Ngee Ann Polytechnic, Echelon and Singapore Polytechnic.
+                      Collaborated with key stakeholders (Singapore Polo Club, DairyFolks, SP InnoVillage) to obtain resources and promote our product.
+            </Description>
+                  </Box>
+                </Box>
+
+                <Box margin='32px 0px'>
+                  <Description2>Intern</Description2>
+                  <Pointer>Singtel</Pointer>
+
+                  <Box margin='16px 0px' width='70%'>
+                    <Description>
+                      Developed a Customer Relationship Management (CRM) platform for employees to request for resources in exchanges and datacenter facilities. Requests will then be fulfilled by the respective owner. Service Level Agreement (SLA) built in. Email notifications. Photo verification. Assisted with BAU work and operations. Attained basic Robotic Process Automation (RPA) skills using UIPath. Gained insights on OSI model and networking concepts.
+            </Description>
+                  </Box>
+                </Box>
+
+                <Box margin='32px 0px'>
+                  <Description2>Teaching Assistant / Instructor</Description2>
+                  <Pointer>Code in the Community</Pointer>
+
+                  <Box margin='16px 0px' width='70%'>
+                    <Description>
+                      Volunteered at Leng Kee Community Club for the Google-sponsored initiative to bring free coding classes to 3,000 young Singaporeans from less well-to-do backgrounds.
+            </Description>
+                  </Box>
+                </Box>
+
+              </motion.div>
+
+              <Cover data={cover_jump} />
+
+            </HC>
+
+
+          </Box>
+        </div>
+      </Container>
+
+
+
+
+
+      <Container style={{ maxWidth: '1200px', margin: '0px auto' }}>
 
 
 
         <Box margin='48px 0px'>
-          <Box margin='0px 0px 32px'>
-            <Title>Professional Experience</Title>
+
+
+          <Box margin='128px 0px'>
+
+            <SkillCategory>
+              <Title>
+                Design
+            </Title>
+              <SkillSub>
+                <Box margin='0px 0px 80px'>
+                  <Description3>
+                    Establishing the right visual connection with your customers and users by creating eye-catching and memorable designs as well as meaningful user experience.
+                </Description3>
+                </Box>
+
+                <Cards
+                  initial="hidden"
+                  animate="visible"
+                  variants={list}
+                >
+                  <Card variants={item}><ServiceCard featureIcon={icon_layers} featureTitle='Websites and Platforms' featureDescription='Designing pixel perfect websites and interfaces' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_codeSlash2} featureTitle='Mobile Applications' featureDescription='Native experience for applications that run on different platforms' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='Branding' featureDescription='Personal branding that allows your product to stand out' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='Prototyping' featureDescription='Design concepts to better visualise the creative direction of the product' /></Card>
+                </Cards>
+              </SkillSub>
+            </SkillCategory>
           </Box>
 
+          <Box margin='128px 0px'>
 
-          <HC>
-            <div>
 
-              <Box margin='32px 0px'>
-                <Description2>Co-Founder</Description2>
-                <Pointer>RENIU</Pointer>
-
-                <Box margin='16px 0px' width='70%'>
-                  <Description>
-                    Local startup that aims to produce sustainable and positively impactful fuel that is carbon neutral through the use of livestock and agricultural waste as the main medium in our product formulation.
-                    Incubated at Singapore Polytechnic’s incubator office (SPinOFF) for close to 2 years.
-                    Pitched to top VCs at several pitching events and exhibited at Ngee Ann Polytechnic, Echelon and Singapore Polytechnic.
-                    Collaborated with partners to obtain resources and promote our product.
-            </Description>
+            <SkillCategory>
+              <Title>
+                Development
+            </Title>
+              <SkillSub>
+                <Box margin='0px 0px 80px'>
+                  <Description3>
+                    Implementing your project with scalable architecture design, modern technology, and an excellent level of data security.
+                  </Description3>
                 </Box>
-              </Box>
 
-              <Box margin='32px 0px'>
-                <Description2>Intern</Description2>
-                <Pointer>Singtel</Pointer>
-
-                <Box margin='16px 0px' width='70%'>
-                  <Description>
-                    Developed a Customer Relationship Management (CRM) platform for employees to request for resources in exchanges and datacenter facilities. Requests will then be fulfilled by the respective owner. Service Level Agreement (SLA) built in. Email notifications. Photo verification. Assisted with BAU work and operations. Attained basic Robotic Process Automation (RPA) skills using UIPath. Gained insights on networking concepts.
-            </Description>
-                </Box>
-              </Box>
-
-              <Box margin='32px 0px'>
-                <Description2>Teaching Assistant / Instructor</Description2>
-                <Pointer>Code in the Community</Pointer>
-
-                <Box margin='16px 0px' width='70%'>
-                  <Description>
-                    Google-sponsored initiative to bring free coding classes to 3,000 young Singaporeans from less well-to-do backgrounds.
-            </Description>
-                </Box>
-              </Box>
-
-            </div>
-
-            <Cover data={cover_jump} />
-
-          </HC>
-
-
-        </Box>
-
-
-
-
-
-
-        <Box margin='48px 0px'>
-          <Box margin='0px 0px 32px'>
-            <Title>Skillsets</Title>
+                <Cards
+                  initial="hidden"
+                  animate="visible"
+                  variants={list}
+                >
+                  <Card variants={item}><ServiceCard featureIcon={icon_rocket} featureTitle='Web services' featureDescription='Web services which are customized to your needs and goals' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_phone} featureTitle='Native Mobile Applications' featureDescription='Individual applications that run natively on iOS and Android platform in accordance to the guidelines by Apple and Google' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_pwa} featureTitle='Progressive Web Applications' featureDescription='Cross platform applications which allows you to launch your product faster into the market' /></Card>
+                  <Card variants={item}><ServiceCard featureIcon={icon_flask} featureTitle='Test Driven Development' featureDescription='Ensure the quality of our applications and services to give you the ultimate experience' /></Card>
+                </Cards>
+              </SkillSub>
+            </SkillCategory>
           </Box>
 
-          <Cards
+          {/* <Cards
             initial="hidden"
             animate="visible"
             variants={list}
           >
             <Card variants={item}><ServiceCard featureIcon={icon_layers} featureTitle='Web Design' featureDescription='Designing pixel perfect websites and interfaces' /></Card>
-            <Card variants={item}><ServiceCard featureIcon={icon_codeSlash2} featureTitle='Web Development' featureDescription='Qality products that you would enjoy' /></Card>
+            <Card variants={item}><ServiceCard featureIcon={icon_codeSlash2} featureTitle='Web Development' featureDescription='Quality products that you would enjoy' /></Card>
             <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='Prototyping' featureDescription='High fidelity prototypes' /></Card>
             <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='Animation' featureDescription='Animations that are smooth' /></Card>
             <Card variants={item}><ServiceCard featureIcon={icon_rocket} featureTitle='Branding' featureDescription='Not your usual company' /></Card>
             <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='Illustration' featureDescription='Illustrations that stands out' /></Card>
-          </Cards>
+          </Cards> */}
+
+
 
         </Box>
 
@@ -446,24 +537,34 @@ const Index = (props) => {
 
 
                 <Box margin='16px 0px'>
-                  <Description>
-                    Computer Science
-                </Description>
-                  <Pointer>Nanyang Technological University</Pointer>
+                  <Row>
+                    <div>
+                      <Description>Computer Science</Description>
+                      <Pointer>Nanyang Technological University</Pointer>
+                    </div>
+                    <Pointer>2022 — 2025</Pointer>
+                  </Row>
+
                 </Box>
 
                 <Box margin='16px 0px'>
-                  <Description>
-                    Business
-                </Description>
-                  <Pointer>Nanyang Technological University</Pointer>
+                  <Row>
+                    <div>
+                      <Description>Business</Description>
+                      <Pointer>Nanyang Technological University</Pointer>
+                    </div>
+                    <Pointer>2022 — 2025</Pointer>
+                  </Row>
                 </Box>
 
                 <Box margin='16px 0px'>
-                  <Description>
-                    Computer Engineering
-                </Description>
-                  <Pointer>Singapore Polytechnic</Pointer>
+                  <Row>
+                    <div>
+                      <Description>Computer Engineering</Description>
+                      <Pointer>Singapore Polytechnic</Pointer>
+                    </div>
+                    <Pointer>2017 — 2020</Pointer>
+                  </Row>
                 </Box>
 
 
@@ -473,25 +574,36 @@ const Index = (props) => {
                 </Box>
 
                 <Box margin='16px 0px'>
-                  <Description>
-                    Edge AI Scholarship
-                </Description>
-                  <Pointer>Intel</Pointer>
+                  <Row>
+                    <div>
+                      <Description>Edge AI Scholarship</Description>
+                      <Pointer>Intel</Pointer>
+                    </div>
+                    <Pointer>2019</Pointer>
+                  </Row>
+                </Box>
+
+
+                <Box margin='16px 0px'>
+                  <Row>
+                    <div>
+                      <Description>Director's Honour Roll</Description>
+                      <Pointer>Singapore Polytechnic</Pointer>
+                    </div>
+                    <Pointer>2019</Pointer>
+                  </Row>
                 </Box>
 
                 <Box margin='16px 0px'>
-                  <Description>
-                    Engineering Scholarship
-                </Description>
-                  <Pointer>Singtel</Pointer>
+                  <Row>
+                    <div>
+                      <Description>Engineering Scholarship</Description>
+                      <Pointer>Singtel</Pointer>
+                    </div>
+                    <Pointer>2018</Pointer>
+                  </Row>
                 </Box>
 
-                <Box margin='16px 0px'>
-                  <Description>
-                    Director's Honour Roll
-                </Description>
-                  <Pointer>Singapore Polytechnic</Pointer>
-                </Box>
 
               </Box>
 
@@ -528,68 +640,13 @@ const Index = (props) => {
 
 
 
-        {/* <Box margin='30px 0px'>
-          <Section center>
 
-            <Mega>Discover our services</Mega>
-
-            <Box margin='50px 0px'>
-
-              <Cards
-                initial="hidden"
-                animate="visible"
-                variants={list}
-              >
-                <Card variants={item}><ServiceCard featureIcon={icon_layers} featureTitle='Web Design' featureDescription='Designing pixel perfect websites and interfaces' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_codeSlash2} featureTitle='Web Development' featureDescription='I build quality products that you would use.' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_expand} featureTitle='Prototyping' featureDescription='Hgh fidelity prototypes' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='Animation' featureDescription='Animations that are smooth' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_rocket} featureTitle='Branding' featureDescription='Not your usual company' /></Card>
-                <Card variants={item}><ServiceCard featureIcon={icon_shapes} featureTitle='Illustration' featureDescription='Illustrations that stands out' /></Card>
-              </Cards>
-            </Box>
-
-            <Button href='./articles'>
-              <HC>
-                <div style={{ marginRight: '4px' }}>Explore All</div>
-                <MovingIcon size='16px' data={icon_forward}></MovingIcon>
-              </HC>
-            </Button>
-          </Section>
-        </Box>
-
-
-        <Box margin='30px 0px'>
-          <Section center>
-            <Mega>Projects</Mega>
-
-
-            <Box margin='50px 0px'>
-
-              <Projects>
-                {props.data.allPrismicProject.edges.map(({ node }) => (
-                  <Project to={node.uid}>
-
-                    <ProjectCard
-                      skillCover={cover_mpp3}
-                      skillTitle={node.data.title.text}
-                      skillDescription={node.data.company.text}
-                    />
-
-
-                  </Project>
-                ))}
-              </Projects>
-
-            </Box>
-          </Section>
-        </Box> */}
       </Container>
 
       <Banner title="Let's work together" subtitle='DO YOU LIKE MY WORK?' />
 
 
-    </Layout>
+    </Layout >
   )
 }
 
@@ -611,7 +668,7 @@ export const query = graphql`
           last_publication_date
           data {
            
-            date(formatString: "Do MMMM YYYY")
+            date(formatString: "MMMM D, YYYY")
             title {
               text
             }

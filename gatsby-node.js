@@ -50,28 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // prismic inputs
   const pages = await graphql(`
     {
-      allPrismicArticle(sort: { order: DESC, fields: [data___date] }) {
-        group(field: tags) {
-          fieldValue
-          field
-          totalCount
-      }
-        nodes {
-            tags
-            id
-            uid
-            first_publication_date
-            last_publication_date
-            data {
-              title {
-                text
-              }
-              category
-            }
-            url
-          
-        }
-      }
+
 
       allPrismicProject {
         nodes {
@@ -89,6 +68,64 @@ exports.createPages = async ({ graphql, actions }) => {
           
         }
       }
+
+
+
+
+      allPrismicBlogPost(sort: {order: DESC, fields: [data___date]}) {
+        group(field: tags) {
+          fieldValue
+          field
+          totalCount
+      }
+        nodes {
+          data {
+            body {
+              ... on PrismicBlogPostBodyCodeSlice {
+                id
+                primary {
+                  snippet {
+                    html
+                    text
+                  }
+                }
+                slice_type
+              }
+              ... on PrismicBlogPostBodyContentSlice {
+                id
+                slice_type
+                primary {
+                  description {
+                    html
+                    text
+                  }
+                }
+              }
+            }
+            cover {
+              url
+              fluid {
+                src
+              }
+            }
+            date
+            title {
+              text
+            }
+            subtitle {
+              text
+            }
+          }
+          url
+          uid
+          tags
+        }
+      }
+
+
+
+
+
 
       allPrismicTravel {
         nodes {
@@ -116,15 +153,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
 
-  const template = path.resolve("./src/templates/post.jsx");
+  const template = path.resolve("./src/templates/blogPost.jsx");
   const travelTemplate = path.resolve("./src/templates/travel.jsx");
   const projectTemplate = path.resolve("./src/templates/project.jsx");
   const tagTemplate = path.resolve("./src/templates/tag.js");
 
-  const articles = pages.data.allPrismicArticle.nodes
+  // const articles = pages.data.allPrismicArticle.nodes
+  const articles = pages.data.allPrismicBlogPost.nodes
 
 
-  pages.data.allPrismicArticle.nodes.forEach((node, index) => {
+  pages.data.allPrismicBlogPost.nodes.forEach((node, index) => {
     createPage({
       path: `/blog/${node.uid}`,
       component: template,
@@ -162,7 +200,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
 
-  const tags = pages.data.allPrismicArticle.group
+  const tags = pages.data.allPrismicBlogPost.group
   tags.forEach(tag => {
     createPage({
       path: `/tags/${tag.fieldValue}/`,

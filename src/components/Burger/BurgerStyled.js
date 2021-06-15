@@ -13,9 +13,9 @@ export const StyledBurger = styled.div`
     border-radius: 10px;
     transition: all 0.3s linear;
     transform-origin: 1px;
-    color: white;
+    color: black;
     z-index: 1000;
-    background: ${({ theme, open }) => (open ? 'white' : 'white')};
+    background: ${({ theme, open }) => (open ? 'black' : 'black')};
 
     :first-child {
       transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};

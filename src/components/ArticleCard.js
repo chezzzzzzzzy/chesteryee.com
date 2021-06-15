@@ -12,7 +12,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
-
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 6px;
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.latestArticle ? 'row' : 'column'};
@@ -30,12 +32,13 @@ const Cover = styled.img`
   /* border-radius: 4px; */
   height: 240px;
   object-fit: cover;
-  margin-bottom: 12px;
+  margin-bottom: 1.5rem;
+  border-radius: 6px 6px 0px 0px;
 
 
   @media (min-width: 768px) {
     width: ${props => props.width ? `${props.width}` : '100%'};
-    height: ${props => props.height ? `${props.height}` : '240px'};
+    height: ${props => props.height ? `${props.height}` : '260px'};
 
 
   }
@@ -45,6 +48,9 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1.5rem;
+  height: 100%;
 
   @media (min-width: 768px) {
     margin-left: ${props => props.lm ? '3rem' : null};
@@ -57,8 +63,8 @@ const Content = styled.div`
 
 const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};
-  font-weight: 300;
+  color: black;
+  font-weight: 500;
   margin: 4px 0px;
 
   @media screen and (min-width: 768px) {
@@ -70,9 +76,9 @@ const Date = styled.div`
 
 const Title = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_subtitle};
-  color: ${props => (props.active ? props.theme.colors.accent : 'white')};
+  color: black;
   font-weight: 500;
-  margin: 4px 0px;
+  margin: 4px 0px 8px;
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_header};

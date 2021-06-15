@@ -260,7 +260,7 @@ export const pageQuery = graphql`
           __typename
         }
 
-        date(formatString: "Do MMMM YYYY")
+        date(formatString: "MMMM D, YYYY")
         cover {
           fluid {
             src

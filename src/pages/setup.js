@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
-import {
-    Subject
-} from '../components/Collection'
 
 import ProductCard from '../components/ProductCard'
 
@@ -18,24 +15,25 @@ import cover_ip12 from '../assets/cover_ip12.png'
 import cover_aw6 from '../assets/cover_aw6.png'
 
 
-const Inner = styled.div`
-    margin: auto;
-    max-width: 1260px;
-`
 
 const Products = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 16px;
     padding: 1rem 1.4rem;
-    max-width: 1260px;
-    margin: auto; 
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 100px;
+
+    }
 `
 
 const setup = () => {
     return (
         <Layout>
-            <Subject><Inner>Setup</Inner></Subject>
             <Products>
 
                 <ProductCard cover={cover_onesl} name='One SL' brand='Sonos' />

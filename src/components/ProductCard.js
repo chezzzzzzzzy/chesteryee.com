@@ -5,7 +5,7 @@ const Container = styled.div`
 `
 
 const Card = styled.div`
-    background-color: #151515;
+    background-color: #f7f7f7;
     padding: 32px;
     border-radius: 16px;
 `
@@ -25,11 +25,12 @@ const Details = styled.div`
 const Name = styled.div`
     font-size: 18px;
     font-weight: 700;
+    color: black;
 `
 const Brand = styled.div`
     font-size: 12px;
     font-weight: 400;
-    color: darkgrey;
+    color: black;
     margin: 2px 0px;
 `
 

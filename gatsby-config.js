@@ -28,6 +28,7 @@ module.exports = {
           article: require('./src/schemas/article.json'),
           travel: require('./src/schemas/travel.json'),
           project: require('./src/schemas/project.json'),
+          blog_post: require('./src/schemas/blogPost.json'),
         },
       },
     },

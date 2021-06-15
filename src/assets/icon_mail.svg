@@ -3,9 +3,9 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#60A9FF;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;}
+	.st0{fill:none;stroke:#07f;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;}
 	.st1{fill:none;}
-	.st2{fill:#60A9FF;stroke:#60A9FF;stroke-miterlimit:10;}
+	.st2{fill:#07f;stroke:#07f;stroke-miterlimit:10;}
 </style>
 <path class="st0" d="M320,96H88c-22.1,0-40,17.9-40,40v240c0,22.1,17.9,40,40,40h334.7c22.1,0,40-17.9,40-40V239"/>
 <polyline class="st0" points="112,160 256,272 343,206.3 "/>

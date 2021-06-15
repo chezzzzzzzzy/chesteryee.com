@@ -40,7 +40,7 @@ import cover_update from '../assets/cover_update.png'
 import cover_view from '../assets/cover_view.png'
 import doc_cert from '../assets/doc_cert.jpg'
 import { useSpring, animated } from 'react-spring'
-import logo_singtel from '../assets/singtel_logo_white.png'
+import logo_singtel from '../assets/logo_singtel_black.png'
 
 const PageContainer = styled.div`
   display: grid;
@@ -121,7 +121,7 @@ const IconContainer = styled.div`
   border-radius: 1000px;
   align-items: center;
   justify-content: center;
-  background-color: #60a9ff20;
+  background-color: #07f20;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
     padding: 16px;
@@ -158,7 +158,9 @@ const FullHeightCover = styled.img`
 const project = () => {
   return (
     <Layout>
-        <Container style={{ padding: '40px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+      <Container
+        style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0px auto' }}
+      >
         <PageContainer>
           <div>
             <Box margin="16px 0px">
@@ -176,7 +178,9 @@ const project = () => {
 
       <FullHeightCover src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></FullHeightCover>
 
-      <Container style={{ padding: '40px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+      <Container
+        style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0px auto' }}
+      >
         <Section>
           <Box margin="112px 56px 32px">
             <CardSplit>
@@ -230,7 +234,9 @@ const project = () => {
         src="https://www.zdnet.com/a/hub/i/2019/01/15/85f2a328-b7e3-41ab-9486-d9a6334d23d2/ibx-equinix.jpg"
       ></FullHeightCover>
 
-<Container style={{ padding: '40px 20px', maxWidth: '1500px', margin: '0px auto' }}>
+      <Container
+        style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0px auto' }}
+      >
         <Section>
           <FeatureContainer>
             <Box margin="30px 0px">

@@ -107,7 +107,7 @@ export const pageQuery = graphql`
       url
       uid
       data {
-        date(formatString: "Do MMMM YYYY")
+        date(formatString: "MMMM D, YYYY")
         body {
           ... on PrismicTravelBodySection {
             id
