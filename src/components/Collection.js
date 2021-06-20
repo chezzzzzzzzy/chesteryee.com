@@ -117,14 +117,14 @@ export const Pointer = styled.div`
 `
 
 export const Description = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_description};
+  font-size: 0.9rem;
   line-height: 1.6;
   font-weight: 400;
   color: black;
 
 
   @media screen and (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes.desktop_description};
+    font-size: 0.95rem;
   }
 `
 

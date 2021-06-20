@@ -2,16 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 
-import { H1, H2, H3, H4, H5, Tag } from '../components/Collection'
+import { H1, H2, H3, H4, H5 } from '../components/Collection'
 
 import ReactMarkdown from 'react-markdown'
 import { RichText } from 'prismic-reactjs'
 
 import { withPreview } from 'gatsby-source-prismic'
+import { Link } from 'gatsby'
 
 const Container = styled.div`
   max-width: 900px;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 0 1.4rem;
 `
 
@@ -35,15 +36,21 @@ const Cover = styled.img`
   }
 `
 
-const Title = styled(H4)`
+const Title = styled.div`
   font-weight: 600;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   color: black;
+  font-size: 1.4rem;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 const Subtitle = styled.div`
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: black;
 `
 
@@ -54,6 +61,16 @@ const Content = styled.div`
 
 const Part = styled.div`
   margin: 0px 0px 20px;
+`
+
+const Tag = styled(Link)`
+  font-size: ${props => props.theme.fontSizes.mobile_pointer};
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #07f;
+  padding: 0;
+  text-transform: uppercase;
+  text-decoration: none;
 `
 
 const blogPost = ({ data: { prismicBlogPost }, pageContext }) => {
@@ -79,11 +96,10 @@ const blogPost = ({ data: { prismicBlogPost }, pageContext }) => {
   return (
     <Layout>
       <Container>
+        <Tag to={`/tags/${x}`}>{x} </Tag>
+
         <Title>{data.title.text}</Title>
-        <Subtitle>
-          By Chester Yee · {data.date} · {}
-          {x && x.map(index => <Tag to={`/tags/${index}`}>{index} </Tag>)}
-        </Subtitle>
+        <Subtitle>By Chester Yee · {data.date}</Subtitle>
       </Container>
 
       <Figure>

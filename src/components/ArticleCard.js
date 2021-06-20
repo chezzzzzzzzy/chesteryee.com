@@ -38,7 +38,7 @@ const Cover = styled.img`
 
   @media (min-width: 768px) {
     width: ${props => props.width ? `${props.width}` : '100%'};
-    height: ${props => props.height ? `${props.height}` : '260px'};
+    height: ${props => props.height ? `${props.height}` : '220px'};
 
 
   }
@@ -47,7 +47,7 @@ const Cover = styled.img`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding-right: 1rem;
+  padding-right: 1.8rem;
   padding-left: 1.5rem;
   padding-bottom: 1.5rem;
   height: 100%;
@@ -63,7 +63,7 @@ const Content = styled.div`
 
 const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: black;
+  color: gray;
   font-weight: 500;
   margin: 4px 0px;
 
@@ -75,13 +75,13 @@ const Date = styled.div`
 
 
 const Title = styled.div`
-  font-size: ${props => props.theme.fontSizes.mobile_subtitle};
+  font-size: 1.1rem;
   color: black;
   font-weight: 500;
-  margin: 4px 0px 8px;
+  margin: 4px 0px;
 
   @media screen and (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes.desktop_header};
+    font-size: 1.2rem;
   }
 `
 

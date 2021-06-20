@@ -62,10 +62,9 @@ const Content = styled.div`
 
 const Date = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_pointer};
-  color: ${props => props.theme.colors.textGrey};
+  color: gray;
   font-weight: 500;
   margin: 12px 0px;
-  color: black;
 
 
   @media screen and (min-width: 768px) {

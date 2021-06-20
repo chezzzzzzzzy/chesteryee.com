@@ -25,9 +25,11 @@ const ServiceTitle = styled.div`
     font-size: 1rem;
     font-weight: 600;
     color: black;
-
+    
     @media (${props => props.theme.mediaQueries.laptop}) {
         font-size: 1.4rem;
+        padding-right: 3rem;
+        min-height: 4rem;
     }
 
 `

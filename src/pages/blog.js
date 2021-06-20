@@ -1,10 +1,23 @@
-import React, { Component, useRef, useEffect } from 'react'
+import React, { Component, useRef, useState } from 'react'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import ArticleCard from '../components/ArticleCard'
 
 import styled from 'styled-components'
-import { Mega, Title, Subject, FeaturePointer, Box, BoxNew, HR, Description, Button, ButtonNav, MovingIcon, Icon } from '../components/Collection'
+import {
+  Mega,
+  Title,
+  Subject,
+  FeaturePointer,
+  Box,
+  BoxNew,
+  HR,
+  Description,
+  Button,
+  ButtonNav,
+  MovingIcon,
+  Icon,
+} from '../components/Collection'
 import CategoryCard from '../components/CategoryCard'
 import icon_laptop from '../assets/laptop-outline.svg'
 import icon_codeSlash from '../assets/icon_codeSlash.svg'
@@ -18,9 +31,7 @@ import cover_profile from '../assets/cover_profile.jpeg'
 import icon_forward from '../assets/icon_forward.svg'
 import icon_backward from '../assets/icon_backward.svg'
 
-
 import LatestArticleCard from '../components/LatestArticleCard'
-
 
 import StoriesCard from '../components/StoriesCard'
 import MoreStoriesCard from '../components/MoreStoriesCard'
@@ -32,8 +43,8 @@ const Articles = styled.div`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(12,1fr);
-    margin: 0 auto 4rem;    
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 auto 4rem;
   }
 `
 
@@ -46,38 +57,37 @@ const Container = styled.div`
   }
 `
 
+const Container2 = styled.div`
+  margin: 100px 0px;
+  padding: 0;
 
-const Inner = styled.div`
-    margin: auto;
-    max-width: 1260px;
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    padding: 0px 100px;
+  }
 `
 
+const Inner = styled.div`
+  margin: auto;
+  max-width: 1260px;
+`
 
 const Article = styled(Link)`
   text-decoration: none;
   color: black;
   scroll-snap-align: center;
   grid-column: ${props => props.spanCol};
-
 `
 
-
 const CategoryCards = styled.div`
- 
-
-
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(6, 140px);
   padding: 16px 0px;
   overflow-x: auto;
 
-
   ::-webkit-scrollbar {
     display: none;
   }
-
-
 `
 
 const Articles2 = styled.div`
@@ -86,21 +96,17 @@ const Articles2 = styled.div`
   grid-template-columns: 1fr;
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-  
   }
-
-
 `
 
 const Articles4 = styled.div`
- @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(4,6fr);
+    grid-template-columns: repeat(4, 6fr);
     grid-gap: 16px;
-    margin: 0 auto;    
+    margin: 0 auto;
   }
 `
-
 
 const Articles3 = styled.div`
   display: grid;
@@ -116,9 +122,6 @@ const Articles3 = styled.div`
   }
   @media (min-width: 768px) {
   }
-
-
-
 `
 
 const HC = styled.div`
@@ -127,15 +130,12 @@ const HC = styled.div`
   align-items: center;
 `
 
-
 // export class articles extends Component {
-export const articles = (props) => {
-
+export const articles = props => {
   // constructor(props) {
   //   super(props)
   //   this.navRef = React.createRef()
   // }
-
 
   // handleNav = (direction) => {
   //   if (direction == 'left') {
@@ -151,37 +151,62 @@ export const articles = (props) => {
   //   }
   // }
 
+  const tags = ['All', 'Data Structures', 'Algorithms', 'Configuration']
+
+  const [tag, setTag] = useState('All')
+  const [posts, setposts] = useState([]);
+
+
+
+  const Tag = styled.div`
+    padding: 8px 18px;
+    background-color: #0077ff15;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: #07f;
+
+    @media (min-width: 768px) {
+      padding: 12px 24px;
+      font-size: 0.85rem;
+
+
+    }
+  `
+
+  const Tags = styled.div`
+    display: flex;
+    grid-gap: 1rem;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+  `
+
   return (
     <Layout>
-
-      <div style={{ maxWidth: '1200px', margin: '0px auto' }}>
+      <Container2 style={{ maxWidth: '1200px', margin: '0px auto' }}>
         {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-
-
-
           if (index < 1) {
             return (
               <Article to={node.uid}>
                 <LatestArticleCard
                   lm
                   latestArticle
-                  m='0px 0px 0px 24px'
-                  height='455px'
-                  width='60%'
+                  m="0px 0px 0px 24px"
+                  height="455px"
+                  width="60%"
                   cover={node.data.cover.fluid.src}
                   title={node.data.title.text}
                   description={node.data.subtitle.text}
                   portrait={cover_profile}
                   name="Chester Yee"
-                  date={node.data.date} />
+                  date={node.data.date}
+                />
               </Article>
             )
           }
-
         })}
-      </div>
+      </Container2>
       <Container style={{ maxWidth: '1200px', margin: '0px auto' }}>
-
         {/* <Article to={props.data.prismicBlogPost.uid}>
 
           <LatestArticleCard
@@ -201,15 +226,7 @@ export const articles = (props) => {
 
         </Article> */}
 
-
-
-
-
-
-
-
-
-        <Box margin='48px 0px 24px 0px'>
+        <Box margin="48px 0px 24px 0px">
           <Title>Latest Reads</Title>
         </Box>
 
@@ -217,24 +234,35 @@ export const articles = (props) => {
             Tomato
           </BoxNew> */}
 
-
         <Articles>
           {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-
-
-
             if (index > 0 && index < 8) {
               return (
-                <Article to={node.uid} spanCol={index == 1 | index == 2 | index == 3 ? "span 4" : "span 3"}>
+                <Article
+                  to={node.uid}
+                  spanCol={
+                    (index == 1) | (index == 2) | (index == 3)
+                      ? 'span 4'
+                      : 'span 3'
+                  }
+                >
                   <ArticleCard
                     mt
-                    rev={index == 1 | index == 2 | index == 3}
-                    height={index == 1 | index == 2 | index == 3 ? null : '160px'}
+                    rev={(index == 1) | (index == 2) | (index == 3)}
+                    height={
+                      (index == 1) | (index == 2) | (index == 3)
+                        ? null
+                        : '160px'
+                    }
                     tags={node.tags}
                     category={node.data.category}
                     cover={node.data.cover.fluid.src}
                     title={node.data.title.text}
-                    description={index == 1 | index == 2 | index == 3 ? node.data.subtitle.text : null}
+                    description={
+                      (index == 1) | (index == 2) | (index == 3)
+                        ? node.data.subtitle.text
+                        : null
+                    }
                     portrait={cover_profile}
                     name="Chester Yee"
                     date={node.data.date}
@@ -242,12 +270,8 @@ export const articles = (props) => {
                 </Article>
               )
             }
-
           })}
         </Articles>
-
-
-
       </Container>
 
       {/* <Container style={{ backgroundColor: 'black', margin: '0px auto', paddingTop: '4rem', paddingBottom: '2rem' }}>
@@ -286,28 +310,40 @@ export const articles = (props) => {
 
       <Container style={{ maxWidth: '1200px', margin: '0px auto 80px' }}>
 
-
-        <Box margin='48px 0px 24px 0px'>
+        <Box margin="48px 0px 24px 0px">
           <Title>More Reads</Title>
-        </Box>
 
+          <Tags>
+            {tags.map(t => {
+              return <Tag onClick={() => setTag(t)} >{t}</Tag>
+            })}
+          </Tags>
+
+        </Box>
 
 
 
         <Articles2>
           {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-
-
-
-            if (index > 7) {
+            if (index > 7 && tag == 'All') {
               return (
-
                 <Article to={node.uid}>
                   <MoreStoriesCard
-
                     cover={node.data.cover.fluid.src}
                     title={node.data.title.text}
-
+                    tags={node.tags}
+                    date={node.data.date}
+                  />
+                </Article>
+              )
+            }
+            if (index > 7 && tag == node.tags) {
+              return (
+                <Article to={node.uid}>
+                  <MoreStoriesCard
+                    cover={node.data.cover.fluid.src}
+                    title={node.data.title.text}
+                    tags={node.tags}
                     date={node.data.date}
                   />
                 </Article>
@@ -315,21 +351,16 @@ export const articles = (props) => {
             }
           })}
         </Articles2>
-
       </Container>
-
-    </Layout >
+    </Layout>
   )
-
 }
 
 export default articles
 
 export const query = graphql`
   query {
-
- 
-  prismicBlogPost {
+    prismicBlogPost {
       data {
         cover {
           url
@@ -342,11 +373,11 @@ export const query = graphql`
           text
         }
         cover {
-            url
-            fluid {
-              src
-            }
+          url
+          fluid {
+            src
           }
+        }
         body {
           ... on PrismicBlogPostBodyCodeSlice {
             id
@@ -376,60 +407,54 @@ export const query = graphql`
       url
       tags
     }
-  
 
-  allPrismicBlogPost(sort: {order: DESC, fields: data___date}) {
+    allPrismicBlogPost(sort: { order: DESC, fields: data___date }) {
       edges {
-      node {
-        data {
-          body {
-            ... on PrismicBlogPostBodyCodeSlice {
-              id
-              primary {
-                snippet {
-                  text
-                  html
+        node {
+          data {
+            body {
+              ... on PrismicBlogPostBodyCodeSlice {
+                id
+                primary {
+                  snippet {
+                    text
+                    html
+                  }
                 }
+                slice_type
               }
-              slice_type
-            }
-            ... on PrismicBlogPostBodyContentSlice {
-              id
-              primary {
-                description {
-                  html
-                  text
+              ... on PrismicBlogPostBodyContentSlice {
+                id
+                primary {
+                  description {
+                    html
+                    text
+                  }
                 }
+                slice_type
               }
-              slice_type
             }
-          }
-          cover {
-            url(imgixParams: { q: 80 })
-            fluid {
-              src
+            cover {
+              url(imgixParams: { q: 80 })
+              fluid {
+                src
+              }
             }
-          }
-          subtitle {
-            text
-          }
-          date(formatString: "MMMM D, YYYY")
+            subtitle {
+              text
+            }
+            date(formatString: "MMMM D, YYYY")
 
-          title {
-            text
+            title {
+              text
+            }
           }
+          id
+          url
+          uid
+          tags
         }
-        id
-        url
-        uid
-        tags
       }
     }
-    }
-
-
-
-
-
   }
 `

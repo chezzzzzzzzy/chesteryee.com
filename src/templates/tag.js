@@ -24,16 +24,22 @@ const Tag = styled(Link)`
 `
 
 
+const TagHeader = styled.div`
+  font-size: 1.6rem;
+  font-weight: 600;
+  
+`
+
 const tag = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allPrismicBlogPost
-  const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
-    } tagged with "${tag}"`
+  // const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
+  //   } tagged with "${tag}"`
   return (
     <Layout>
-      <Container style={{ padding: '0px 20px', maxWidth: '1200px', margin: '0px auto' }}>
+      <Container style={{ padding: '0px 20px', maxWidth: '1200px', margin: '24px auto' }}>
 
-        <div>{tagHeader}</div>
+        <TagHeader>{tag}</TagHeader>
 
         <Box margin='20px 0px'>
           {edges.map(({ node }) => {
@@ -56,12 +62,7 @@ const tag = ({ pageContext, data }) => {
             )
           })}
 
-          <Box margin='48px 0px'>
 
-            <Tag to="/tags">
-              <Button>All Tags</Button>
-            </Tag>
-          </Box>
         </Box>
 
 
