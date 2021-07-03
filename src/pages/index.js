@@ -326,7 +326,7 @@ const Index = (props) => {
 
 
             <HC ref={ref} >
-              <motion.div animate={animation}>
+              <div animate={animation}>
 
                 <Box margin='32px 0px'>
                   <Description2>Co-Founder</Description2>
@@ -338,7 +338,7 @@ const Index = (props) => {
                       Incubated at Singapore Polytechnic’s incubator office (SPinOFF) for close to 2 years.
                       Pitched to top VCs at several hackathons and exhibited at Ngee Ann Polytechnic, Echelon and Singapore Polytechnic.
                       Collaborated with key stakeholders (Singapore Polo Club, DairyFolks, SP InnoVillage) to obtain resources and promote our product.
-            </Description>
+                    </Description>
                   </Box>
                 </Box>
 
@@ -349,7 +349,7 @@ const Index = (props) => {
                   <Box margin='16px 0px' width='70%'>
                     <Description>
                       Developed a Customer Relationship Management (CRM) platform for employees to request for resources in exchanges and datacenter facilities. Requests will then be fulfilled by the respective owner. Service Level Agreement (SLA) built in. Email notifications. Photo verification. Assisted with BAU work and operations. Attained basic Robotic Process Automation (RPA) skills using UIPath. Gained insights on OSI model and networking concepts.
-            </Description>
+                    </Description>
                   </Box>
                 </Box>
 
@@ -360,11 +360,11 @@ const Index = (props) => {
                   <Box margin='16px 0px' width='70%'>
                     <Description>
                       Volunteered at Leng Kee Community Club for the Google-sponsored initiative to bring free coding classes to 3,000 young Singaporeans from less well-to-do backgrounds.
-            </Description>
+                    </Description>
                   </Box>
                 </Box>
 
-              </motion.div>
+              </div>
 
               <Cover data={cover_jump} />
 
@@ -391,12 +391,12 @@ const Index = (props) => {
             <SkillCategory>
               <Title>
                 Design
-            </Title>
+              </Title>
               <SkillSub>
                 <Box margin='0px 0px 80px'>
                   <Description3>
                     Establishing the right visual connection with your customers and users by creating eye-catching and memorable designs as well as meaningful user experience.
-                </Description3>
+                  </Description3>
                 </Box>
 
                 <Cards
@@ -419,7 +419,7 @@ const Index = (props) => {
             <SkillCategory>
               <Title>
                 Development
-            </Title>
+              </Title>
               <SkillSub>
                 <Box margin='0px 0px 80px'>
                   <Description3>
@@ -516,7 +516,7 @@ const Index = (props) => {
                   With the adoption of Artifiical Intelligence increasing steadily, I
                   would like to bring the 2 domains closer together by integrating
                   Artifical Intelligence in the projects I am doing.
-              </Description>
+                </Description>
 
                 <Box margin='50px 0px' style={{ width: '80%' }}>
                   <StatisticsContainer>

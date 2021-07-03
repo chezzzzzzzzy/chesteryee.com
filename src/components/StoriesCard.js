@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     position: relative;
-    border-radius: 6px;
+    border-radius: 8px;
 
     @media screen and (min-width: 788px){
         width: 100%;
@@ -11,7 +11,7 @@ const Container = styled.div`
 `
 
 const Cover = styled.img`
-    border-radius: 6px;
+  border-radius: 8px;
     height: 550px;
     
     object-fit: cover;

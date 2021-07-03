@@ -60,7 +60,7 @@ const Container = styled.div`
 const Container2 = styled.div`
   margin: 100px 0px;
   padding: 0;
-
+  
   @media (${props => props.theme.mediaQueries.laptop}) {
     padding: 0px 100px;
   }
@@ -130,6 +130,30 @@ const HC = styled.div`
   align-items: center;
 `
 
+
+
+const Tag = styled.div`
+padding: 8px 18px;
+background-color: #0077ff15;
+border-radius: 10px;
+font-weight: 500;
+font-size: 0.8rem;
+color: #07f;
+
+@media (min-width: 768px) {
+  padding: 12px 24px;
+  font-size: 0.85rem;
+
+
+}
+`
+
+const Tags = styled.div`
+display: flex;
+grid-gap: 1rem;
+padding: 1rem 0;
+flex-wrap: wrap;
+`
 // export class articles extends Component {
 export const articles = props => {
   // constructor(props) {
@@ -158,56 +182,34 @@ export const articles = props => {
 
 
 
-  const Tag = styled.div`
-    padding: 8px 18px;
-    background-color: #0077ff15;
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 0.8rem;
-    color: #07f;
 
-    @media (min-width: 768px) {
-      padding: 12px 24px;
-      font-size: 0.85rem;
-
-
-    }
-  `
-
-  const Tags = styled.div`
-    display: flex;
-    grid-gap: 1rem;
-    padding: 1rem 0;
-    flex-wrap: wrap;
-  `
-
-  return (
-    <Layout>
-      <Container2 style={{ maxWidth: '1200px', margin: '0px auto' }}>
-        {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-          if (index < 1) {
-            return (
-              <Article to={node.uid}>
-                <LatestArticleCard
-                  lm
-                  latestArticle
-                  m="0px 0px 0px 24px"
-                  height="455px"
-                  width="60%"
-                  cover={node.data.cover.fluid.src}
-                  title={node.data.title.text}
-                  description={node.data.subtitle.text}
-                  portrait={cover_profile}
-                  name="Chester Yee"
-                  date={node.data.date}
-                />
-              </Article>
-            )
-          }
-        })}
-      </Container2>
-      <Container style={{ maxWidth: '1200px', margin: '0px auto' }}>
-        {/* <Article to={props.data.prismicBlogPost.uid}>
+    return (
+      <Layout>
+        <Container2 style={{ maxWidth: '1200px', margin: '0px auto' }}>
+          {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
+            if (index < 1) {
+              return (
+                <Article to={node.uid}>
+                  <LatestArticleCard
+                    lm
+                    latestArticle
+                    m="0px 0px 0px 24px"
+                    height="455px"
+                    width="60%"
+                    cover={node.data.cover.fluid.src}
+                    title={node.data.title.text}
+                    description={node.data.subtitle.text}
+                    portrait={cover_profile}
+                    name="Chester Yee"
+                    date={node.data.date}
+                  />
+                </Article>
+              )
+            }
+          })}
+        </Container2>
+        <Container style={{ maxWidth: '1200px', margin: '0px auto' }}>
+          {/* <Article to={props.data.prismicBlogPost.uid}>
 
           <LatestArticleCard
             lm
@@ -226,55 +228,55 @@ export const articles = props => {
 
         </Article> */}
 
-        <Box margin="48px 0px 24px 0px">
-          <Title>Latest Reads</Title>
-        </Box>
+          <Box margin="48px 0px 24px 0px">
+            <Title>Latest Reads</Title>
+          </Box>
 
-        {/* <BoxNew color="#fff" bg="tomato">
+          {/* <BoxNew color="#fff" bg="tomato">
             Tomato
           </BoxNew> */}
 
-        <Articles>
-          {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-            if (index > 0 && index < 8) {
-              return (
-                <Article
-                  to={node.uid}
-                  spanCol={
-                    (index == 1) | (index == 2) | (index == 3)
-                      ? 'span 4'
-                      : 'span 3'
-                  }
-                >
-                  <ArticleCard
-                    mt
-                    rev={(index == 1) | (index == 2) | (index == 3)}
-                    height={
+          <Articles>
+            {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
+              if (index > 0 && index < 8) {
+                return (
+                  <Article
+                    to={node.uid}
+                    spanCol={
                       (index == 1) | (index == 2) | (index == 3)
-                        ? null
-                        : '160px'
+                        ? 'span 4'
+                        : 'span 3'
                     }
-                    tags={node.tags}
-                    category={node.data.category}
-                    cover={node.data.cover.fluid.src}
-                    title={node.data.title.text}
-                    description={
-                      (index == 1) | (index == 2) | (index == 3)
-                        ? node.data.subtitle.text
-                        : null
-                    }
-                    portrait={cover_profile}
-                    name="Chester Yee"
-                    date={node.data.date}
-                  />
-                </Article>
-              )
-            }
-          })}
-        </Articles>
-      </Container>
+                  >
+                    <ArticleCard
+                      mt
+                      rev={(index == 1) | (index == 2) | (index == 3)}
+                      height={
+                        (index == 1) | (index == 2) | (index == 3)
+                          ? null
+                          : '160px'
+                      }
+                      tags={node.tags}
+                      category={node.data.category}
+                      cover={node.data.cover.fluid.src}
+                      title={node.data.title.text}
+                      description={
+                        (index == 1) | (index == 2) | (index == 3)
+                          ? node.data.subtitle.text
+                          : null
+                      }
+                      portrait={cover_profile}
+                      name="Chester Yee"
+                      date={node.data.date}
+                    />
+                  </Article>
+                )
+              }
+            })}
+          </Articles>
+        </Container>
 
-      {/* <Container style={{ backgroundColor: 'black', margin: '0px auto', paddingTop: '4rem', paddingBottom: '2rem' }}>
+        {/* <Container style={{ backgroundColor: 'black', margin: '0px auto', paddingTop: '4rem', paddingBottom: '2rem' }}>
 
           <HC style={{ maxWidth: '1200px', margin: '0px auto' }}>
             <Title style={{ color: 'white' }}>Featured Reads</Title>
@@ -308,57 +310,58 @@ export const articles = props => {
 
         </Container> */}
 
-      <Container style={{ maxWidth: '1200px', margin: '0px auto 80px' }}>
+        <Container style={{ maxWidth: '1200px', margin: '0px auto 80px' }}>
 
-        <Box margin="48px 0px 24px 0px">
-          <Title>More Reads</Title>
+          <Box margin="48px 0px 24px 0px">
+            <Title>More Reads</Title>
 
-          <Tags>
-            {tags.map(t => {
-              return <Tag onClick={() => setTag(t)} >{t}</Tag>
+            <Tags>
+              {tags.map(t => {
+                return <Tag onClick={() => setTag(t)} >{t}</Tag>
+              })}
+            </Tags>
+
+          </Box>
+
+
+
+
+          <Articles2>
+            {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
+              if (index > 7 && tag == 'All') {
+                return (
+                  <Article to={node.uid}>
+                    <MoreStoriesCard
+                      cover={node.data.cover.fluid.src}
+                      title={node.data.title.text}
+                      tags={node.tags}
+                      date={node.data.date}
+                    />
+                  </Article>
+                )
+              }
+              if (index > 7 && tag == node.tags) {
+                return (
+                  <Article to={node.uid}>
+                    <MoreStoriesCard
+                      cover={node.data.cover.fluid.src}
+                      title={node.data.title.text}
+                      tags={node.tags}
+                      date={node.data.date}
+                    />
+                  </Article>
+                )
+              }
             })}
-          </Tags>
+          </Articles2>
+        </Container>
+      </Layout>
+    )
+  }
 
-        </Box>
+  export default articles
 
-
-
-        <Articles2>
-          {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
-            if (index > 7 && tag == 'All') {
-              return (
-                <Article to={node.uid}>
-                  <MoreStoriesCard
-                    cover={node.data.cover.fluid.src}
-                    title={node.data.title.text}
-                    tags={node.tags}
-                    date={node.data.date}
-                  />
-                </Article>
-              )
-            }
-            if (index > 7 && tag == node.tags) {
-              return (
-                <Article to={node.uid}>
-                  <MoreStoriesCard
-                    cover={node.data.cover.fluid.src}
-                    title={node.data.title.text}
-                    tags={node.tags}
-                    date={node.data.date}
-                  />
-                </Article>
-              )
-            }
-          })}
-        </Articles2>
-      </Container>
-    </Layout>
-  )
-}
-
-export default articles
-
-export const query = graphql`
+  export const query = graphql`
   query {
     prismicBlogPost {
       data {

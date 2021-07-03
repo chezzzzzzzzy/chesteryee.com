@@ -28,7 +28,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 24px 1.4rem;
-  background-color: #f7f7f7;
+  background-color: #f1f1f1;
   border-top: 1px solid #f4f5f7;
  
   @media screen and (min-width: 768px) {

@@ -185,7 +185,7 @@ export const BannerCover = styled.object`
 `
 
 export const CoverBrands = styled.object`
-  width: 100px;
+  height: 30px;
   display: flex;
   justify-self: center;
   align-self: center;

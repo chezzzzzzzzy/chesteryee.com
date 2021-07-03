@@ -32,7 +32,7 @@ const Cover = styled.img`
 
   @media (min-width: 768px) {
     height: 600px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 `
 

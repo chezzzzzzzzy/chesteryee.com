@@ -19,7 +19,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  border-radius: 6px;
+  border-radius: 8px;
 
   @media screen and (max-width: 768px) {
   }

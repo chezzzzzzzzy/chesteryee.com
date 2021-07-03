@@ -11,13 +11,13 @@ const Container = styled.div`
   flex-direction: column;
   color: white;
   max-width: 1500px;
-  background-color: #f7f7f7;
-  border-radius: 6px;
+  background-color: #fff;
+  border-radius: 8px;
 
   @media (min-width: 768px) {
     flex-direction: ${props => props.latestArticle ? 'row' : 'column'};
     margin: 80px auto;
-    border-radius: 6px;
+    border-radius: 8px;
 
 
   }

@@ -22,7 +22,7 @@ body {
 }
 
 html {  
-    background: #fff;
+    background: #f7f7f7;
     color: black;
     margin: 0px auto;
     font-family: ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -83,8 +83,8 @@ li {
 pre {
 
     background-color: #f2f2f2;
-    border-radius: 6px;
-    padding: 14px;
+    border-radius: 8px;
+    padding: 20px;
     white-space: pre-wrap;
     max-width: 100%;
     line-height: 1.6;

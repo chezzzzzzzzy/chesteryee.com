@@ -11,7 +11,7 @@ const Container = styled(Link)`
     background-color: #242424;
     text-decoration: none;
     color: gray;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid transparent;
     transition: border 0.2s ease-in-out;
     :hover {
