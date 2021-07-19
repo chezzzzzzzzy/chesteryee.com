@@ -47,11 +47,11 @@ export const SectionGrid = styled.div`
 
 export const Statistics = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_statistics};
-  font-weight: bold;
+  font-weight: 1000;
   color: black;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
-    font-size: ${props => props.theme.fontSizes.desktop_statistics};
+    font-size: 3.4rem;
   }
 `
 export const Mega = styled.div`
@@ -68,7 +68,7 @@ export const Title = styled.div`
   font-size: ${props => props.theme.fontSizes.mobile_title};
   font-weight: bold;
   padding: 0.4px 0px;
-  color: ${props => (props.active ? props.theme.colors.accent : 'black')};
+  color: ${props => (props.color ? props.color : 'black')};
 
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes.desktop_title};
@@ -169,7 +169,7 @@ export const Cover = styled.object`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    max-width: 400px;
+    max-width: 460px;
 
   }
 `
@@ -177,10 +177,10 @@ export const Cover = styled.object`
 export const BannerCover = styled.object`
   max-width: 500px;
   margin: 20px 0px;
-  width: 80%;
+  max-width: 70%;
 
   @media screen and (min-width: 768px) {
-      width: 60%;
+      max-width: 30%;
   }
 `
 
@@ -345,7 +345,7 @@ export const FeaturePointer = styled.div`
     font-size: ${props => props.theme.fontSizes.mobile_pointer};
     font-weight: 450;
     letter-spacing: 1px;
-    color: gray;
+    color: #777;
 
     @media screen and (min-width: 768px) {
         font-size: ${props => props.theme.fontSizes.desktop_pointer};

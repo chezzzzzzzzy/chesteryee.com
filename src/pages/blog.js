@@ -35,6 +35,7 @@ import LatestArticleCard from '../components/LatestArticleCard'
 
 import StoriesCard from '../components/StoriesCard'
 import MoreStoriesCard from '../components/MoreStoriesCard'
+import { bindKey } from 'lodash'
 
 const Articles = styled.div`
   display: flex;
@@ -148,6 +149,17 @@ color: #07f;
 }
 `
 
+const Special = styled.div`
+  background-color: ${props => props.color ? props.color : 'white'};
+`
+
+
+const Focus = styled.div`
+  background-color: #101010;
+  width: 100%;
+`
+
+
 const Tags = styled.div`
 display: flex;
 grid-gap: 1rem;
@@ -175,7 +187,7 @@ export const articles = props => {
   //   }
   // }
 
-  const tags = ['All', 'Data Structures', 'Algorithms', 'Configuration']
+  const tags = ['All', ...props.data.allPrismicBlogPost.distinct]
 
   const [tag, setTag] = useState('All')
   const [posts, setposts] = useState([]);
@@ -183,8 +195,10 @@ export const articles = props => {
 
 
 
-    return (
-      <Layout>
+  return (
+    <Special color='#f7f7f7'>
+      <Layout bgcw>
+
         <Container2 style={{ maxWidth: '1200px', margin: '0px auto' }}>
           {props.data.allPrismicBlogPost.edges.map(({ node }, index) => {
             if (index < 1) {
@@ -310,18 +324,49 @@ export const articles = props => {
 
         </Container> */}
 
+        <Focus>
+          <Container style={{ maxWidth: '1200px', margin: '20px auto 80px', padding: '1rem 20px' }}>
+
+            <Box margin="48px 0px 24px 0px">
+              <Title color='white'>Highlights</Title>
+            </Box>
+
+            <div style={{ maxWidth: '1200px', margin: '0px auto 80px' }}>
+
+              <Articles3 >
+                {props.data.allPrismicBlogPost.edges.map(({ node }) => (
+                  <Article to={node.uid}>
+                    <StoriesCard
+
+                      cover={node.data.cover.fluid.src}
+                      title={node.data.title.text}
+                      date={node.data.date}
+                    />
+                  </Article>
+                ))}
+
+              </Articles3>
+            </div>
+
+          </Container>
+        </Focus>
+
+
         <Container style={{ maxWidth: '1200px', margin: '0px auto 80px' }}>
 
           <Box margin="48px 0px 24px 0px">
             <Title>More Reads</Title>
 
             <Tags>
-              {tags.map(t => {
+              {tags.map((t) => {
                 return <Tag onClick={() => setTag(t)} >{t}</Tag>
-              })}
+              })
+              }
             </Tags>
 
           </Box>
+
+
 
 
 
@@ -353,16 +398,23 @@ export const articles = props => {
                 )
               }
             })}
+
+
+
           </Articles2>
         </Container>
+
       </Layout>
-    )
-  }
+    </Special >
+  )
+}
 
-  export default articles
+export default articles
 
-  export const query = graphql`
+export const query = graphql`
   query {
+
+
     prismicBlogPost {
       data {
         cover {
@@ -411,7 +463,12 @@ export const articles = props => {
       tags
     }
 
+
     allPrismicBlogPost(sort: { order: DESC, fields: data___date }) {
+        nodes {
+        tags
+      }
+      distinct(field: tags)
       edges {
         node {
           data {

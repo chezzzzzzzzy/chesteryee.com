@@ -77,7 +77,7 @@ import icon_shapes from '../assets/shapes-outline.svg'
 import ServiceCard from '../components/ServiceCard'
 import { useSpring, animated } from 'react-spring'
 import p2 from '../assets/profile2.png'
-import profile from '../assets/linkedin profile.jpg'
+import profile from '../assets/profile_geo.png'
 
 import logo_reniu from '../assets/logo_reniu_black.png'
 import logo_singtel from '../assets/logo_singtel_black.png'
@@ -153,10 +153,9 @@ const Content = styled.div`
 const GridSection = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 6rem;
 
   @media (${props => props.theme.mediaQueries.laptop}) {
-    grid-template-columns: 2fr 1fr
+    grid-template-columns: 2fr 1.2fr
   }
   
 `
@@ -201,9 +200,14 @@ const StatisticsBlock = styled.div`
 `
 const StatisticsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 16px;
   justify-content: space-between;
+
+  @media (${props => props.theme.mediaQueries.laptop}) {
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `
 
 
@@ -217,7 +221,8 @@ const Card = styled(motion.div)`
 `
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+  grid-template-columns: 2fr 1fr;
 `
 
 const SkillCategory = styled.div`
@@ -504,30 +509,35 @@ const Index = (props) => {
           </Box>
           <GridSection>
             <div>
-              <Box width='80%'>
+              <Box width='85%'>
 
                 <Description>
                   Technology has always been an interest of mine ever since I was
                   young. Apart from coding, there are many other things which I enjoy
                   doing as well. I enjoy travelling to different places around the
-                  world to discover and seek new experience. I mainly focus in web and
-                  mobile applications development. More recently, I also had the
-                  chance to pick up the basics of Machine Learning and Deep Learning.
-                  With the adoption of Artifiical Intelligence increasing steadily, I
-                  would like to bring the 2 domains closer together by integrating
-                  Artifical Intelligence in the projects I am doing.
+                  world to discover and seek new experience. As of now, my main area of focus
+                  is in web development and mobile applications development. During the spots of
+                  free time I have over the evenings and weekends, I would usually be researching on
+                  Artificial Intelligence and Deep Learning related topics like Computer Vision and Natural
+                  Language Processing. With that it mind, I hope to be able to bring the 2 domains closer
+                  together by integrating them into the projects which I would be working on.
                 </Description>
 
-                <Box margin='50px 0px' style={{ width: '80%' }}>
+                <Box margin='50px 0px' style={{ width: '100%' }}>
                   <StatisticsContainer>
                     <StatisticsBlock>
-                      <Statistics>4</Statistics>
-                      <FeaturePointer>YEARS OF EXPERIENCE</FeaturePointer>
+                      <Statistics>SG</Statistics>
+                      <FeaturePointer>PLACE OF BIRTH</FeaturePointer>
                     </StatisticsBlock>
                     <StatisticsBlock>
                       <Statistics>21</Statistics>
-                      <FeaturePointer>YEARS OLD</FeaturePointer>
+                      <FeaturePointer>YEARS OF AGE</FeaturePointer>
                     </StatisticsBlock>
+                    <StatisticsBlock>
+                      <Statistics>5+</Statistics>
+                      <FeaturePointer>YEARS OF EXPERIENCE</FeaturePointer>
+                    </StatisticsBlock>
+
                   </StatisticsContainer>
                 </Box>
 
